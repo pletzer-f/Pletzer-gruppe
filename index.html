@@ -593,10 +593,209 @@
     <section class="py-32 bg-white relative overflow-hidden">
         <div class="decorative-circle -bottom-32 -left-32"></div>
         <div class="container mx-auto px-8">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="section-title text-3xl md:text-4xl font-bold mb-16">Unser Standort</h2>
-                <div class="w-full aspect-[21/9] bg-gray-100 rounded-lg flex items-center justify-center">
-                    <span class="text-gray-400 text-lg">Kartenbereich</span>
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-12">Unsere Standorte</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Left Column: Map & Tabs -->
+                <div class="w-full lg:w-7/12">
+                    <!-- Division Selector Tabs -->
+                    <div class="flex flex-wrap mb-6 border-b">
+                        <button class="standort-tab py-3 px-6 text-gray-900 font-medium border-b-2 border-gray-900 transition-colors duration-300" data-division="gruppe">
+                            Die Gruppe
+                        </button>
+                        <button class="standort-tab py-3 px-6 text-[#AAB400] font-medium border-b-2 border-transparent hover:border-[#AAB400] transition-colors duration-300" data-division="immobilien">
+                            Immobilien
+                        </button>
+                        <button class="standort-tab py-3 px-6 text-[#D84B40] font-medium border-b-2 border-transparent hover:border-[#D84B40] transition-colors duration-300" data-division="tourismus">
+                            Tourismus
+                        </button>
+                        <button class="standort-tab py-3 px-6 text-[#50A9CE] font-medium border-b-2 border-transparent hover:border-[#50A9CE] transition-colors duration-300" data-division="industrie">
+                            Industrie
+                        </button>
+                    </div>
+                    
+                    <!-- Map Container (Placeholder) -->
+                    <div class="relative h-[450px] w-full rounded-lg overflow-hidden">
+                        <!-- Die Gruppe Map (Austria) -->
+                        <div class="standort-map absolute inset-0 opacity-100 transition-opacity duration-500 bg-gray-100 border border-gray-200 rounded-lg flex items-center justify-center" data-division="gruppe">
+                            <div class="text-center">
+                                <p class="text-gray-400 mb-2">Hier wird eine Karte von Österreich angezeigt</p>
+                                <p class="text-sm text-gray-400">Die interaktive Karte zeigt alle Standorte der Gruppe</p>
+                                
+                                <!-- Sample Location Buttons -->
+                                <div class="mt-8 grid grid-cols-2 gap-4 max-w-sm mx-auto">
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-gray-900 text-sm transition-colors" data-location="hopfgarten">Hopfgarten</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-gray-900 text-sm transition-colors" data-location="salzburg">Salzburg</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-gray-900 text-sm transition-colors" data-location="innsbruck">Innsbruck</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-gray-900 text-sm transition-colors" data-location="klagenfurt">Klagenfurt</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Immobilien Map (Austria with Immobilien Markers) -->
+                        <div class="standort-map absolute inset-0 opacity-0 transition-opacity duration-500 bg-gray-100 border border-gray-200 rounded-lg flex items-center justify-center" data-division="immobilien">
+                            <div class="text-center">
+                                <p class="text-gray-400 mb-2">Hier wird eine Karte von Österreich angezeigt</p>
+                                <p class="text-sm text-gray-400">Die interaktive Karte zeigt alle Immobilien Standorte</p>
+                                
+                                <!-- Sample Location Buttons -->
+                                <div class="mt-8 grid grid-cols-2 gap-4 max-w-sm mx-auto">
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#AAB400] text-sm transition-colors" data-location="hopfgarten-immobilien">Hopfgarten</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#AAB400] text-sm transition-colors" data-location="walchsee-immobilien">Walchsee</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#AAB400] text-sm transition-colors" data-location="salzburg-immobilien">Salzburg</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tourismus Map (Tyrol, Carinthia, Bavaria) -->
+                        <div class="standort-map absolute inset-0 opacity-0 transition-opacity duration-500 bg-[#F8E5E5] border border-gray-200 rounded-lg flex items-center justify-center" data-division="tourismus">
+                            <div class="text-center">
+                                <p class="text-white mb-2">Hier wird eine Karte von Tirol, Kärnten und Bayern angezeigt</p>
+                                <p class="text-sm text-white">Die interaktive Karte zeigt alle Tourismus Standorte</p>
+                                
+                                <!-- Sample Location Buttons -->
+                                <div class="mt-8 grid grid-cols-2 gap-4 max-w-sm mx-auto">
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#D84B40] text-sm transition-colors" data-location="hopfgarten-tourismus">Hopfgarten</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#D84B40] text-sm transition-colors" data-location="walchsee-tourismus">Walchsee</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#D84B40] text-sm transition-colors" data-location="bayrisch-zell">Bayrisch Zell</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#D84B40] text-sm transition-colors" data-location="klagenfurt-tourismus">Klagenfurt</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Industrie Map (Europe) -->
+                        <div class="standort-map absolute inset-0 opacity-0 transition-opacity duration-500 bg-gray-100 border border-gray-200 rounded-lg flex items-center justify-center" data-division="industrie">
+                            <div class="text-center">
+                                <p class="text-gray-400 mb-2">Hier wird eine Karte von Europa angezeigt</p>
+                                <p class="text-sm text-gray-400">Die interaktive Karte zeigt alle Industrie Standorte</p>
+                                
+                                <!-- Sample Location Buttons -->
+                                <div class="mt-8 grid grid-cols-2 gap-4 max-w-sm mx-auto">
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#50A9CE] text-sm transition-colors" data-location="deutschland">Deutschland</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#50A9CE] text-sm transition-colors" data-location="oesterreich">Österreich</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#50A9CE] text-sm transition-colors" data-location="italien">Italien</button>
+                                    <button class="location-btn bg-white py-2 px-4 rounded shadow-sm hover:bg-gray-50 text-[#50A9CE] text-sm transition-colors" data-location="schweiz">Schweiz</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Legend -->
+                    <div class="mt-6 flex">
+                        <div class="flex items-center text-sm text-gray-600 space-x-4">
+                            <div class="flex items-center">
+                                <div class="legend-icon gruppe w-4 h-4 bg-gray-900 rounded-full mr-2"></div>
+                                <span>Konzernzentrale</span>
+                            </div>
+                            <div class="flex items-center immobilien-legend">
+                                <div class="w-4 h-4 bg-[#AAB400] mr-2"></div>
+                                <span>Immobilien</span>
+                            </div>
+                            <div class="flex items-center tourismus-legend hidden">
+                                <div class="w-4 h-4 bg-[#D84B40] mr-2"></div>
+                                <span>Tourismus</span>
+                            </div>
+                            <div class="flex items-center industrie-legend hidden">
+                                <div class="w-4 h-4 bg-[#50A9CE] mr-2"></div>
+                                <span>Industrie</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Location Details -->
+                <div class="w-full lg:w-5/12">
+                    <div class="border border-gray-200 rounded-lg overflow-hidden h-[525px]">
+                        <!-- Default State - No Location Selected -->
+                        <div id="no-location-selected" class="flex flex-col items-center justify-center h-full p-8">
+                            <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <h3 class="text-xl font-medium text-gray-700 mb-2">Standort Details</h3>
+                            <p class="text-gray-500 text-center">Bitte wählen Sie einen Standort auf der Karte aus, um mehr Informationen zu erhalten.</p>
+                        </div>
+                        
+                        <!-- Location Details - Hopfgarten -->
+                        <div id="location-hopfgarten" class="location-details hidden h-full">
+                            <div class="h-1/2 bg-cover bg-center" style="background-image: url('https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg');">
+                                <div class="h-full flex items-end p-4 bg-gradient-to-t from-gray-900/60 to-transparent">
+                                    <div>
+                                        <div class="text-white text-xs font-medium px-2 py-1 bg-gray-900 inline-block rounded mb-2">Hauptsitz</div>
+                                        <h3 class="text-white text-2xl font-bold">Hopfgarten im Brixental</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h-1/2 p-6 overflow-y-auto">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="text-lg font-semibold">MP Management GmbH</h4>
+                                    <svg width="24" height="24" viewBox="0 0 100 100" class="text-gray-900">
+                                        <path d="M50 0 L95 35 L77 90 H23 L5 35 Z" fill="currentColor"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-gray-600 mb-4">
+                                    Brixentalerstraße 3<br>
+                                    6361 Hopfgarten im Brixental<br>
+                                    Österreich
+                                </p>
+                                <p class="text-gray-600 mb-4">
+                                    Unser Hauptsitz in Hopfgarten im Brixental ist das Herzstück der PLETZER Gruppe. Hier werden zentrale Entscheidungen getroffen und die Strategien für unsere Teilbereiche entwickelt.
+                                </p>
+                                <div class="flex items-center mt-6">
+                                    <a href="#" class="text-gray-900 flex items-center text-sm">
+                                        Mehr erfahren
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Location Details - Das Hopfgarten Hotel -->
+                        <div id="location-hopfgarten-tourismus" class="location-details hidden h-full">
+                            <div class="h-1/2 bg-cover bg-center" style="background-image: url('https://PGRWebsite.b-cdn.net/Tourismus/csm_Das_Walchsee_Lakeside_Web_17d3f689a0.jpg');">
+                                <div class="h-full flex items-end p-4 bg-gradient-to-t from-gray-900/60 to-transparent">
+                                    <div>
+                                        <div class="text-white text-xs font-medium px-2 py-1 bg-[#D84B40] inline-block rounded mb-2">Tourismus</div>
+                                        <h3 class="text-white text-2xl font-bold">Das Hopfgarten</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h-1/2 p-6 overflow-y-auto">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h4 class="text-lg font-semibold">Familotel Tirol</h4>
+                                    <svg width="24" height="24" viewBox="0 0 100 100" class="text-[#D84B40]">
+                                        <path d="M50 0 L95 35 L77 90 H23 L5 35 Z" fill="transparent" stroke="currentColor" stroke-width="3"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-gray-600 mb-4">
+                                    Brixentalerstraße 16<br>
+                                    6361 Hopfgarten im Brixental<br>
+                                    Österreich
+                                </p>
+                                <p class="text-gray-600 mb-4">
+                                    Das Hopfgarten ist ein familienfreundliches Hotel im Herzen der Kitzbüheler Alpen. Genießen Sie Qualitätszeit für die ganze Familie in einer wunderbaren Umgebung mit erstklassigem Service und zahlreichen Freizeitmöglichkeiten.
+                                </p>
+                                <div class="flex items-center gap-4 mt-6">
+                                    <a href="#" class="text-[#D84B40] flex items-center text-sm">
+                                        Website besuchen
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="text-gray-600 flex items-center text-sm">
+                                        Mehr erfahren
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional location details panels can be added here -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -637,53 +836,145 @@
         <div class="decorative-circle -top-32 right-0"></div>
         <div class="container mx-auto">
             <h2 class="section-title text-3xl md:text-4xl font-bold mb-16">Aktuelle News</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-fade-up">
-                <!-- News Item 1 -->
-                <div class="flex flex-col group">
-                    <div class="relative overflow-hidden mb-4">
-                        <img 
-                            src="https://PGRWebsite.b-cdn.net/Landing%20Page/SDGS-1.png.webp?t=1681859631" 
-                            alt="Nachhaltigkeit" 
-                            class="w-full aspect-[4/3] object-cover"
-                            loading="lazy"
-                        >
-                        <div class="h-1 w-full bg-[#AAB400] mt-2"></div>
+            
+            <!-- News Layout - No Carousel -->
+            <div>
+                <!-- First Row: Featured + 2 Side News -->
+                <div class="flex flex-col md:flex-row gap-8 mb-12">
+                    <!-- Featured News Item -->
+                    <div class="md:w-1/2 group">
+                        <div class="relative overflow-hidden rounded-lg transform transition-all duration-300 hover:-translate-y-2 h-full">
+                            <div class="relative h-64 overflow-hidden">
+                                <img 
+                                    src="https://PGRWebsite.b-cdn.net/Landing%20Page/SDGS-1.png.webp?t=1681859631" 
+                                    alt="Nachhaltigkeit" 
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy"
+                                >
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-70"></div>
+                                <div class="absolute top-4 left-4 bg-[#AAB400] text-white text-xs font-semibold px-2 py-1 rounded">FEATURED</div>
+                            </div>
+                            <div class="p-6 flex flex-col h-[calc(100%-16rem)]">
+                                <span class="text-sm text-gray-500 mb-2">15. April 2024</span>
+                                <h3 class="text-2xl font-bold mb-3 group-hover:text-[#AAB400] transition-colors">Nachhaltigkeitsziele erreicht</h3>
+                                <p class="text-gray-600 mb-4 flex-grow">Unsere Gruppe erreicht wichtige Meilensteine in der Nachhaltigkeitsstrategie 2024 mit Fokus auf Umweltschutz und soziale Verantwortung.</p>
+                                <div class="mt-auto flex items-center">
+                                    <span class="text-[#AAB400] font-medium text-sm flex items-center group-hover:underline">
+                                        Mehr erfahren
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-sm text-gray-500 mb-2">15. April 2024</span>
-                    <h3 class="text-2xl font-bold mb-3 group-hover:text-[#AAB400] transition-colors">Nachhaltigkeitsziele erreicht</h3>
-                    <p class="text-gray-600">Unsere Gruppe erreicht wichtige Meilensteine in der Nachhaltigkeitsstrategie 2024.</p>
+
+                    <!-- Right Column - 2 Smaller News Items -->
+                    <div class="md:w-1/2 flex flex-col gap-8">
+                        <!-- News Item 2 -->
+                        <div class="group h-1/2">
+                            <div class="flex overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-2 h-full">
+                                <div class="w-1/3 relative overflow-hidden">
+                                    <img 
+                                        src="https://PGRWebsite.b-cdn.net/Tourismus/csm_Das_Walchsee_Lakeside_Web_17d3f689a0.jpg?t=1681859631" 
+                                        alt="Hotel Expansion" 
+                                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        loading="lazy"
+                                    >
+                                    <div class="absolute bottom-0 left-0 w-full h-1 bg-[#D84B40]"></div>
+                                </div>
+                                <div class="w-2/3 p-4">
+                                    <span class="text-xs text-gray-500 mb-1 block">10. April 2024</span>
+                                    <h3 class="text-lg font-bold mb-2 group-hover:text-[#D84B40] transition-colors">Neue Hotelstandorte</h3>
+                                    <p class="text-gray-600 text-sm">Expansion unserer Hotelkette mit drei neuen Standorten in Österreich.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- News Item 3 -->
+                        <div class="group h-1/2">
+                            <div class="flex overflow-hidden rounded-lg transition-all duration-300 hover:-translate-y-2 h-full">
+                                <div class="w-1/3 relative overflow-hidden">
+                                    <img 
+                                        src="https://PGRWebsite.b-cdn.net/Landing%20Page/iDM-Waermequelle-Luft%C2%A9supaCGI-inkl.-iDM-Logo-web-scaled.webp?t=1681859631" 
+                                        alt="Innovation" 
+                                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                        loading="lazy"
+                                    >
+                                    <div class="absolute bottom-0 left-0 w-full h-1 bg-[#50A9CE]"></div>
+                                </div>
+                                <div class="w-2/3 p-4">
+                                    <span class="text-xs text-gray-500 mb-1 block">5. April 2024</span>
+                                    <h3 class="text-lg font-bold mb-2 group-hover:text-[#50A9CE] transition-colors">Innovationspreis 2024</h3>
+                                    <p class="text-gray-600 text-sm">Pletzer Gruppe gewinnt renommierten Innovationspreis für nachhaltige Technologien.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- News Item 2 -->
-                <div class="flex flex-col group">
-                    <div class="relative overflow-hidden mb-4">
-                        <img 
-                            src="https://PGRWebsite.b-cdn.net/Tourismus/csm_Das_Walchsee_Lakeside_Web_17d3f689a0.jpg?t=1681859631" 
-                            alt="Hotel Expansion" 
-                            class="w-full aspect-[4/3] object-cover"
-                            loading="lazy"
-                        >
-                        <div class="h-1 w-full bg-[#D84B40] mt-2"></div>
+                <!-- Second Row - 3 Equal News -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- News Item 4 -->
+                    <div class="group">
+                        <div class="h-full overflow-hidden rounded-lg transform transition-all duration-300 hover:-translate-y-2">
+                            <div class="relative h-48 overflow-hidden">
+                                <img 
+                                    src="https://PGRWebsite.b-cdn.net/Landing%20Page/SDGS-1.png.webp?t=1681859631" 
+                                    alt="Digitalisierung" 
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy"
+                                >
+                                <div class="absolute bottom-0 left-0 w-full h-1 bg-[#AAB400]"></div>
+                            </div>
+                            <div class="p-5">
+                                <span class="text-sm text-gray-500 mb-2 block">1. April 2024</span>
+                                <h3 class="text-xl font-bold mb-3 group-hover:text-[#AAB400] transition-colors">Digitalisierungsinitiative gestartet</h3>
+                                <p class="text-gray-600">Pletzer Gruppe investiert in digitale Transformation aller Unternehmensbereiche.</p>
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-sm text-gray-500 mb-2">10. April 2024</span>
-                    <h3 class="text-2xl font-bold mb-3 group-hover:text-[#D84B40] transition-colors">Neue Hotelstandorte</h3>
-                    <p class="text-gray-600">Expansion unserer Hotelkette mit drei neuen Standorten in Österreich.</p>
-                </div>
 
-                <!-- News Item 3 -->
-                <div class="flex flex-col group">
-                    <div class="relative overflow-hidden mb-4">
-                        <img 
-                            src="https://PGRWebsite.b-cdn.net/Landing%20Page/iDM-Waermequelle-Luft%C2%A9supaCGI-inkl.-iDM-Logo-web-scaled.webp?t=1681859631" 
-                            alt="Innovation" 
-                            class="w-full aspect-[4/3] object-cover"
-                            loading="lazy"
-                        >
-                        <div class="h-1 w-full bg-[#50A9CE] mt-2"></div>
+                    <!-- News Item 5 -->
+                    <div class="group">
+                        <div class="h-full overflow-hidden rounded-lg transform transition-all duration-300 hover:-translate-y-2">
+                            <div class="relative h-48 overflow-hidden">
+                                <img 
+                                    src="https://PGRWebsite.b-cdn.net/Tourismus/csm_Das_Walchsee_Lakeside_Web_17d3f689a0.jpg?t=1681859631" 
+                                    alt="Ausbildung" 
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy"
+                                >
+                                <div class="absolute bottom-0 left-0 w-full h-1 bg-[#D84B40]"></div>
+                            </div>
+                            <div class="p-5">
+                                <span class="text-sm text-gray-500 mb-2 block">25. März 2024</span>
+                                <h3 class="text-xl font-bold mb-3 group-hover:text-[#D84B40] transition-colors">Neue Ausbildungsprogramme</h3>
+                                <p class="text-gray-600">Erweiterte Ausbildungsmöglichkeiten für junge Talente in allen Geschäftsbereichen.</p>
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-sm text-gray-500 mb-2">5. April 2024</span>
-                    <h3 class="text-2xl font-bold mb-3 group-hover:text-[#50A9CE] transition-colors">Innovationspreis 2024</h3>
-                    <p class="text-gray-600">Pletzer Gruppe gewinnt renommierten Innovationspreis für nachhaltige Technologien.</p>
+
+                    <!-- News Item 6 -->
+                    <div class="group">
+                        <div class="h-full overflow-hidden rounded-lg transform transition-all duration-300 hover:-translate-y-2">
+                            <div class="relative h-48 overflow-hidden">
+                                <img 
+                                    src="https://PGRWebsite.b-cdn.net/Landing%20Page/iDM-Waermequelle-Luft%C2%A9supaCGI-inkl.-iDM-Logo-web-scaled.webp?t=1681859631" 
+                                    alt="Partnerschaft" 
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy"
+                                >
+                                <div class="absolute bottom-0 left-0 w-full h-1 bg-[#50A9CE]"></div>
+                            </div>
+                            <div class="p-5">
+                                <span class="text-sm text-gray-500 mb-2 block">15. März 2024</span>
+                                <h3 class="text-xl font-bold mb-3 group-hover:text-[#50A9CE] transition-colors">Strategische Partnerschaft</h3>
+                                <p class="text-gray-600">Neue Zusammenarbeit mit führenden Technologieanbietern zur Förderung nachhaltiger Lösungen.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -938,46 +1229,101 @@
             }
         });
 
-        // Update the animation script
+        // Add JavaScript for the interactive map
+        // Standorte Map Tab Switching and Location Display
         document.addEventListener('DOMContentLoaded', function() {
-            const kpiSection = document.querySelector('.bg-\\[\\#7D8386\\]');
-            const numbers = kpiSection.querySelectorAll('.kpi-number');
+            const standortTabs = document.querySelectorAll('.standort-tab');
+            const standortMaps = document.querySelectorAll('.standort-map');
+            const locationButtons = document.querySelectorAll('.location-btn');
+            const locationDetails = document.querySelectorAll('.location-details');
+            const noLocationSelected = document.getElementById('no-location-selected');
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        startCountAnimation();
-                        observer.unobserve(entry.target);
+            // Legend elements
+            const legendElements = {
+                immobilien: document.querySelector('.immobilien-legend'),
+                tourismus: document.querySelector('.tourismus-legend'),
+                industrie: document.querySelector('.industrie-legend')
+            };
+            
+            // Initialize with Die Gruppe selected
+            updateMapDisplay('gruppe');
+            
+            // Tab switching
+            standortTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const division = tab.getAttribute('data-division');
+                    
+                    // Update active tab
+                    standortTabs.forEach(t => {
+                        const tDivision = t.getAttribute('data-division');
+                        if (tDivision === division) {
+                            t.classList.add('border-' + (tDivision === 'gruppe' ? 'gray-900' : tDivision === 'immobilien' ? '[#AAB400]' : tDivision === 'tourismus' ? '[#D84B40]' : '[#50A9CE]'));
+                        } else {
+                            t.classList.remove('border-gray-900', 'border-[#AAB400]', 'border-[#D84B40]', 'border-[#50A9CE]');
+                            t.classList.add('border-transparent');
+                        }
+                    });
+                    
+                    // Reset location details to default state
+                    hideAllLocationDetails();
+                    
+                    updateMapDisplay(division);
+                });
+            });
+            
+            // Location button clicks
+            locationButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const locationId = button.getAttribute('data-location');
+                    
+                    // Hide all location details
+                    hideAllLocationDetails();
+                    
+                    // Show selected location details if it exists
+                    const locationDetail = document.getElementById('location-' + locationId);
+                    if (locationDetail) {
+                        locationDetail.classList.remove('hidden');
+                        noLocationSelected.classList.add('hidden');
+                    } else {
+                        // Fallback to showing Hopfgarten if the specific location isn't implemented
+                        const defaultLocation = document.getElementById('location-hopfgarten');
+                        if (defaultLocation) {
+                            defaultLocation.classList.remove('hidden');
+                            noLocationSelected.classList.add('hidden');
+                        }
                     }
                 });
-            }, { threshold: 0.5 });
-
-            observer.observe(kpiSection);
-
-            function startCountAnimation() {
-                numbers.forEach(number => {
-                    const target = parseInt(number.textContent);
-                    let current = 0;
-                    const duration = 2000;
-                    const steps = 60;
-                    const increment = target / steps;
-                    const stepTime = duration / steps;
-
-                    // Store original number
-                    const finalNumber = number.textContent;
-                    // Set initial state
-                    number.textContent = '0';
-
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            number.textContent = finalNumber;
-                            clearInterval(timer);
-                        } else {
-                            number.textContent = Math.round(current);
-                        }
-                    }, stepTime);
+            });
+            
+            // Helper functions
+            function updateMapDisplay(division) {
+                // Show the selected map, hide others
+                standortMaps.forEach(map => {
+                    const mapDivision = map.getAttribute('data-division');
+                    if (mapDivision === division) {
+                        map.classList.add('opacity-100');
+                        map.classList.remove('opacity-0');
+                    } else {
+                        map.classList.remove('opacity-100');
+                        map.classList.add('opacity-0');
+                    }
                 });
+                
+                // Update legend visibility
+                Object.keys(legendElements).forEach(key => {
+                    if (key === division) {
+                        legendElements[key].classList.remove('hidden');
+                    } else {
+                        legendElements[key].classList.add('hidden');
+                    }
+                });
+            }
+            
+            function hideAllLocationDetails() {
+                locationDetails.forEach(detail => {
+                    detail.classList.add('hidden');
+                });
+                noLocationSelected.classList.remove('hidden');
             }
         });
     </script>
