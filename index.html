@@ -637,94 +637,38 @@
         <div class="decorative-circle -top-32 right-0"></div>
         <div class="container mx-auto">
             <h2 class="section-title text-3xl md:text-4xl font-bold mb-16">Aktuelle News</h2>
-            
-            <div class="relative">
-                <!-- News Slider Container -->
-                <div class="overflow-hidden" id="news-slider-container">
-                    <div class="flex transition-transform duration-500 ease-in-out" id="news-slider">
-                        <!-- News Item 1 -->
-                        <div class="flex-none w-full md:w-1/3 px-4 group">
-                            <div class="flex flex-col">
-                                <div class="relative overflow-hidden mb-4">
-                                    <img src="https://PGRWebsite.b-cdn.net/Landing%20Page/SDGS-1.png.webp" alt="Nachhaltigkeit" class="w-full aspect-[4/3] object-cover">
-                                    <div class="h-1 w-full bg-[#AAB400] mt-2"></div>
-                                </div>
-                                <span class="text-sm text-gray-500 mb-2">15. April 2024</span>
-                                <h3 class="text-2xl font-bold mb-3 group-hover:text-[#AAB400] transition-colors">Nachhaltigkeitsziele erreicht</h3>
-                                <p class="text-gray-600">Unsere Gruppe erreicht wichtige Meilensteine in der Nachhaltigkeitsstrategie 2024.</p>
-                            </div>
-                        </div>
-
-                        <!-- News Item 2 -->
-                        <div class="flex-none w-full md:w-1/3 px-4 group">
-                            <div class="flex flex-col">
-                                <div class="relative overflow-hidden mb-4">
-                                    <img src="https://PGRWebsite.b-cdn.net/Tourismus/csm_Das_Walchsee_Lakeside_Web_17d3f689a0.jpg" alt="Hotel Expansion" class="w-full aspect-[4/3] object-cover">
-                                    <div class="h-1 w-full bg-[#D84B40] mt-2"></div>
-                                </div>
-                                <span class="text-sm text-gray-500 mb-2">10. April 2024</span>
-                                <h3 class="text-2xl font-bold mb-3 group-hover:text-[#D84B40] transition-colors">Neue Hotelstandorte</h3>
-                                <p class="text-gray-600">Expansion unserer Hotelkette mit drei neuen Standorten in Österreich.</p>
-                            </div>
-                        </div>
-
-                        <!-- News Item 3 -->
-                        <div class="flex-none w-full md:w-1/3 px-4 group">
-                            <div class="flex flex-col">
-                                <div class="relative overflow-hidden mb-4">
-                                    <img src="https://PGRWebsite.b-cdn.net/Landing%20Page/iDM-Waermequelle-Luft%C2%A9supaCGI-inkl.-iDM-Logo-web-scaled.webp" alt="Innovation" class="w-full aspect-[4/3] object-cover">
-                                    <div class="h-1 w-full bg-[#50A9CE] mt-2"></div>
-                                </div>
-                                <span class="text-sm text-gray-500 mb-2">5. April 2024</span>
-                                <h3 class="text-2xl font-bold mb-3 group-hover:text-[#50A9CE] transition-colors">Innovationspreis 2024</h3>
-                                <p class="text-gray-600">Pletzer Gruppe gewinnt renommierten Innovationspreis für nachhaltige Technologien.</p>
-                            </div>
-                        </div>
-
-                        <!-- News Item 4 -->
-                        <div class="flex-none w-full md:w-1/3 px-4 group">
-                            <div class="flex flex-col">
-                                <div class="relative overflow-hidden mb-4">
-                                    <img src="https://PGRWebsite.b-cdn.net/Landing%20Page/SDGS-1.png.webp" alt="Auszeichnung" class="w-full aspect-[4/3] object-cover">
-                                    <div class="h-1 w-full bg-[#AAB400] mt-2"></div>
-                                </div>
-                                <span class="text-sm text-gray-500 mb-2">1. April 2024</span>
-                                <h3 class="text-2xl font-bold mb-3 group-hover:text-[#AAB400] transition-colors">Auszeichnung für Mitarbeiterführung</h3>
-                                <p class="text-gray-600">Pletzer Gruppe erhält Auszeichnung für hervorragende Personalentwicklung und Mitarbeiterführung.</p>
-                            </div>
-                        </div>
-
-                        <!-- News Item 5 -->
-                        <div class="flex-none w-full md:w-1/3 px-4 group">
-                            <div class="flex flex-col">
-                                <div class="relative overflow-hidden mb-4">
-                                    <img src="https://PGRWebsite.b-cdn.net/Tourismus/csm_Das_Walchsee_Lakeside_Web_17d3f689a0.jpg" alt="Expansion" class="w-full aspect-[4/3] object-cover">
-                                    <div class="h-1 w-full bg-[#D84B40] mt-2"></div>
-                                </div>
-                                <span class="text-sm text-gray-500 mb-2">25. März 2024</span>
-                                <h3 class="text-2xl font-bold mb-3 group-hover:text-[#D84B40] transition-colors">Neue Immobilienprojekte</h3>
-                                <p class="text-gray-600">Start von drei neuen nachhaltigen Immobilienprojekten in Tirol und Salzburg.</p>
-                            </div>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-fade-up">
+                <!-- News Item 1 -->
+                <div class="flex flex-col group">
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="https://PGRWebsite.b-cdn.net/news-sustainability.jpg" alt="Nachhaltigkeit" class="w-full aspect-video object-cover">
+                        <div class="h-1 w-full bg-[#AAB400] mt-2"></div>
                     </div>
+                    <span class="text-sm text-gray-500 mb-2">15. April 2024</span>
+                    <h3 class="text-2xl font-bold mb-3 group-hover:text-[#AAB400] transition-colors">Nachhaltigkeitsziele erreicht</h3>
+                    <p class="text-gray-600">Unsere Gruppe erreicht wichtige Meilensteine in der Nachhaltigkeitsstrategie 2024.</p>
                 </div>
-                
-                <!-- Navigation Arrows -->
-                <button id="prev-news" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md z-10 hover:bg-gray-100 transition-colors focus:outline-none hidden md:block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="next-news" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md z-10 hover:bg-gray-100 transition-colors focus:outline-none hidden md:block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-                
-                <!-- Indicators -->
-                <div class="flex justify-center mt-8 gap-2">
-                    <button class="h-2 w-8 bg-gray-300 rounded-full news-indicator active" data-index="0"></button>
-                    <button class="h-2 w-8 bg-gray-300 rounded-full news-indicator" data-index="1"></button>
+
+                <!-- News Item 2 -->
+                <div class="flex flex-col group">
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="https://PGRWebsite.b-cdn.net/news-hotel.jpg" alt="Hotel Expansion" class="w-full aspect-video object-cover">
+                        <div class="h-1 w-full bg-[#D84B40] mt-2"></div>
+                    </div>
+                    <span class="text-sm text-gray-500 mb-2">10. April 2024</span>
+                    <h3 class="text-2xl font-bold mb-3 group-hover:text-[#D84B40] transition-colors">Neue Hotelstandorte</h3>
+                    <p class="text-gray-600">Expansion unserer Hotelkette mit drei neuen Standorten in Österreich.</p>
+                </div>
+
+                <!-- News Item 3 -->
+                <div class="flex flex-col group">
+                    <div class="relative overflow-hidden mb-4">
+                        <img src="https://PGRWebsite.b-cdn.net/news-innovation.jpg" alt="Innovation" class="w-full aspect-video object-cover">
+                        <div class="h-1 w-full bg-[#50A9CE] mt-2"></div>
+                    </div>
+                    <span class="text-sm text-gray-500 mb-2">5. April 2024</span>
+                    <h3 class="text-2xl font-bold mb-3 group-hover:text-[#50A9CE] transition-colors">Innovationspreis 2024</h3>
+                    <p class="text-gray-600">Pletzer Gruppe gewinnt renommierten Innovationspreis für nachhaltige Technologien.</p>
                 </div>
             </div>
         </div>
@@ -1020,63 +964,6 @@
                     }, stepTime);
                 });
             }
-        });
-
-        // News Slider Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const slider = document.getElementById('news-slider');
-            const prevButton = document.getElementById('prev-news');
-            const nextButton = document.getElementById('next-news');
-            const indicators = document.querySelectorAll('.news-indicator');
-            
-            if (!slider || !prevButton || !nextButton) return;
-            
-            let currentSlide = 0;
-            const totalSlides = 3; // We have 5 items but want to show 3 at a time, so 2 "pages"
-            
-            // Update active indicator
-            function updateIndicators() {
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentSlide);
-                    if (index === currentSlide) {
-                        indicator.classList.add('bg-[#AAB400]');
-                        indicator.classList.remove('bg-gray-300');
-                    } else {
-                        indicator.classList.remove('bg-[#AAB400]');
-                        indicator.classList.add('bg-gray-300');
-                    }
-                });
-            }
-            
-            // Slide to position
-            function slideTo(index) {
-                if (index < 0) index = 0;
-                if (index > 1) index = 1; // With 3 visible items and 5 total, we have 2 positions (0 and 1)
-                
-                currentSlide = index;
-                const offset = index * 100;
-                slider.style.transform = `translateX(-${offset}%)`;
-                updateIndicators();
-            }
-            
-            // Add event listeners
-            prevButton.addEventListener('click', () => {
-                slideTo(currentSlide - 1);
-            });
-            
-            nextButton.addEventListener('click', () => {
-                slideTo(currentSlide + 1);
-            });
-            
-            // Indicator clicks
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => {
-                    slideTo(index);
-                });
-            });
-            
-            // Initialize
-            updateIndicators();
         });
     </script>
 </body>

@@ -497,7 +497,7 @@
                         </div>
                     </div>
                 </div>
-            </nav>
+                </nav>
 
             <!-- Right: Hamburger Menu -->
             <div class="flex-shrink-0 w-32 flex justify-end mr-4">
@@ -793,7 +793,7 @@
                         OFFENE STELLEN
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
+                            </svg>
                     </a>
                 </div>
             </div>
@@ -1053,15 +1053,15 @@
         // Add Intersection Observer for Teilbereiche animations
         document.addEventListener('DOMContentLoaded', function() {
             // Simplified animation observer with more lenient thresholds
-            const observerOptions = {
+        const observerOptions = {
                 threshold: 0.1, // Reduced threshold to trigger animations earlier
                 rootMargin: '0px 0px -50px 0px' // Increased margin to trigger earlier
-            };
+        };
 
             const animationObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                         
                         // Force visibility for Teilbereiche section
                         if (entry.target.closest('.stagger-fade-up')) {
@@ -1083,9 +1083,9 @@
                                 item.style.transitionDelay = `${index * 50}ms`; // Reduced delay between items
                             });
                         }
-                    }
-                });
-            }, observerOptions);
+                }
+            });
+        }, observerOptions);
 
             // Observe all animated elements
             document.querySelectorAll('.fade-up, .fade-in, .slide-in-right, .scale-up, .hero-content, .section-title, .logo-item, .stagger-fade-up > *, .logo-carousel').forEach(element => {
