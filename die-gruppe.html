@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die Gruppe - Pletzer Gruppe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500&display=swap');
+        
+        body {
+            font-family: 'Saira', sans-serif;
+            font-weight: 300;
+        }
+        
+        .header-scroll {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .header-scroll .nav-link {
+            color: black;
+        }
+
+        .nav-link {
+            color: white;
+            transition: all 300ms;
+        }
+
+        .logo-image {
+            filter: brightness(0) invert(1);
+            transition: all 300ms;
+        }
+
+        .hero-heading {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        @media (min-width: 768px) {
+            .hero-heading {
+                font-size: 3rem;
+                line-height: 1;
+            }
+        }
+        @media (min-width: 1024px) {
+            .hero-heading {
+                font-size: 3.75rem;
+                line-height: 1;
+            }
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 33.333333%;
+            height: 0.25rem;
+            background-color: #AAB400;
+            transform: scaleX(0);
+            transition: transform 500ms;
+            transform-origin: left;
+        }
+
+        .section-title.animate::after {
+            transform: scaleX(1);
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .decorative-circle {
+            position: absolute;
+            width: 16rem;
+            height: 16rem;
+            border-radius: 9999px;
+            opacity: 0.1;
+            background: radial-gradient(circle, #AAB400 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .stagger-fade-up > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        .stagger-fade-up > *.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .kpi-number, .kpi-label, .vertical-divider, .vertical-divider-1, .vertical-divider-2, .vertical-divider-3 {
+            all: unset;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger.active {
+            transform: rotate(-90deg);
+        }
+
+        .hamburger img {
+            transition: transform 0.3s ease;
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            padding-top: 100px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 40;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .menu-section {
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f3f3f3;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 0;
+        }
+
+        .menu-section:hover::before {
+            transform: translateX(0);
+        }
+
+        .menu-section h2,
+        .menu-section p,
+        .menu-section .menu-bar {
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .menu-section p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .menu-bar {
+            height: 4px;
+            width: 60px;
+            margin-top: 1rem;
+        }
+
+        .menu-bar.green { background-color: #AAB400; }
+        .menu-bar.red { background-color: #D84B40; }
+        .menu-bar.blue { background-color: #50A9CE; }
+
+        .contact-section {
+            padding: 2rem;
+            background: #f8f8f8;
+        }
+
+        .contact-button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #f3f3f3;
+            text-align: left;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .contact-button:hover {
+            background: #e9e9e9;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f3f3;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #e9e9e9;
+        }
+
+        .kpi-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-label {
+            font-size: 1.25rem;
+            color: #666;
+        }
+
+        .vertical-divider-1,
+        .vertical-divider-2,
+        .vertical-divider-3 {
+            transform: scaleY(0);
+            transition: transform 600ms ease-out;
+            transform-origin: bottom;
+            width: 2px;
+            height: 100%;
+        }
+
+        .vertical-divider-1.visible,
+        .vertical-divider-2.visible,
+        .vertical-divider-3.visible {
+            transform: scaleY(1);
+        }
+
+        /* KPI Section specific styles */
+        .kpi-divider {
+            height: 96px;
+            width: 2px;
+            opacity: 0;
+            transition: opacity 600ms ease-out;
+        }
+
+        .kpi-divider.visible {
+            opacity: 1;
+        }
+
+        /* Update heading and text styles */
+        h1, h2, h3, .section-title, .hero-heading {
+            font-weight: 500;
+        }
+
+        .nav-link, .menu-section h2, .contact-section h2 {
+            font-weight: 500;
+        }
+
+        /* Light weight for all regular text */
+        p, 
+        .text-gray-600,
+        .footer a,
+        .contact-button,
+        .bottom-footer p,
+        .kpi-label {
+            font-weight: 300;
+        }
+
+        .values-slider {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .values-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .value-slide {
+            min-width: 100%;
+            padding: 2rem;
+            flex: 0 0 100%;
+        }
+
+        .value-indicator {
+            transition: all 300ms;
+        }
+
+        .value-indicator.active {
+            background-color: #AAB400;
+            width: 2.5rem;
+        }
+
+        /* Logo Carousel Styles */
+        .logo-carousel {
+            position: relative;
+            padding: 2rem 0;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 30s linear infinite;
+        }
+
+        .logo-item {
+            flex: 0 0 calc(25% - 1.5rem);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-placeholder {
+            width: 300px;
+            height: 200px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+        }
+
+        .logo-placeholder span {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-placeholder small {
+            font-size: 0.875rem;
+            color: #999;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .logo-carousel:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        /* Person hover effect */
+        .person-container {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .person-story {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+            z-index: 10;
+        }
+        
+        .person-container:hover .person-story {
+            opacity: 1;
+        }
+        
+        .story-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Header Dropdown Styles */
+        .header-scroll .dropdown-content {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        /* Enhanced premium dropdown styles */
+        .dropdown-content {
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            backdrop-filter: blur(5px);
+        }
+        
+        .dropdown-content a {
+            padding: 8px 0;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+        
+        .group-hover\:translate-y-0 {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300" id="main-header">
+        <div class="flex items-center px-8 py-5">
+            <!-- Left: Logo -->
+            <div class="flex-shrink-0 w-32 flex items-center ml-4">
+                <a href="index.html">
+                    <img 
+                        src="https://PGRWebsite.b-cdn.net/Pletzer-Logo-png.png.webp"
+                        alt="Pletzer Gruppe" 
+                        class="h-8 md:h-10 w-auto object-contain"
+                    >
+                </a>
+            </div>
+
+            <!-- Center: Navigation -->
+            <nav class="flex-1 flex justify-center">
+                <div class="hidden md:flex items-center gap-12">
+                    <!-- Die Gruppe Dropdown -->
+                    <div class="relative group">
+                        <a href="die-gruppe.html" class="nav-link hover:text-gray-300 transition-colors flex items-center group">
+                            Die Gruppe
+                        </a>
+                        <!-- Dropdown Content -->
+                        <div class="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2 px-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 dropdown-content">
+                            <div class="py-6 px-4">
+                                <div class="grid grid-cols-1 gap-6">
+                                    <a href="unsere-historie.html" class="text-gray-600 hover:text-gray-900 transition-colors">Unsere Historie</a>
+                                    <a href="wir-sind-pletzer.html" class="text-gray-600 hover:text-gray-900 transition-colors">Wir sind Pletzer</a>
+                                    <a href="die-gruppe.html" class="text-gray-600 hover:text-gray-900 transition-colors">Unser Wertehaus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Karriere Dropdown -->
+                    <div class="relative group">
+                        <a href="tk-karriere.html" class="nav-link hover:text-gray-300 transition-colors flex items-center group">
+                            Karriere
+                        </a>
+                        <!-- Dropdown Content -->
+                        <div class="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2 px-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 dropdown-content">
+                            <div class="py-6 px-4">
+                                <div class="grid grid-cols-1 gap-6">
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Offene Stellen</a>
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Lehrstellen</a>
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Benefits</a>
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Karriereentwicklung</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Language Selector (Replaced Unsere Teilbereiche) -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link hover:text-gray-300 transition-colors flex items-center group">
+                            <img src="https://PGRWebsite.b-cdn.net/white.png" alt="Language" class="h-5 w-5 language-icon">
+                            <img src="https://PGRWebsite.b-cdn.net/black.png" alt="Language" class="h-5 w-5 hidden header-scroll-icon">
+                        </a>
+                        <!-- Dropdown Content -->
+                        <div class="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-md py-2 px-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 dropdown-content">
+                            <div class="py-4 px-2">
+                                <div class="grid grid-cols-1 gap-4">
+                                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Deutsch</a>
+                                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Right: Hamburger Menu -->
+            <div class="flex-shrink-0 w-32 flex justify-end mr-4">
+                <div class="hamburger" id="hamburger-menu">
+                    <img 
+                        src="https://PGRWebsite.b-cdn.net/Pletzer%20Gruppe%20Website%20Editor.png"
+                        alt="Pletzer Gruppe Menu"
+                        class="h-10 w-auto"
+                    >
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="menu-section">
+            <h2>Immobilien</h2>
+            <p>Retail und Gewerbe</p>
+            <div class="menu-bar green"></div>
+            <a href="tk-immo.html" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <div class="menu-section">
+            <h2>Tourismus</h2>
+            <p>Hotellerie und Gastronomie</p>
+            <div class="menu-bar red"></div>
+            <a href="tk-tourismus.html" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <div class="menu-section">
+            <h2>Industrie</h2>
+            <p>Wärme und Energie</p>
+            <div class="menu-bar blue"></div>
+            <a href="tk-industrie.html" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <div class="contact-section">
+            <h2 class="text-2xl font-bold mb-6">Kontaktiere uns</h2>
+            <a href="mailto:info@pletzer-gruppe.at" class="contact-button">
+                E: info@pletzer-gruppe.at
+            </a>
+            <a href="tel:+436645293561" class="contact-button">
+                T: +436645293561
+            </a>
+            <button class="contact-button">
+                Sende uns eine Nachricht ...
+            </button>
+
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="relative w-full">
+            <!-- Image Container (full width, 3/4 height) -->
+            <div class="relative w-full h-[75vh]">
+                <img 
+                    src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" 
+                    alt="Die Gruppe Hero Image" 
+                    class="w-full h-full object-cover"
+                >
+                <!-- Dark overlay -->
+                <div class="absolute inset-0 bg-black/30"></div>
+            </div>
+
+            <!-- Content Section -->
+            <div class="container mx-auto px-8 py-12">
+                <div class="max-w-4xl hero-content">
+                    <h1 class="text-5xl font-medium text-[#666] mb-8">Die Pletzer Gruppe</h1>
+                    <p class="text-xl text-[#666] font-light leading-relaxed max-w-xl">
+                        Familienunternehmen aus Hopfgarten im Brixental. Aktiv in Immobilien, Tourismus und Industrie.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Scroll Arrow -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer" id="scroll-arrow">
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    class="h-8 w-8 text-[#666] hover:text-[#888] transition-colors" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                >
+                    <path 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        stroke-width="2" 
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                    />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Unser Profil Section -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-8">
+                <h2 class="section-title text-4xl font-medium mb-16">Unser Profil</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-medium">Mission</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Als Familienunternehmen streben wir danach, nachhaltige Werte zu schaffen und innovative Lösungen für die Herausforderungen von morgen zu entwickeln. Unser Ziel ist es, durch verantwortungsvolles Handeln und kontinuierliche Innovation einen positiven Beitrag zur Gesellschaft zu leisten.
+                        </p>
+                    </div>
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-medium">Vision</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Wir sehen uns als Vorreiter in der Entwicklung nachhaltiger Geschäftsmodelle und Technologien. Unsere Vision ist es, durch die Kombination von Tradition und Innovation neue Maßstäbe in unseren Geschäftsbereichen zu setzen.
+                        </p>
+                    </div>
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-medium">Unser Profil</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Die Pletzer Gruppe ist ein dynamisches Familienunternehmen mit einer reichen Geschichte seit 1964. Wir verbinden traditionelle Werte mit modernster Technologie und sind in drei Kernbereichen erfolgreich tätig: Immobilien, Tourismus und Industrie.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unsere Werte Section -->
+        <section class="py-24 bg-gray-100">
+            <div class="container mx-auto px-8">
+                <h2 class="section-title text-4xl font-medium mb-16">Unsere Werte</h2>
+                <p class="text-gray-600 mb-16 max-w-3xl">Als Familienunternehmen sind unsere Werte das Fundament unserer Unternehmenskultur. Sie leiten unsere Interaktionen und Entscheidungen.</p>
+                
+                <div class="relative">
+                    <!-- Value Slides Container -->
+                    <div class="values-slider">
+                        <div class="values-track">
+                            <!-- Tradition -->
+                            <div class="value-slide">
+                                <div class="max-w-3xl mx-auto text-center">
+                                    <div class="text-8xl font-light text-gray-200 mb-8">#1</div>
+                                    <h3 class="text-3xl font-medium mb-6">Tradition</h3>
+                                    <p class="text-gray-600 text-lg leading-relaxed">
+                                        Wir pflegen und leben unsere über 50-jährige Tradition als Familienunternehmen. Diese Geschichte ist unser Fundament für Innovation und Fortschritt, während wir unsere bewährten Werte bewahren.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Verantwortung -->
+                            <div class="value-slide">
+                                <div class="max-w-3xl mx-auto text-center">
+                                    <div class="text-8xl font-light text-gray-200 mb-8">#2</div>
+                                    <h3 class="text-3xl font-medium mb-6">Verantwortung</h3>
+                                    <p class="text-gray-600 text-lg leading-relaxed">
+                                        Als Familienunternehmen übernehmen wir Verantwortung für unsere Mitarbeiter, die Umwelt und die Regionen, in denen wir tätig sind. Nachhaltiges Handeln ist für uns selbstverständlich.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Innovation -->
+                            <div class="value-slide">
+                                <div class="max-w-3xl mx-auto text-center">
+                                    <div class="text-8xl font-light text-gray-200 mb-8">#3</div>
+                                    <h3 class="text-3xl font-medium mb-6">Innovation</h3>
+                                    <p class="text-gray-600 text-lg leading-relaxed">
+                                        Mit zukunftsweisenden Ideen und modernster Technologie entwickeln wir innovative Lösungen. Wir denken voraus und gestalten aktiv die Zukunft unserer Branchen.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Leistung -->
+                            <div class="value-slide">
+                                <div class="max-w-3xl mx-auto text-center">
+                                    <div class="text-8xl font-light text-gray-200 mb-8">#4</div>
+                                    <h3 class="text-3xl font-medium mb-6">Leistung</h3>
+                                    <p class="text-gray-600 text-lg leading-relaxed">
+                                        Wir streben nach Exzellenz in allen unseren Geschäftsbereichen. Durch kontinuierliche Verbesserung und höchste Qualitätsstandards schaffen wir nachhaltige Werte.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Vertrauen -->
+                            <div class="value-slide">
+                                <div class="max-w-3xl mx-auto text-center">
+                                    <div class="text-8xl font-light text-gray-200 mb-8">#5</div>
+                                    <h3 class="text-3xl font-medium mb-6">Vertrauen</h3>
+                                    <p class="text-gray-600 text-lg leading-relaxed">
+                                        Vertrauen ist die Grundlage unserer Geschäftsbeziehungen und unseres Erfolgs. Wir pflegen langfristige Partnerschaften basierend auf Ehrlichkeit und Verlässlichkeit.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow focus:outline-none z-10" id="prevValue">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow focus:outline-none z-10" id="nextValue">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+
+                    <!-- Slide Indicators -->
+                    <div class="flex justify-center items-center mt-12 space-x-2">
+                        <div class="h-2 w-2 rounded-full bg-gray-300 cursor-pointer value-indicator active"></div>
+                        <div class="h-2 w-2 rounded-full bg-gray-300 cursor-pointer value-indicator"></div>
+                        <div class="h-2 w-2 rounded-full bg-gray-300 cursor-pointer value-indicator"></div>
+                        <div class="h-2 w-2 rounded-full bg-gray-300 cursor-pointer value-indicator"></div>
+                        <div class="h-2 w-2 rounded-full bg-gray-300 cursor-pointer value-indicator"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unsere Unternehmen Section -->
+        <section class="py-24 bg-white relative overflow-hidden">
+            <div class="decorative-circle -top-32 -right-32"></div>
+            <div class="container mx-auto px-8">
+                <h2 class="section-title text-4xl font-medium mb-16">Unsere Unternehmen</h2>
+                
+                <!-- Immobilien -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-medium mb-8 text-[#AAB400]">Immobilien</h3>
+                    <div class="logo-carousel relative overflow-hidden">
+                        <div class="carousel-container">
+                            <div class="carousel-track flex animate-scroll">
+                                <!-- Original Logos -->
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 1</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 2</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 3</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 4</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 5</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 6</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <!-- Duplicate set for seamless loop -->
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 1</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 2</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 3</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 4</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 5</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 6</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-8">Nachhaltige Entwicklung und Verwaltung hochwertiger Immobilienprojekte mit Fokus auf langfristige Wertschöpfung.</p>
+                </div>
+
+                <!-- Tourismus -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-medium mb-8 text-[#D84B40]">Tourismus</h3>
+                    <div class="logo-carousel relative overflow-hidden">
+                        <div class="carousel-container">
+                            <div class="carousel-track flex animate-scroll">
+                                <!-- Original Logos -->
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 1</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 2</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 3</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 4</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 5</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 6</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <!-- Duplicate set for seamless loop -->
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 1</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 2</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 3</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 4</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 5</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 6</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-8">Erstklassige Hospitality-Erlebnisse in unseren Hotels und Resorts mit höchsten Standards für Qualität und Service.</p>
+                </div>
+
+                <!-- Industrie -->
+                <div>
+                    <h3 class="text-2xl font-medium mb-8 text-[#50A9CE]">Industrie</h3>
+                    <div class="logo-carousel relative overflow-hidden">
+                        <div class="carousel-container">
+                            <div class="carousel-track flex animate-scroll">
+                                <!-- Original Logos -->
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 1</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 2</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 3</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 4</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 5</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 6</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <!-- Duplicate set for seamless loop -->
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 1</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 2</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 3</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 4</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 5</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                                <div class="logo-item flex-shrink-0 w-[300px] h-[200px] mx-4">
+                                    <div class="logo-placeholder">
+                                        <span>Logo 6</span>
+                                        <small>300x200 px</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-8">Innovative Industrielösungen und Technologien für nachhaltige Entwicklung und Wachstum.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Governance Section -->
+        <section class="py-24 bg-gray-50">
+            <div class="container mx-auto px-8">
+                <h2 class="section-title text-4xl font-medium mb-16">Governance</h2>
+                
+                <!-- Main Group Leaders -->
+                <div class="relative mb-24">
+                    <h3 class="text-2xl font-medium text-gray-800 mb-10">Die Gruppe</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Manfred Pletzer -->
+                        <div>
+                            <div class="person-container w-full h-[300px] bg-gray-200 mb-4 overflow-hidden">
+                                <div class="person-image w-full h-full flex items-center justify-center">
+                                    <img 
+                                        src="https://PGRWebsite.b-cdn.net/Governance/Pletzer-Manfred-2.png"
+                                        alt="Manfred Pletzer"
+                                        class="w-full h-full object-cover object-[center_30%]"
+                                    >
+                                </div>
+                                <div class="person-story">
+                                    <div class="story-title">Über Manfred Pletzer</div>
+                                    <p>Manfred Pletzer ist seit 1995 CEO der Pletzer Gruppe. Unter seiner Führung hat sich das Unternehmen zu einem der führenden Konzerne in der Region entwickelt. Seine Vision für nachhaltige Unternehmensführung und sein Engagement für die Gemeinschaft haben die Unternehmenskultur maßgeblich geprägt.</p>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-medium text-gray-700 mb-2">Manfred Pletzer</h3>
+                            <p class="text-gray-600">Chief Executive Officer</p>
+                        </div>
+                        
+                        <!-- Anton Pletzer -->
+                        <div>
+                            <div class="person-container w-full h-[300px] bg-gray-200 mb-4 overflow-hidden">
+                                <div class="person-image w-full h-full flex items-center justify-center">
+                                    <img 
+                                        src="https://PGRWebsite.b-cdn.net/Governance/005-komm-rat-anton-pletzer-print.jpg"
+                                        alt="Anton Pletzer"
+                                        class="w-full h-full object-cover"
+                                    >
+                                </div>
+                                <div class="person-story">
+                                    <div class="story-title">Über Anton Pletzer</div>
+                                    <p>Anton Pletzer hat als Mitbegründer wesentlich zum Aufbau des Unternehmens beigetragen. Mit seinem Fokus auf Innovation und strategische Partnerschaften hat er neue Märkte erschlossen und das internationale Wachstum vorangetrieben.</p>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-medium text-gray-700 mb-2">Anton Pletzer</h3>
+                            <p class="text-gray-600">Gründer, Aufsichtsrat Vorsitzender</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Industrie Leaders -->
+                <div class="relative mb-24">
+                    <h3 class="text-2xl font-medium text-gray-800 mb-10">Industrie</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <!-- Thomas Pletzer -->
+                        <div>
+                            <div class="person-container w-full h-[300px] bg-gray-200 mb-4 overflow-hidden">
+                                <div class="person-image w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-gray-400 text-xl mb-2">Person Image</div>
+                                        <div class="text-gray-400 text-sm">300px × 300px</div>
+                                    </div>
+                                </div>
+                                <div class="person-story">
+                                    <div class="story-title">Über Thomas Pletzer</div>
+                                    <p>Als Leiter des Industriesektors hat Thomas Pletzer die technologische Entwicklung und Diversifikation des Portfolios maßgeblich vorangetrieben. Seine Expertise in nachhaltigen Produktionsprozessen hat zu bedeutenden Effizienzsteigerungen geführt.</p>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-medium text-gray-700 mb-2">Thomas Pletzer</h3>
+                            <p class="text-gray-600">Leiter Industriesektor</p>
+                        </div>
+                        
+                        <!-- Manfred Pletzer 2 -->
+                        <div>
+                            <div class="person-container w-full h-[300px] bg-gray-200 mb-4 overflow-hidden">
+                                <div class="person-image w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-gray-400 text-xl mb-2">Person Image</div>
+                                        <div class="text-gray-400 text-sm">300px × 300px</div>
+                                    </div>
+                                </div>
+                                <div class="person-story">
+                                    <div class="story-title">Über Johann Mayer</div>
+                                    <p>Johann Mayer leitet die Forschungs- und Entwicklungsabteilung im Industriebereich. Seine innovativen Ansätze haben zu mehreren Patenten geführt und die Wettbewerbsposition des Unternehmens gestärkt.</p>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-medium text-gray-700 mb-2">Johann Mayer</h3>
+                            <p class="text-gray-600">Leiter Forschung & Entwicklung</p>
+                        </div>
+                        
+                        <!-- Manfred Pletzer 3 -->
+                        <div>
+                            <div class="person-container w-full h-[300px] bg-gray-200 mb-4 overflow-hidden">
+                                <div class="person-image w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-gray-400 text-xl mb-2">Person Image</div>
+                                        <div class="text-gray-400 text-sm">300px × 300px</div>
+                                    </div>
+                                </div>
+                                <div class="person-story">
+                                    <div class="story-title">Über Maria Schmidt</div>
+                                    <p>Maria Schmidt verantwortet den Bereich Qualitätsmanagement und hat maßgeblich zur Implementierung von ISO-Standards und Prozessoptimierungen beigetragen. Ihr Engagement für Exzellenz hat die Produktqualität signifikant verbessert.</p>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-medium text-gray-700 mb-2">Maria Schmidt</h3>
+                            <p class="text-gray-600">Leiterin Qualitätsmanagement</p>
+                        </div>
+                        
+                        <!-- Christoph Bacher -->
+                        <div>
+                            <div class="person-container w-full h-[300px] bg-gray-200 mb-4 overflow-hidden">
+                                <div class="person-image w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-gray-400 text-xl mb-2">Person Image</div>
+                                        <div class="text-gray-400 text-sm">300px × 300px</div>
+                                    </div>
+                                </div>
+                                <div class="person-story">
+                                    <div class="story-title">Über Christoph Bacher</div>
+                                    <p>Christoph Bacher ist für die internationalen Vertriebsaktivitäten verantwortlich. Durch seine strategischen Partnerschaften und seinen Fokus auf Kundenbeziehungen hat er die globale Präsenz des Unternehmens deutlich ausgebaut.</p>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-medium text-gray-700 mb-2">Christoph Bacher</h3>
+                            <p class="text-gray-600">Leiter internationaler Vertrieb</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tourismus und Immobilien Leaders -->
+                <div class="relative">
+                    <h3 class="text-2xl font-medium text-gray-800 mb-10">Tourismus und Immobilien</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <!-- Egon Kahr -->
+                        <div>
+                            <div class="person-container w-full h-[300px] bg-gray-200 mb-4 overflow-hidden">
+                                <div class="person-image w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-gray-400 text-xl mb-2">Person Image</div>
+                                        <div class="text-gray-400 text-sm">300px × 300px</div>
+                                    </div>
+                                </div>
+                                <div class="person-story">
+                                    <div class="story-title">Über Egon Kahr</div>
+                                    <p>Egon Kahr hat den Tourismus- und Immobilienbereich zu einem Kerngeschäft entwickelt. Seine Expertise in nachhaltiger Tourismusentwicklung und verantwortungsvollem Immobilienmanagement hat wesentlich zum Erfolg der Gruppe beigetragen.</p>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-medium text-gray-700 mb-2">Egon Kahr</h3>
+                            <p class="text-gray-600">Geschäftsführer Tourismus & Immobilien</p>
+                        </div>
+                        
+                        <!-- Manfred Pletzer 4 -->
+                        <div>
+                            <div class="person-container w-full h-[300px] bg-gray-200 mb-4 overflow-hidden">
+                                <div class="person-image w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-gray-400 text-xl mb-2">Person Image</div>
+                                        <div class="text-gray-400 text-sm">300px × 300px</div>
+                                    </div>
+                                </div>
+                                <div class="person-story">
+                                    <div class="story-title">Über Sabine Wagner</div>
+                                    <p>Sabine Wagner leitet die Hotelentwicklung und hat ein Portfolio an erfolgreichen Hospitality-Konzepten aufgebaut. Ihr innovativer Ansatz zur Gästeerfahrung hat neue Standards in der Branche gesetzt.</p>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-medium text-gray-700 mb-2">Sabine Wagner</h3>
+                            <p class="text-gray-600">Leiterin Hotelentwicklung</p>
+                        </div>
+                        
+                        <!-- Manfred Pletzer 5 -->
+                        <div>
+                            <div class="person-container w-full h-[300px] bg-gray-200 mb-4 overflow-hidden">
+                                <div class="person-image w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-gray-400 text-xl mb-2">Person Image</div>
+                                        <div class="text-gray-400 text-sm">300px × 300px</div>
+                                    </div>
+                                </div>
+                                <div class="person-story">
+                                    <div class="story-title">Über Klaus Huber</div>
+                                    <p>Klaus Huber ist für die Immobilienentwicklung und -projekte verantwortlich. Seine Vision für nachhaltige Architektur und städtebauliche Konzepte hat mehrere preisgekrönte Projekte hervorgebracht.</p>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-medium text-gray-700 mb-2">Klaus Huber</h3>
+                            <p class="text-gray-600">Leiter Projektentwicklung</p>
+                        </div>
+                        
+                        <!-- Manfred Pletzer 6 -->
+                        <div>
+                            <div class="person-container w-full h-[300px] bg-gray-200 mb-4 overflow-hidden">
+                                <div class="person-image w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-gray-400 text-xl mb-2">Person Image</div>
+                                        <div class="text-gray-400 text-sm">300px × 300px</div>
+                                    </div>
+                                </div>
+                                <div class="person-story">
+                                    <div class="story-title">Über Birgit Maier</div>
+                                    <p>Birgit Maier leitet den Bereich Nachhaltigkeit und verantwortet die ESG-Strategie des Tourismus- und Immobilienbereichs. Ihre Initiativen haben zu einer deutlichen Reduzierung des ökologischen Fußabdrucks geführt.</p>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-medium text-gray-700 mb-2">Birgit Maier</h3>
+                            <p class="text-gray-600">Leiterin Nachhaltigkeit</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Verwandte Inhalte Section -->
+        <section class="py-20 px-8 relative overflow-hidden">
+            <div class="decorative-circle -top-32 -left-32"></div>
+            <div class="decorative-circle -bottom-32 -right-32"></div>
+            <div class="container mx-auto relative">
+                <h2 class="section-title text-4xl font-medium mb-16">Verwandte Inhalte</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-fade-up">
+                    <!-- Unsere Historie -->
+                    <div class="flex flex-col group">
+                        <div class="relative overflow-hidden mb-4">
+                            <img 
+                                src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" 
+                                alt="Unsere Historie" 
+                                class="w-full aspect-video object-cover"
+                            >
+                            <div class="h-1 w-full bg-[#AAB400] mt-2"></div>
+                        </div>
+                        <a href="unsere-historie.html" class="group">
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-[#AAB400] transition-colors">Unsere Historie</h3>
+                            <p class="text-gray-600 mb-6">Entdecken Sie die Geschichte der Pletzer Gruppe von 1964 bis heute.</p>
+                            <div class="inline-flex items-center text-[#AAB400] hover:text-[#8a9000] transition-colors">
+                                Mehr erfahren
+                                <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Wir sind Pletzer -->
+                    <div class="flex flex-col group">
+                        <div class="relative overflow-hidden mb-4">
+                            <img 
+                                src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" 
+                                alt="Wir sind Pletzer" 
+                                class="w-full aspect-video object-cover"
+                            >
+                            <div class="h-1 w-full bg-[#D84B40] mt-2"></div>
+                        </div>
+                        <a href="wir-sind-pletzer.html" class="group">
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-[#D84B40] transition-colors">Wir sind Pletzer</h3>
+                            <p class="text-gray-600 mb-6">Lernen Sie die Menschen hinter der Pletzer Gruppe kennen.</p>
+                            <div class="inline-flex items-center text-[#D84B40] hover:text-[#b83e35] transition-colors">
+                                Mehr erfahren
+                                <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Manfred Pletzer im Porträt -->
+                    <div class="flex flex-col group">
+                        <div class="relative overflow-hidden mb-4">
+                            <img 
+                                src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" 
+                                alt="Manfred Pletzer im Porträt" 
+                                class="w-full aspect-video object-cover"
+                            >
+                            <div class="h-1 w-full bg-[#50A9CE] mt-2"></div>
+                        </div>
+                        <a href="#" class="group">
+                            <h3 class="text-2xl font-bold mb-3 group-hover:text-[#50A9CE] transition-colors">Manfred Pletzer im Porträt</h3>
+                            <p class="text-gray-600 mb-6">Ein Gespräch mit unserem Geschäftsführer über Vision und Zukunft.</p>
+                            <div class="inline-flex items-center text-[#50A9CE] hover:text-[#4187a4] transition-colors">
+                                Mehr erfahren
+                                <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Careers Banner Section -->
+        <section class="relative h-[600px] w-full overflow-hidden">
+            <div class="absolute inset-0">
+                <img 
+                    src="https://PGRWebsite.b-cdn.net/Karriere.jpg" 
+                    alt="Karriere" 
+                    class="w-full h-full object-cover"
+                >
+                <div class="absolute inset-0 bg-black/40"></div>
+            </div>
+            <div class="relative h-full container mx-auto px-8">
+                <div class="flex flex-col justify-center h-full max-w-2xl">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Karriere</h2>
+                    <p class="text-xl md:text-2xl text-white font-light mb-10">Werde Teil von etwas Großem!</p>
+                    <div class="flex items-center">
+                        <div class="w-16 h-1 bg-white mr-8"></div>
+                        <a href="tk-karriere.html" class="text-lg text-white hover:text-gray-200 transition-colors flex items-center group">
+                            OFFENE STELLEN
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-900 py-16">
+        <div class="container mx-auto px-8">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Die Gruppe -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Die Gruppe</h3>
+                    <ul class="space-y-4">
+                        <li><a href="die-gruppe.html" class="text-gray-600 hover:text-gray-900 transition-colors">Über uns</a></li>
+                        <li><a href="die-gruppe.html" class="text-gray-600 hover:text-gray-900 transition-colors">Geschichte</a></li>
+                        <li><a href="die-gruppe.html" class="text-gray-600 hover:text-gray-900 transition-colors">Nachhaltigkeit</a></li>
+                    </ul>
+                </div>
+
+                <!-- Unsere Teilkonzerne -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Unsere Teilkonzerne</h3>
+                    <ul class="space-y-4">
+                        <li><a href="tk-immo.html" class="text-gray-600 hover:text-gray-900 transition-colors">Immobilien</a></li>
+                        <li><a href="tk-tourismus.html" class="text-gray-600 hover:text-gray-900 transition-colors">Tourismus</a></li>
+                        <li><a href="tk-industrie.html" class="text-gray-600 hover:text-gray-900 transition-colors">Industrie</a></li>
+                    </ul>
+                </div>
+
+                <!-- Karriere -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Karriere</h3>
+                    <ul class="space-y-4">
+                        <li><a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Bewerbe dich jetzt</a></li>
+                        <li><a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Unsere Lehrangebote</a></li>
+                        <li><a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Freie Stellen</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kontaktiere uns -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Kontaktiere uns!</h3>
+                    <div class="space-y-6">
+                        <!-- Social Media Icons -->
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <!-- Contact Info -->
+                        <div class="space-y-2">
+                            <p class="text-gray-600">E: <a href="mailto:info@pletzer-gruppe.at" class="hover:text-gray-900 transition-colors">info@pletzer-gruppe.at</a></p>
+                            <p class="text-gray-600">T: <a href="tel:+436645293561" class="hover:text-gray-900 transition-colors">+436645293561</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider Lines -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+                <div class="h-0.5 bg-[#AAB400]"></div>
+                <div class="h-0.5 bg-[#D84B40]"></div>
+                <div class="h-0.5 bg-[#50A9CE]"></div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
+                <!-- Logo -->
+                <div class="flex-shrink-0 w-32">
+                    <img 
+                        src="https://PGRWebsite.b-cdn.net/Pletzer-Logo-png.png.webp"
+                        alt="Pletzer Gruppe" 
+                        class="h-8 md:h-10 w-auto object-contain"
+                    >
+                </div>
+                
+                <!-- Links -->
+                <div class="flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Impressum</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">AGBs</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Datenschutz</a>
+                </div>
+
+                <!-- Company Address -->
+                <div class="text-right text-gray-600">
+                    <p class="font-bold">MP Management GmbH</p>
+                    <p>Brixentalerstraße 3, 6361 Hopfgarten (AT)</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header and Hamburger Menu Functionality
+        const header = document.getElementById('main-header');
+        const hamburger = document.getElementById('hamburger-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let lastScroll = 0;
+        
+        // Add selectors for the language icons
+        const languageIcons = document.querySelectorAll('.language-icon');
+        const headerScrollIcons = document.querySelectorAll('.header-scroll-icon');
+
+        // Function to toggle language icons based on header state
+        function toggleLanguageIcons(isScrolled) {
+            languageIcons.forEach(icon => {
+                icon.classList.toggle('hidden', isScrolled);
+            });
+            headerScrollIcons.forEach(icon => {
+                icon.classList.toggle('hidden', !isScrolled);
+            });
+        }
+
+        // Initial state check
+        if (window.pageYOffset > 50) {
+            header.classList.add('header-scroll');
+            toggleLanguageIcons(true);
+        }
+
+        // Scroll handler
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const isScrolled = currentScroll > 50 || mobileMenu.classList.contains('active');
+            
+            if (isScrolled) {
+                header.classList.add('header-scroll');
+            } else {
+                header.classList.remove('header-scroll');
+            }
+            
+            toggleLanguageIcons(isScrolled);
+            lastScroll = currentScroll;
+        });
+
+        // Hover handler
+        header.addEventListener('mouseenter', () => {
+            header.classList.add('header-scroll');
+            toggleLanguageIcons(true);
+        });
+
+        header.addEventListener('mouseleave', () => {
+            if (window.pageYOffset <= 50 && !mobileMenu.classList.contains('active')) {
+                header.classList.remove('header-scroll');
+                toggleLanguageIcons(false);
+            }
+        });
+
+        // Hamburger Menu Animation
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            header.classList.add('header-scroll');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            
+            if (!mobileMenu.classList.contains('active') && window.pageYOffset <= 50) {
+                header.classList.remove('header-scroll');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const fadeUpObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-up, .fade-in, .slide-in-right, .scale-up, .hero-content, .section-title, .logo-item, .stagger-fade-up > *, .logo-carousel').forEach(element => {
+            fadeUpObserver.observe(element);
+        });
+
+        // Add stagger delay to logo items
+        document.querySelectorAll('.logo-item').forEach((element, index) => {
+            element.style.transitionDelay = `${index * 50}ms`;
+        });
+        
+        // Force visibility for Teilbereiche section
+        setTimeout(() => {
+            document.querySelectorAll('.stagger-fade-up > *').forEach(element => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            });
+        }, 500);
+
+        // KPI Animation
+        const kpiNumbers = document.querySelectorAll('.kpi-number');
+        const animationDuration = 2000; // 2 seconds
+
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const current = Math.floor(progress * (end - start) + start);
+                element.textContent = current.toString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.textContent = end.toString();
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const finalValue = parseInt(target.textContent);
+                    animateValue(target, 0, finalValue, animationDuration);
+                    observer.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        kpiNumbers.forEach(number => {
+            observer.observe(number);
+        });
+
+        // Values Slider Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.values-track');
+            const slides = document.querySelectorAll('.value-slide');
+            const indicators = document.querySelectorAll('.value-indicator');
+            const prevButton = document.getElementById('prevValue');
+            const nextButton = document.getElementById('nextValue');
+            let currentSlide = 0;
+
+            function updateSlider() {
+                const translateX = currentSlide * -100;
+                track.style.transform = `translateX(${translateX}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentSlide) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateSlider();
+            }
+
+            // Event Listeners
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+
+            // Indicator clicks
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlider();
+                });
+            });
+
+            // Initialize slider
+            updateSlider();
+        });
+
+        // Updated Logo Carousel Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousels = document.querySelectorAll('.logo-carousel');
+            
+            carousels.forEach(carousel => {
+                const track = carousel.querySelector('.carousel-track');
+                
+                // Reset animation when it completes
+                track.addEventListener('animationend', () => {
+                    track.style.animation = 'none';
+                    track.offsetHeight; // Trigger reflow
+                    track.style.animation = null;
+                });
+                
+                // Force consistent animation speed
+                track.style.animationDuration = '30s';
+            });
+        });
+    </script>
+</body>
+</html> 

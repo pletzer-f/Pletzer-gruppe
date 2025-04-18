@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrie - Pletzer Gruppe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500&display=swap" rel="stylesheet">
+    <?php include 'partials/header-styles.html'; ?>
+    <style>
+        body {
+            font-family: 'Saira', sans-serif;
+            font-weight: 300;
+        }
+
+        /* Header Styles */
+        .header-scroll {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .header-scroll .nav-link {
+            color: black;
+        }
+
+        .nav-link {
+            color: white;
+            transition: all 300ms;
+        }
+
+        .logo-image {
+            filter: brightness(0) invert(1);
+            transition: all 300ms;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger.active {
+            transform: rotate(-90deg);
+        }
+
+        .hamburger img {
+            transition: transform 0.3s ease;
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            padding-top: 100px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 40;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .section-title {
+            color: #666;
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .section-text {
+            color: #666;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .learn-more {
+            position: relative;
+            color: #666;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 1.5rem;
+        }
+
+        .learn-more::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #50A9CE;
+        }
+
+        /* Logo Carousel Styles */
+        .logo-carousel {
+            position: relative;
+            padding: 2rem 0;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 30s linear infinite;
+        }
+
+        .logo-item {
+            flex: 0 0 calc(25% - 1.5rem);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-placeholder {
+            width: 300px;
+            height: 200px;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+        }
+
+        .logo-placeholder span {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-placeholder small {
+            font-size: 0.875rem;
+            color: #999;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .logo-carousel:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: #f3f3f3;
+        }
+
+        .carousel-arrow.prev {
+            left: 0;
+        }
+
+        .carousel-arrow.next {
+            right: 0;
+        }
+
+        .menu-section {
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f3f3f3;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 0;
+        }
+
+        .menu-section:hover::before {
+            transform: translateX(0);
+        }
+
+        .menu-section h2,
+        .menu-section p,
+        .menu-section .menu-bar {
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .menu-section p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .menu-bar {
+            height: 4px;
+            width: 60px;
+            margin-top: 1rem;
+        }
+
+        .menu-bar.green { background-color: #AAB400; }
+        .menu-bar.red { background-color: #D84B40; }
+        .menu-bar.blue { background-color: #50A9CE; }
+
+        .contact-section {
+            padding: 2rem;
+            background: #f8f8f8;
+        }
+
+        .contact-button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #f3f3f3;
+            text-align: left;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .contact-button:hover {
+            background: #e9e9e9;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f3f3;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #e9e9e9;
+        }
+
+        /* Add Teilbereiche Section styles */
+        .decorative-circle {
+            position: absolute;
+            width: 16rem;
+            height: 16rem;
+            border-radius: 9999px;
+            opacity: 0.1;
+            background: radial-gradient(circle, #50A9CE 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .stagger-fade-up > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        .stagger-fade-up > *.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Enhanced Animation Styles */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 800ms ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-up {
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 600ms ease-out, opacity 600ms ease-out;
+        }
+
+        .scale-up.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Update existing sections with animation classes */
+        .hero-content h1,
+        .hero-content p {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        .hero-content.visible h1 {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 300ms;
+        }
+
+        .hero-content.visible p {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 500ms;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 33.333333%;
+            height: 0.25rem;
+            background-color: #50A9CE;
+            transform: scaleX(0);
+            transition: transform 500ms;
+            transform-origin: left;
+        }
+
+        .section-title.visible::after {
+            transform: scaleX(1);
+        }
+
+        .logo-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 400ms ease-out;
+        }
+
+        .logo-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header Dropdown Styles */
+        .header-scroll .dropdown-content {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        /* Enhanced premium dropdown styles */
+        .dropdown-content {
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            backdrop-filter: blur(5px);
+        }
+        
+        .dropdown-content a {
+            padding: 8px 0;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+        
+        .group-hover\:translate-y-0 {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300" id="main-header">
+        <div class="flex items-center px-8 py-5">
+            <!-- Left: Logo -->
+            <div class="flex-shrink-0 w-32 flex items-center ml-4">
+                <a href="index.html">
+                    <img 
+                        src="https://PGRWebsite.b-cdn.net/Pletzer-Logo-png.png.webp"
+                        alt="Pletzer Gruppe" 
+                        class="h-8 md:h-10 w-auto object-contain"
+                    >
+                </a>
+            </div>
+
+            <!-- Center: Navigation -->
+            <nav class="flex-1 flex justify-center">
+                <div class="hidden md:flex items-center gap-12">
+                    <!-- Die Gruppe Dropdown -->
+                    <div class="relative group">
+                        <a href="die-gruppe.html" class="nav-link hover:text-gray-300 transition-colors flex items-center group">
+                            Die Gruppe
+                        </a>
+                        <!-- Dropdown Content -->
+                        <div class="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2 px-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 dropdown-content">
+                            <div class="py-6 px-4">
+                                <div class="grid grid-cols-1 gap-6">
+                                    <a href="unsere-historie.html" class="text-gray-600 hover:text-gray-900 transition-colors">Unsere Historie</a>
+                                    <a href="wir-sind-pletzer.html" class="text-gray-600 hover:text-gray-900 transition-colors">Wir sind Pletzer</a>
+                                    <a href="die-gruppe.html" class="text-gray-600 hover:text-gray-900 transition-colors">Unser Wertehaus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Karriere Dropdown -->
+                    <div class="relative group">
+                        <a href="tk-karriere.html" class="nav-link hover:text-gray-300 transition-colors flex items-center group">
+                            Karriere
+                        </a>
+                        <!-- Dropdown Content -->
+                        <div class="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2 px-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 dropdown-content">
+                            <div class="py-6 px-4">
+                                <div class="grid grid-cols-1 gap-6">
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Offene Stellen</a>
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Lehrstellen</a>
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Benefits</a>
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Karriereentwicklung</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Language Selector (Replaced Unsere Teilbereiche) -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link hover:text-gray-300 transition-colors flex items-center group">
+                            <img src="https://PGRWebsite.b-cdn.net/white.png" alt="Language" class="h-5 w-5 language-icon">
+                            <img src="https://PGRWebsite.b-cdn.net/black.png" alt="Language" class="h-5 w-5 hidden header-scroll-icon">
+                        </a>
+                        <!-- Dropdown Content -->
+                        <div class="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-md py-2 px-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 dropdown-content">
+                            <div class="py-4 px-2">
+                                <div class="grid grid-cols-1 gap-4">
+                                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Deutsch</a>
+                                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Right: Hamburger Menu -->
+            <div class="flex-shrink-0 w-32 flex justify-end mr-4">
+                <div class="hamburger" id="hamburger-menu">
+                    <img 
+                        src="https://PGRWebsite.b-cdn.net/Pletzer%20Gruppe%20Website%20Editor.png"
+                        alt="Pletzer Gruppe Menu"
+                        class="h-10 w-auto"
+                    >
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="menu-section">
+            <h2>Immobilien</h2>
+            <p>Retail und Gewerbe</p>
+            <div class="menu-bar green"></div>
+            <a href="tk-immo.html" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <div class="menu-section">
+            <h2>Tourismus</h2>
+            <p>Hotellerie und Gastronomie</p>
+            <div class="menu-bar red"></div>
+            <a href="tk-tourismus.html" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <div class="menu-section">
+            <h2>Industrie</h2>
+            <p>Wärme und Energie</p>
+            <div class="menu-bar blue"></div>
+            <a href="tk-industrie.html" class="absolute inset-0 z-10" aria-current="page"></a>
+        </div>
+
+        <div class="contact-section">
+            <h2 class="text-2xl font-bold mb-6">Kontaktiere uns</h2>
+            <a href="mailto:info@pletzer-gruppe.at" class="contact-button">
+                E: info@pletzer-gruppe.at
+            </a>
+            <a href="tel:+436645293561" class="contact-button">
+                T: +436645293561
+            </a>
+            <button class="contact-button">
+                Sende uns eine Nachricht ...
+            </button>
+
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="relative w-full">
+        <!-- Image Container (full width, 3/4 height) -->
+        <div class="relative w-full h-[75vh]">
+            <img src="https://PGRWebsite.b-cdn.net/Screenshot%202025-04-17%20at%2011.55.50.png" alt="Industrie" class="w-full h-full object-cover">
+            <!-- Dark overlay -->
+            <div class="absolute inset-0 bg-black/30"></div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="container mx-auto px-8 py-12">
+            <div class="max-w-4xl hero-content">
+                <h1 class="text-5xl font-medium text-[#666] mb-8">Industrie</h1>
+                <p class="text-xl text-[#666] font-light leading-relaxed max-w-2xl">
+                    Wir entwickeln innovative Technologien für die Industrie.<br>
+                    Getragen von Effizienz und nachhaltiger Entwicklung.
+                </p>
+            </div>
+        </div>
+
+        <!-- Scroll Arrow -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer" id="scroll-arrow">
+            <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                class="h-8 w-8 text-[#666] hover:text-[#888] transition-colors" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+            >
+                <path 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round" 
+                    stroke-width="2" 
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Wärmepumpen Section -->
+    <section class="py-20" id="waermepumpen-section">
+        <div class="container mx-auto">
+            <div class="w-full mb-16 scale-up">
+                <img 
+                    src="https://PGRWebsite.b-cdn.net/Industrie/Produktbild_iDM-Waermepumpen-1024x555.jpg.webp" 
+                    alt="iDM Energiesysteme GmbH - Innovative Wärmepumpen Technologie" 
+                    class="w-full h-[400px] object-cover"
+                >
+            </div>
+            <div class="px-8">
+                <div class="max-w-4xl fade-up">
+                    <h2 class="section-title text-5xl font-medium text-[#666] mb-8">iDM Energiesysteme GmbH</h2>
+                    <p class="text-[#666] text-lg font-light leading-relaxed mb-8">Die iDM Energiesysteme GmbH ist ein führender Hersteller von Wärmepumpen und Heizsystemen. Mit über 45 Jahren Erfahrung entwickelt das Unternehmen innovative Lösungen für nachhaltige Gebäudetechnik. Die patentierten NAVIGATOR-Steuerungen und myiDM-Fernbedienungen ermöglichen eine intelligente und effiziente Systemsteuerung.</p>
+                    <a href="https://www.idm-energie.at" target="_blank" class="text-[#666] font-medium inline-block relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#50A9CE] slide-in-right">
+                        Zur Website
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Carousel for Industry Partners -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-8">
+            <h2 class="text-[#666] text-4xl font-medium mb-16 text-center">Unsere Produkte</h2>
+            <div class="logo-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <!-- Original 6 logos -->
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 1</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 2</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 3</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 4</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 5</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 6</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 1</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 2</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 3</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 4</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 5</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 6</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Energy Section -->
+    <section class="py-20">
+        <div class="container mx-auto">
+            <div class="w-full mb-16 scale-up">
+                <img 
+                    src="https://PGRWebsite.b-cdn.net/Industrie/images-2.jpeg" 
+                    alt="APL Apparatebau GmbH - Innovative Energielösungen" 
+                    class="w-full h-[400px] object-cover"
+                >
+            </div>
+            <div class="px-8">
+                <div class="max-w-4xl fade-up">
+                    <h2 class="section-title text-5xl font-medium text-[#666] mb-8">APL Apparatebau GmbH</h2>
+                    <p class="text-[#666] text-lg font-light leading-relaxed mb-8">Die APL Apparatebau GmbH ist spezialisiert auf die Entwicklung und Produktion von innovativen Wärmeübertragungssystemen. Als Technologieführer in der Branche setzt das Unternehmen auf energieeffiziente Lösungen und nachhaltige Produktionsprozesse. Die hochwertigen Produkte finden Anwendung in verschiedenen Industriebereichen.</p>
+                    <a href="https://apl-apparatebau.com/en/" target="_blank" class="text-[#666] font-medium inline-block relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#50A9CE] slide-in-right">
+                        Zur Website
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Carousel for Energy Partners -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-8">
+            <h2 class="text-[#666] text-4xl font-medium mb-16 text-center">Unsere Kunden</h2>
+            <div class="logo-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <!-- Original 6 logos -->
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 1</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 2</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 3</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 4</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 5</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 6</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 1</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 2</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 3</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 4</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 5</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 6</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pletzer Installationen Section -->
+    <section class="py-20">
+        <div class="container mx-auto">
+            <div class="w-full mb-16 scale-up">
+                <img 
+                    src="https://PGRWebsite.b-cdn.net/Industrie/_mg_0673_2.jpg.webp" 
+                    alt="Pletzer Installationen - Professionelle Installationsdienstleistungen" 
+                    class="w-full h-[400px] object-cover"
+                >
+            </div>
+            <div class="px-8">
+                <div class="max-w-4xl fade-up">
+                    <h2 class="section-title text-5xl font-medium text-[#666] mb-8">Pletzer Installationen</h2>
+                    <p class="text-[#666] text-lg font-light leading-relaxed mb-8">Pletzer Installationen ist Ihr erfahrener Partner für professionelle Installationsdienstleistungen in der Industrie. Mit unserem hochqualifizierten Team und modernster Technik bieten wir maßgeschneiderte Lösungen für komplexe Installationsprojekte. Von der Planung bis zur Umsetzung garantieren wir höchste Qualität und Zuverlässigkeit.</p>
+                    <a href="https://www.pletzer.at" target="_blank" class="text-[#666] font-medium inline-block relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#50A9CE] slide-in-right">
+                        Zur Website
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Carousel for Installation Partners -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-8">
+            <h2 class="text-[#666] text-4xl font-medium mb-16 text-center">Unsere Installationsbetriebe</h2>
+            <div class="logo-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <!-- Original 6 logos -->
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 1</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 2</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 3</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 4</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 5</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 6</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 1</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 2</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 3</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 4</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 5</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 6</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Erber Edelbrände Section -->
+    <section class="py-20">
+        <div class="container mx-auto">
+            <div class="w-full mb-16 scale-up">
+                <img 
+                    src="https://PGRWebsite.b-cdn.net/Industrie/brixen-im-thale-schnapsbrennerei-erber-shop_3.jpg" 
+                    alt="Erber Edelbrände - Premium Spirituosen" 
+                    class="w-full h-[400px] object-cover"
+                >
+            </div>
+            <div class="px-8">
+                <div class="max-w-4xl fade-up">
+                    <h2 class="section-title text-5xl font-medium text-[#666] mb-8">Erber Edelbrände</h2>
+                    <p class="text-[#666] text-lg font-light leading-relaxed mb-8">Erber Edelbrände ist ein traditionsreicher Hersteller hochwertiger Spirituosen. Mit jahrzehntelanger Erfahrung in der Destillation und einem tiefen Verständnis für die Kunst des Brennens, produziert das Unternehmen exklusive Edelbrände von höchster Qualität. Die Kombination aus traditionellen Methoden und modernster Technologie garantiert einzigartige Geschmackserlebnisse.</p>
+                    <a href="https://www.erber-edelbrand.com" target="_blank" class="text-[#666] font-medium inline-block relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#50A9CE] slide-in-right">
+                        Zur Website
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Carousel for Spirits Partners -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-8">
+            <h2 class="text-[#666] text-4xl font-medium mb-16 text-center">Unsere Spirituosenpartner</h2>
+            <div class="logo-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <!-- Original 6 logos -->
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 1</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 2</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 3</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 4</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 5</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 6</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 1</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 2</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 3</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 4</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 5</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="logo-placeholder w-[180px] h-[120px]">
+                                <span>Logo 6</span>
+                                <small>300x200 px</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Banner Section -->
+    <section class="relative h-[600px] w-full overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img 
+                src="https://PGRWebsite.b-cdn.net/Karriere.jpg" 
+                alt="Karriere" 
+                class="w-full h-full object-cover"
+            >
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative h-full container mx-auto px-8">
+            <div class="flex flex-col justify-center h-full max-w-2xl">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Karriere</h2>
+                <p class="text-xl md:text-2xl text-white font-light mb-10">Werde Teil von etwas Großem!</p>
+                <div class="flex items-center">
+                    <div class="w-16 h-1 bg-white mr-8"></div>
+                    <a href="tk-karriere.html" class="text-lg text-white hover:text-gray-200 transition-colors flex items-center group">
+                        OFFENE STELLEN
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teilbereiche Section -->
+    <section class="py-20 px-8 relative overflow-hidden">
+        <div class="decorative-circle -top-32 -left-32"></div>
+        <div class="decorative-circle -bottom-32 -right-32"></div>
+        <div class="container mx-auto relative">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-fade-up">
+                <!-- Immobilien -->
+                <div class="flex flex-col group">
+                    <div class="relative overflow-hidden mb-4 scale-up">
+                        <img src="https://PGRWebsite.b-cdn.net/Screenshot%202025-04-17%20at%2011.55.06.png" alt="Immobilien" class="w-full aspect-video object-cover">
+                        <div class="h-1 w-full bg-[#AAB400] mt-2"></div>
+                    </div>
+                    <a href="tk-immo.html" class="group fade-up">
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-[#AAB400] transition-colors">Immobilien</h3>
+                        <p class="text-gray-600">Nachhaltige Entwicklung und Verwaltung hochwertiger Immobilienprojekte mit Fokus auf langfristige Wertschöpfung.</p>
+                    </a>
+                </div>
+
+                <!-- Tourismus -->
+                <div class="flex flex-col group">
+                    <div class="relative overflow-hidden mb-4 scale-up">
+                        <img src="https://PGRWebsite.b-cdn.net/Seepark_Resort_-_Daniel_Waschnig_08-2021__89_.jpg" alt="Tourismus" class="w-full aspect-video object-cover">
+                        <div class="h-1 w-full bg-[#D84B40] mt-2"></div>
+                    </div>
+                    <a href="tk-tourismus.html" class="group fade-up">
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-[#D84B40] transition-colors">Tourismus</h3>
+                        <p class="text-gray-600">Erstklassige Hospitality-Erlebnisse in unseren Hotels und Resorts mit höchsten Standards für Qualität und Service.</p>
+                    </a>
+                </div>
+
+                <!-- Industrie -->
+                <div class="flex flex-col group">
+                    <div class="relative overflow-hidden mb-4 scale-up">
+                        <img src="https://PGRWebsite.b-cdn.net/Screenshot%202025-04-17%20at%2011.55.50.png" alt="Industrie" class="w-full aspect-video object-cover">
+                        <div class="h-1 w-full bg-[#50A9CE] mt-2"></div>
+                    </div>
+                    <a href="tk-industrie.html" class="group fade-up" aria-current="page">
+                        <h3 class="text-2xl font-bold mb-3 text-[#50A9CE] transition-colors">Industrie</h3>
+                        <p class="text-gray-600">Innovative Industrielösungen und Technologien für nachhaltige Entwicklung und Wachstum.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-900 py-16">
+        <div class="container mx-auto px-8">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Die Gruppe -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Die Gruppe</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Über uns</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Geschichte</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Nachhaltigkeit</a></li>
+                    </ul>
+                </div>
+
+                <!-- Unsere Teilkonzerne -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Unsere Teilkonzerne</h3>
+                    <ul class="space-y-4">
+                        <li><a href="tk-immo.html" class="text-gray-600 hover:text-gray-900 transition-colors">Immobilien</a></li>
+                        <li><a href="tk-tourismus.html" class="text-gray-600 hover:text-gray-900 transition-colors">Tourismus</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Industrie</a></li>
+                    </ul>
+                </div>
+
+                <!-- Karriere -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Karriere</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Bewerbe dich jetzt</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Unsere Lehrangebote</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Freie Stellen</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kontaktiere uns -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Kontaktiere uns!</h3>
+                    <div class="space-y-6">
+                        <!-- Social Media Icons -->
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <!-- Contact Info -->
+                        <div class="space-y-2">
+                            <p class="text-gray-600">E: <a href="mailto:info@pletzer-gruppe.at" class="hover:text-gray-900 transition-colors">info@pletzer-gruppe.at</a></p>
+                            <p class="text-gray-600">T: <a href="tel:+436645293561" class="hover:text-gray-900 transition-colors">+436645293561</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider Lines -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+                <div class="h-0.5 bg-[#AAB400]"></div>
+                <div class="h-0.5 bg-[#D84B40]"></div>
+                <div class="h-0.5 bg-[#50A9CE]"></div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
+                <!-- Logo -->
+                <div class="flex-shrink-0 w-32">
+                    <img 
+                        src="https://PGRWebsite.b-cdn.net/Pletzer-Logo-png.png.webp"
+                        alt="Pletzer Gruppe" 
+                        class="h-8 md:h-10 w-auto object-contain"
+                    >
+                </div>
+                
+                <!-- Links -->
+                <div class="flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Impressum</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">AGBs</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Datenschutz</a></div>
+
+                <!-- Company Address -->
+                <div class="text-right text-gray-600">
+                    <p class="font-bold">MP Management GmbH</p>
+                    <p>Brixentalerstraße 3, 6361 Hopfgarten (AT)</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include Footer -->
+    <?php include 'partials/footer.html'; ?>
+
+    <script>
+        // Header and Hamburger Menu Functionality
+        const header = document.getElementById('main-header');
+        const hamburger = document.getElementById('hamburger-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let lastScroll = 0;
+        
+        // Add selectors for the language icons
+        const languageIcons = document.querySelectorAll('.language-icon');
+        const headerScrollIcons = document.querySelectorAll('.header-scroll-icon');
+
+        // Function to toggle language icons based on header state
+        function toggleLanguageIcons(isScrolled) {
+            languageIcons.forEach(icon => {
+                icon.classList.toggle('hidden', isScrolled);
+            });
+            headerScrollIcons.forEach(icon => {
+                icon.classList.toggle('hidden', !isScrolled);
+            });
+        }
+
+        // Initial state check
+        if (window.pageYOffset > 50) {
+            header.classList.add('header-scroll');
+            toggleLanguageIcons(true);
+        }
+
+        // Scroll handler
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const isScrolled = currentScroll > 50 || mobileMenu.classList.contains('active');
+            
+            if (isScrolled) {
+                header.classList.add('header-scroll');
+            } else {
+                header.classList.remove('header-scroll');
+            }
+            
+            toggleLanguageIcons(isScrolled);
+            lastScroll = currentScroll;
+        });
+
+        // Hover handler
+        header.addEventListener('mouseenter', () => {
+            header.classList.add('header-scroll');
+            toggleLanguageIcons(true);
+        });
+
+        header.addEventListener('mouseleave', () => {
+            if (window.pageYOffset <= 50 && !mobileMenu.classList.contains('active')) {
+                header.classList.remove('header-scroll');
+                toggleLanguageIcons(false);
+            }
+        });
+
+        // Hamburger Menu Animation
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            header.classList.add('header-scroll'); // Add white background when menu opens
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            
+            // Remove white background only if we're at the top and menu is closed
+            if (!mobileMenu.classList.contains('active') && window.pageYOffset <= 50) {
+                header.classList.remove('header-scroll');
+            }
+        });
+    </script>
+
+    <script>
+        // Updated Logo Carousel Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousels = document.querySelectorAll('.logo-carousel');
+            
+            carousels.forEach(carousel => {
+                const track = carousel.querySelector('.carousel-track');
+                
+                // Reset animation when it completes
+                track.addEventListener('animationend', () => {
+                    track.style.animation = 'none';
+                    track.offsetHeight; // Trigger reflow
+                    track.style.animation = null;
+                });
+                
+                // Force consistent animation speed
+                track.style.animationDuration = '30s';
+            });
+        });
+    </script>
+
+    <script>
+        // Smooth scroll functionality
+        document.getElementById('scroll-arrow').addEventListener('click', function() {
+            const targetSection = document.getElementById('waermepumpen-section');
+            targetSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    </script>
+
+    <script>
+        // Add Intersection Observer for Teilbereiche animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simplified animation observer with more lenient thresholds
+            const observerOptions = {
+                threshold: 0.1, // Reduced threshold to trigger animations earlier
+                rootMargin: '0px 0px -50px 0px' // Increased margin to trigger earlier
+            };
+
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Force visibility for Teilbereiche section
+                        if (entry.target.closest('.stagger-fade-up')) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+
+                        // Special handling for logo carousels to make them appear faster
+                        if (entry.target.closest('.logo-carousel')) {
+                            const carousel = entry.target.closest('.logo-carousel');
+                            carousel.style.opacity = '1';
+                            carousel.style.transform = 'translateY(0)';
+                            
+                            // Make logo items appear immediately
+                            const logoItems = carousel.querySelectorAll('.logo-item');
+                            logoItems.forEach((item, index) => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                                item.style.transitionDelay = `${index * 50}ms`; // Reduced delay between items
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            document.querySelectorAll('.fade-up, .fade-in, .slide-in-right, .scale-up, .hero-content, .section-title, .logo-item, .stagger-fade-up > *, .logo-carousel').forEach(element => {
+                animationObserver.observe(element);
+            });
+
+            // Add stagger delay to logo items with reduced timing
+            document.querySelectorAll('.logo-item').forEach((element, index) => {
+                element.style.transitionDelay = `${index * 50}ms`; // Reduced from 100ms to 50ms
+            });
+            
+            // Force visibility for Teilbereiche section after a short delay
+            setTimeout(() => {
+                document.querySelectorAll('.stagger-fade-up > *').forEach(element => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html> 

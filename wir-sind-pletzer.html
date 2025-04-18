@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsere Historie - Pletzer Gruppe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500&display=swap');
+        
+        body {
+            font-family: 'Saira', sans-serif;
+            font-weight: 300;
+        }
+        
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #AAB400;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: 0 0 8px rgba(170, 180, 0, 0.4);
+        }
+
+        .timeline.visible::after {
+            transform: scaleY(1);
+        }
+
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+            filter: blur(3px);
+        }
+
+        .timeline-container.right {
+            left: 50%;
+            transform: translateX(50px);
+        }
+
+        .timeline-container.visible {
+            opacity: 1;
+            transform: translateX(0);
+            filter: blur(0);
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid #AAB400;
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: 0 0 0 0 rgba(170, 180, 0, 0);
+        }
+
+        .timeline-container.right::after {
+            left: -12px;
+        }
+
+        .timeline-container:hover::after {
+            background-color: #AAB400;
+            transform: scale(1.2);
+            box-shadow: 0 0 0 8px rgba(170, 180, 0, 0.2);
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            border-left: 3px solid transparent;
+            overflow: hidden;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(170, 180, 0, 0.05) 0%, rgba(255, 255, 255, 0) 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+            border-left: 3px solid #AAB400;
+        }
+
+        .timeline-content:hover::before {
+            opacity: 1;
+        }
+
+        .timeline-year {
+            position: absolute;
+            color: #666;
+            font-size: 28px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            opacity: 0.8;
+        }
+
+        .timeline-container .timeline-year {
+            right: -130px;
+        }
+
+        .timeline-container.right .timeline-year {
+            left: -130px;
+        }
+
+        .timeline-container:hover .timeline-year {
+            color: #AAB400;
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        @media screen and (max-width: 600px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                left: 0;
+                transform: translateY(30px);
+                filter: blur(2px);
+            }
+            
+            .timeline-container.right {
+                left: 0;
+                transform: translateY(30px);
+            }
+            
+            .timeline-container.visible {
+                transform: translateY(0);
+                filter: blur(0);
+            }
+            
+            .timeline-container::after, 
+            .timeline-container.right::after {
+                left: 19px;
+            }
+            
+            .timeline-container .timeline-year,
+            .timeline-container.right .timeline-year {
+                right: auto;
+                left: -50px;
+                font-size: 18px;
+            }
+        }
+
+        /* Hero section styling */
+        .hero-image {
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+        }
+
+        .history-section {
+            background-color: #f8f8f8;
+            border-radius: 8px;
+        }
+
+        .founder-image {
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Add all your styles here */
+        .header-scroll {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .header-scroll .nav-link {
+            color: black;
+        }
+
+        .nav-link {
+            color: white;
+            transition: all 300ms;
+        }
+
+        .logo-image {
+            filter: brightness(0) invert(1);
+            transition: all 300ms;
+        }
+
+        .hero-heading {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        @media (min-width: 768px) {
+            .hero-heading {
+                font-size: 3rem;
+                line-height: 1;
+            }
+        }
+        @media (min-width: 1024px) {
+            .hero-heading {
+                font-size: 3.75rem;
+                line-height: 1;
+            }
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 33.333333%;
+            height: 0.25rem;
+            background-color: #AAB400;
+            transform: scaleX(0);
+            transition: transform 500ms;
+            transform-origin: left;
+        }
+
+        .section-title.animate::after {
+            transform: scaleX(1);
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .decorative-circle {
+            position: absolute;
+            width: 16rem;
+            height: 16rem;
+            border-radius: 9999px;
+            opacity: 0.1;
+            background: radial-gradient(circle, #AAB400 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .stagger-fade-up > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+
+        .stagger-fade-up > *.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .kpi-number, .kpi-label, .vertical-divider, .vertical-divider-1, .vertical-divider-2, .vertical-divider-3 {
+            all: unset;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger.active {
+            transform: rotate(-90deg);
+        }
+
+        .hamburger img {
+            transition: transform 0.3s ease;
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            padding-top: 100px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 40;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .menu-section {
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f3f3f3;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 0;
+        }
+
+        .menu-section:hover::before {
+            transform: translateX(0);
+        }
+
+        .menu-section h2,
+        .menu-section p,
+        .menu-section .menu-bar {
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .menu-section p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .menu-bar {
+            height: 4px;
+            width: 60px;
+            margin-top: 1rem;
+        }
+
+        .menu-bar.green { background-color: #AAB400; }
+        .menu-bar.red { background-color: #D84B40; }
+        .menu-bar.blue { background-color: #50A9CE; }
+
+        .contact-section {
+            padding: 2rem;
+            background: #f8f8f8;
+        }
+
+        .contact-button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #f3f3f3;
+            text-align: left;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .contact-button:hover {
+            background: #e9e9e9;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f3f3;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #e9e9e9;
+        }
+
+        .kpi-number {
+            font-size: 3.5rem;
+            font-weight: 500;
+            color: white;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .kpi-label {
+            font-size: 1.125rem;
+            color: white;
+            font-weight: 300;
+            line-height: 1.4;
+            letter-spacing: 0.01em;
+        }
+
+        .vertical-divider-1,
+        .vertical-divider-2,
+        .vertical-divider-3 {
+            transform: scaleY(0);
+            transition: transform 600ms ease-out;
+            transform-origin: bottom;
+            width: 2px;
+            height: 100%;
+        }
+
+        .vertical-divider-1.visible,
+        .vertical-divider-2.visible,
+        .vertical-divider-3.visible {
+            transform: scaleY(1);
+        }
+
+        /* KPI Section specific styles */
+        .kpi-divider {
+            height: 96px;
+            width: 2px;
+            opacity: 0;
+            transition: opacity 600ms ease-out;
+        }
+
+        .kpi-divider.visible {
+            opacity: 1;
+        }
+
+        /* Update heading and text styles */
+        h1, h2, h3, .section-title, .hero-heading {
+            font-weight: 500;
+        }
+
+        .nav-link, .menu-section h2, .contact-section h2 {
+            font-weight: 500;
+        }
+
+        /* Light weight for all regular text */
+        p, 
+        .text-gray-600,
+        .footer a,
+        .contact-button,
+        .bottom-footer p,
+        .kpi-label {
+            font-weight: 300;
+        }
+
+        /* Header Dropdown Styles */
+        .header-scroll .dropdown-content {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        
+        /* Enhanced premium dropdown styles */
+        .dropdown-content {
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            backdrop-filter: blur(5px);
+        }
+        
+        .dropdown-content a {
+            padding: 8px 0;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+        
+        .group-hover\:translate-y-0 {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Testimonial Cards Styling */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            position: relative;
+        }
+        
+        @media (min-width: 768px) {
+            .testimonials-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .testimonial-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative;
+            filter: blur(2px);
+        }
+        
+        .testimonial-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+        
+        .testimonial-quote-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card .bg-white {
+            z-index: 1;
+            overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .testimonial-card:hover .bg-white::before {
+            opacity: 1;
+        }
+        
+        .testimonial-card .bg-white::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .testimonial-card:nth-child(odd) {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .testimonial-card:nth-child(even) {
+            animation: float 9s ease-in-out infinite 1s;
+        }
+        
+        .testimonial-card:hover {
+            animation-play-state: paused;
+        }
+        
+        @media (max-width: 767px) {
+            .testimonial-card {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Testimonials Slider Styles */
+        .testimonials-slider {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 1rem;
+            flex: 0 0 100%;
+        }
+
+        .testimonial-indicator {
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-indicator.active {
+            background-color: #AAB400;
+        }
+    </style>
+    <!-- Add this right before the closing </head> tag -->
+    <script>
+        // Make sure we have proper initialization
+        let currentTestimonialPosition = 0;
+        let testimonialSlideCount = 4; // Hardcode this to ensure it's available
+
+        // Fix navigation functions to be more robust
+        function nextTestimonialFn() {
+            currentTestimonialPosition = (currentTestimonialPosition + 1) % testimonialSlideCount;
+            updateTestimonialPosition();
+            console.log('Next testimonial: ', currentTestimonialPosition);
+        }
+
+        function prevTestimonialFn() {
+            currentTestimonialPosition = (currentTestimonialPosition - 1 + testimonialSlideCount) % testimonialSlideCount;
+            updateTestimonialPosition();
+            console.log('Previous testimonial: ', currentTestimonialPosition);
+        }
+
+        function updateTestimonialPosition() {
+            const track = document.querySelector('.testimonials-track');
+            const indicators = document.querySelectorAll('.testimonial-indicator');
+            
+            if (track) {
+                const translateX = currentTestimonialPosition * -100;
+                track.style.transform = `translateX(${translateX}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentTestimonialPosition) {
+                        indicator.classList.add('active');
+                        // Apply active indicator style
+                        indicator.classList.add('w-8');
+                        indicator.classList.remove('w-2');
+                        // Update color based on current testimonial
+                        const divisionColors = ['#50A9CE', '#D84B40', '#AAB400', '#00A2E1'];
+                        indicator.style.backgroundColor = divisionColors[currentTestimonialPosition];
+                    } else {
+                        indicator.classList.remove('active');
+                        indicator.classList.remove('w-8');
+                        indicator.classList.add('w-2');
+                        indicator.style.backgroundColor = ''; // Reset to default gray
+                    }
+                });
+            }
+        }
+
+        // Initialize on window load instead of DOMContentLoaded for better reliability
+        window.addEventListener('load', function() {
+            testimonialSlideCount = document.querySelectorAll('.testimonial-slide').length || 4;
+            
+            // Make sure we have click handlers for the buttons
+            const prevBtn = document.getElementById('prevTestimonial');
+            const nextBtn = document.getElementById('nextTestimonial');
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', prevTestimonialFn);
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', nextTestimonialFn);
+            }
+            
+            updateTestimonialPosition();
+        });
+    </script>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300" id="main-header">
+        <div class="flex items-center px-8 py-5">
+            <!-- Left: Logo -->
+            <div class="flex-shrink-0 w-32 flex items-center ml-4">
+                <a href="index.html">
+                    <img 
+                        src="https://PGRWebsite.b-cdn.net/Pletzer-Logo-png.png.webp"
+                        alt="Pletzer Gruppe" 
+                        class="h-8 md:h-10 w-auto object-contain"
+                    >
+                </a>
+            </div>
+
+            <!-- Center: Navigation -->
+            <nav class="flex-1 flex justify-center">
+                <div class="hidden md:flex items-center gap-12">
+                    <!-- Die Gruppe Dropdown -->
+                    <div class="relative group">
+                        <a href="die-gruppe.html" class="nav-link hover:text-gray-300 transition-colors flex items-center group">
+                            Die Gruppe
+                        </a>
+                        <!-- Dropdown Content -->
+                        <div class="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2 px-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 dropdown-content">
+                            <div class="py-6 px-4">
+                                <div class="grid grid-cols-1 gap-6">
+                                    <a href="unsere-historie.html" class="text-gray-600 hover:text-gray-900 transition-colors">Unsere Historie</a>
+                                    <a href="wir-sind-pletzer.html" class="text-gray-600 hover:text-gray-900 transition-colors">Wir sind Pletzer</a>
+                                    <a href="die-gruppe.html" class="text-gray-600 hover:text-gray-900 transition-colors">Unser Wertehaus</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Karriere Dropdown -->
+                    <div class="relative group">
+                        <a href="tk-karriere.html" class="nav-link hover:text-gray-300 transition-colors flex items-center group">
+                            Karriere
+                        </a>
+                        <!-- Dropdown Content -->
+                        <div class="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-md py-2 px-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 dropdown-content">
+                            <div class="py-6 px-4">
+                                <div class="grid grid-cols-1 gap-6">
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Offene Stellen</a>
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Lehrstellen</a>
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Benefits</a>
+                                    <a href="tk-karriere.html" class="text-gray-600 hover:text-gray-900 transition-colors">Karriereentwicklung</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Language Selector (Replaced Unsere Teilbereiche) -->
+                    <div class="relative group">
+                        <a href="#" class="nav-link hover:text-gray-300 transition-colors flex items-center group">
+                            <img src="https://PGRWebsite.b-cdn.net/white.png" alt="Language" class="h-5 w-5 language-icon">
+                            <img src="https://PGRWebsite.b-cdn.net/black.png" alt="Language" class="h-5 w-5 hidden header-scroll-icon">
+                        </a>
+                        <!-- Dropdown Content -->
+                        <div class="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-md py-2 px-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 dropdown-content">
+                            <div class="py-4 px-2">
+                                <div class="grid grid-cols-1 gap-4">
+                                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Deutsch</a>
+                                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">English</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Right: Hamburger Menu -->
+            <div class="flex-shrink-0 w-32 flex justify-end mr-4">
+                <div class="hamburger" id="hamburger-menu">
+                    <img 
+                        src="https://PGRWebsite.b-cdn.net/Pletzer%20Gruppe%20Website%20Editor.png"
+                        alt="Pletzer Gruppe Menu"
+                        class="h-10 w-auto"
+                    >
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="menu-section">
+            <h2>Immobilien</h2>
+            <p>Retail und Gewerbe</p>
+            <div class="menu-bar green"></div>
+            <a href="tk-immo.html" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <div class="menu-section">
+            <h2>Tourismus</h2>
+            <p>Hotellerie und Gastronomie</p>
+            <div class="menu-bar red"></div>
+            <a href="tk-tourismus.html" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <div class="menu-section">
+            <h2>Industrie</h2>
+            <p>Wärme und Energie</p>
+            <div class="menu-bar blue"></div>
+            <a href="tk-industrie.html" class="absolute inset-0 z-10"></a>
+        </div>
+
+        <div class="contact-section">
+            <h2 class="text-2xl font-bold mb-6">Kontaktiere uns</h2>
+            <a href="mailto:info@pletzer-gruppe.at" class="contact-button">
+                E: info@pletzer-gruppe.at
+            </a>
+            <a href="tel:+436645293561" class="contact-button">
+                T: +436645293561
+            </a>
+            <button class="contact-button">
+                Sende uns eine Nachricht ...
+            </button>
+
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section with History Image -->
+        <div class="relative w-full">
+            <!-- Image Container -->
+            <div class="relative w-full h-[70vh]">
+                <!-- Hero image -->
+                <img 
+                    src="https://PGRWebsite.b-cdn.net/Wir%20sind%20Pletzer/Homepage_kleiner2-1.jpg" 
+                    alt="Pletzer Gruppe - Wir sind Pletzer" 
+                    class="w-full h-full object-cover"
+                >
+                
+                <!-- Dark overlay -->
+                <div class="absolute inset-0 bg-black/40"></div>
+            </div>
+            
+            <!-- Hero Content -->
+            <div class="absolute inset-0 z-10 flex items-center">
+                <div class="container mx-auto px-8">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight">
+                        Wir sind<br>
+                        Pletzer
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manfred Pletzer im Porträt Section -->
+        <section class="py-24 px-8 bg-gray-50 relative overflow-hidden">
+            <div class="decorative-circle -top-32 -right-32 opacity-5"></div>
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="order-2 md:order-1">
+                        <h2 class="section-title text-3xl md:text-4xl font-bold mb-8">Manfred Pletzer im Porträt</h2>
+                        <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                            Als Geschäftsführer der PLETZER Gruppe vereint Manfred Pletzer unternehmerischen Weitblick mit traditionellen Werten. Seine Führungsphilosophie basiert auf nachhaltigem Wachstum und langfristigen Perspektiven statt kurzfristiger Gewinne.
+                        </p>
+                        <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                            Nach seinem Wirtschaftsstudium sammelte er internationale Erfahrung, bevor er in das Familienunternehmen einstieg. Heute leitet er erfolgreich den Konzern mit seinen drei Hauptbereichen: Immobilien, Tourismus und Industrie.
+                        </p>
+                        <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                            Als Vizepräsident der Tiroler Wirtschaftskammer setzt er sich zudem für die wirtschaftliche Entwicklung der Region ein. Sein Engagement für innovative und nachhaltige Lösungen hat die PLETZER Gruppe zu einem Vorreiter in Sachen Umweltschutz und Nachhaltigkeit gemacht.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div class="h-1 w-12 bg-black"></div>
+                            <span class="text-gray-500 font-medium">Geschäftsführer & Vizepräsident der Tiroler Wirtschaftskammer</span>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2 flex justify-center">
+                        <div class="relative">
+                            <!-- Manfred Pletzer portrait image -->
+                            <div class="w-full max-w-3xl overflow-hidden rounded-lg shadow-lg">
+                                <img 
+                                    src="https://PGRWebsite.b-cdn.net/Wir%20sind%20Pletzer/14481666_XL.jpg" 
+                                    alt="Manfred Pletzer Portrait" 
+                                    class="w-full h-auto object-cover"
+                                >
+                            </div>
+                            <div class="absolute -z-10 -bottom-4 -right-4 w-full h-full border-2 border-[#AAB400] rounded-lg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quote Section -->
+                <div class="mt-16 md:mt-20 max-w-4xl mx-auto py-12 px-8 bg-gray-50 rounded-lg relative">
+                    <div class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-black opacity-30">
+                            <path d="M14.4 24H8V32.4H16.4V24H14.4ZM14.4 12C7.76 12 2.4 17.36 2.4 24V36H22.4V24H10.4C10.4 19.2 14.4 15.2 14.4 12ZM38.4 24H32V32.4H40.4V24H38.4ZM38.4 12C31.76 12 26.4 17.36 26.4 24V36H46.4V24H34.4C34.4 19.2 38.4 15.2 38.4 12Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <blockquote class="text-xl md:text-2xl text-gray-700 font-light italic text-center">
+                        "Nachhaltigkeit und langfristiges Denken sind keine Schlagworte für uns, sondern täglich gelebte Realität. Wir investieren in Projekte, die nicht nur heute, sondern auch für kommende Generationen Bestand haben."
+                    </blockquote>
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-900 font-medium">Manfred Pletzer</p>
+                        <p class="text-gray-500 text-sm">Geschäftsführer der PLETZER Gruppe</p>
+                    </div>
+                    <div class="absolute bottom-0 right-0 transform translate-x-4 translate-y-4">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-black opacity-30">
+                            <path d="M14.4 24H8V32.4H16.4V24H14.4ZM14.4 12C7.76 12 2.4 17.36 2.4 24V36H22.4V24H10.4C10.4 19.2 14.4 15.2 14.4 12ZM38.4 24H32V32.4H40.4V24H38.4ZM38.4 12C31.76 12 26.4 17.36 26.4 24V36H46.4V24H34.4C34.4 19.2 38.4 15.2 38.4 12Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Vision & Achievements -->
+                <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Vision -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-10 h-10 bg-black bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold">Vision & Werte</h3>
+                        </div>
+                        <ul class="space-y-4 text-gray-600">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Nachhaltiges Wachstum durch langfristige Strategien</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Regionale Verankerung mit globalem Denken</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Innovation als Schlüssel für zukünftigen Erfolg</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Familiäre Unternehmenskultur mit flachen Hierarchien</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Achievements -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                        <div class="flex items-center mb-6">
+                            <div class="w-10 h-10 bg-black bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold">Meilensteine & Erfolge</h3>
+                        </div>
+                        <ul class="space-y-4 text-gray-600">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Vizepräsident der Tiroler Wirtschaftskammer seit 2018</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Entwicklung des einzigartigen Wertehauses der PLETZER Gruppe</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Erfolgreiche Expansion in neue Märkte und Geschäftsfelder</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Führender Einsatz für Nachhaltigkeit in allen Unternehmensbereichen</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Das Pletzer Wertehaus Section -->
+        <section class="py-24 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <!-- Left: Wertehaus Image -->
+                    <div class="relative wertehaus-animate from-left">
+                        <!-- Wertehaus Image -->
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <img 
+                                src="https://PGRWebsite.b-cdn.net/Wir%20sind%20Pletzer/wertehaus.png" 
+                                alt="Das Pletzer Wertehaus" 
+                                class="w-full h-auto object-contain"
+                            >
+                        </div>
+                        <!-- Decorative background element -->
+                        <div class="absolute -z-10 -bottom-4 -right-4 w-full h-full border-2 border-[#AAB400] rounded-lg"></div>
+                    </div>
+
+                    <!-- Right: Values Content -->
+                    <div>
+                        <h2 class="section-title text-3xl md:text-4xl font-bold mb-8">Das Pletzer Wertehaus</h2>
+                        <p class="text-gray-600 text-lg mb-10 leading-relaxed">
+                            Unser Wertehaus ist das Fundament unserer Unternehmenskultur. Es vereint die fünf Säulen, die unser tägliches Handeln und unsere Entscheidungen prägen.
+                        </p>
+
+                        <!-- Values List -->
+                        <div class="space-y-8">
+                            <!-- Vertrauen -->
+                            <div class="group">
+                                <h3 class="text-2xl font-medium mb-2 text-gray-800">Vertrauen <span class="text-lg font-light text-gray-500">Trust</span></h3>
+                                <div class="h-1 w-16 bg-gray-800 mb-3"></div>
+                                <p class="text-gray-600 leading-relaxed">Die Basis für langfristige Beziehungen mit unseren Mitarbeitern, Kunden und Partnern.</p>
+                            </div>
+
+                            <!-- Leistung -->
+                            <div class="group">
+                                <h3 class="text-2xl font-medium mb-2 text-[#AAB400]">Leistung <span class="text-lg font-light text-gray-500">Performance</span></h3>
+                                <div class="h-1 w-16 bg-[#AAB400] mb-3"></div>
+                                <p class="text-gray-600 leading-relaxed">Unser Antrieb für Exzellenz und kontinuierliche Verbesserung in allen Bereichen.</p>
+                            </div>
+
+                            <!-- Innovation -->
+                            <div class="group">
+                                <h3 class="text-2xl font-medium mb-2 text-[#D84B40]">Innovation <span class="text-lg font-light text-gray-500">Innovation</span></h3>
+                                <div class="h-1 w-16 bg-[#D84B40] mb-3"></div>
+                                <p class="text-gray-600 leading-relaxed">Der Schlüssel zu zukunftsweisenden Lösungen und nachhaltigem Wachstum.</p>
+                            </div>
+
+                            <!-- Verantwortung -->
+                            <div class="group">
+                                <h3 class="text-2xl font-medium mb-2 text-[#50A9CE]">Verantwortung <span class="text-lg font-light text-gray-500">Responsibility</span></h3>
+                                <div class="h-1 w-16 bg-[#50A9CE] mb-3"></div>
+                                <p class="text-gray-600 leading-relaxed">Unser Engagement für Mensch, Umwelt und die Regionen, in denen wir tätig sind.</p>
+                            </div>
+
+                            <!-- Tradition -->
+                            <div class="group">
+                                <h3 class="text-2xl font-medium mb-2 text-gray-800">Tradition <span class="text-lg font-light text-gray-500">Tradition</span></h3>
+                                <div class="h-1 w-16 bg-gray-800 mb-3"></div>
+                                <p class="text-gray-600 leading-relaxed">Das Fundament unserer Geschichte und Wegweiser für die Zukunft.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stimmen aus unserer Mitarbeiterfamilie Section -->
+        <section class="py-12 px-8 bg-gray-50 overflow-hidden relative">
+            <div class="container mx-auto">
+                <h2 class="section-title text-3xl md:text-4xl font-bold mb-6 text-left">Stimmen aus unserer Mitarbeiterfamilie</h2>
+                
+                <p class="text-gray-600 text-lg mb-10 max-w-3xl">
+                    Unsere Mitarbeiter:innen sind das Herz der PLETZER Gruppe. Hier teilen sie ihre persönlichen Geschichten und Erfahrungen.
+                </p>
+                
+                <!-- Testimonials Slider Container -->
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- Testimonials Slides Container -->
+                    <div class="testimonials-slider">
+                        <div class="testimonials-track">
+                            <!-- Testimonial 1 - Industrie (iDM) -->
+                            <div class="testimonial-slide">
+                                <div class="mx-auto">
+                                    <div class="max-w-3xl mx-auto">
+                                        <!-- Division Label - Industrie -->
+                                        <div class="mb-6 inline-block px-4 py-1 bg-[#50A9CE] text-white rounded-md text-sm font-medium shadow-md mx-auto">
+                                            <span>Industrie</span>
+                                        </div>
+                                        
+                                        <!-- Employee Image & Info -->
+                                        <div class="mb-8">
+                                            <div class="w-24 h-24 rounded-md overflow-hidden border-4 border-gray-100 shadow-sm bg-gray-50 flex items-center justify-center mx-auto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                                </svg>
+                                            </div>
+                                            <div class="text-center mt-3">
+                                                <h3 class="text-lg font-semibold">Markus Haller</h3>
+                                                <p class="text-gray-500 text-sm">Entwicklungsingenieur</p>
+                                                <p class="text-gray-400 text-xs">iDM Energiesysteme</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <h3 class="text-2xl font-semibold mb-6 text-center">Innovation</h3>
+                                        
+                                        <!-- Testimonial Content with quotation mark -->
+                                        <div class="relative z-10">
+                                            <div class="absolute -top-4 -left-4">
+                                                <svg width="48" height="40" viewBox="0 0 48 40" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 28H0V20H12V28ZM12 0C5.4 0 0 5.4 0 12V16H12V12C12 7.2 16.2 3 12 0ZM36 28H24V20H36V28ZM36 0C29.4 0 24 5.4 24 12V16H36V12C36 7.2 40.2 3 36 0Z" fill="#50A9CE" fill-opacity="0.3"/>
+                                                </svg>
+                                            </div>
+                                            <p class="text-gray-700 italic text-center z-10 mx-auto max-w-2xl">
+                                                In meinen 8 Jahren bei iDM konnte ich an wegweisenden Wärmepumpentechnologien arbeiten. Die PLETZER Gruppe fördert Innovationen und gibt uns die Freiheit, nachhaltige Lösungen zu entwickeln. Die Kombination aus familiärer Atmosphäre und zukunftsorientiertem Denken macht die Arbeit hier besonders.
+                                            </p>
+                                            <div class="mt-6 flex items-center justify-center">
+                                                <div class="h-0.5 w-12 bg-[#50A9CE] opacity-50"></div>
+                                                <span class="ml-3 text-gray-500 text-sm">#Innovation #Nachhaltigkeit</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Testimonial 2 - Tourismus -->
+                            <div class="testimonial-slide">
+                                <div class="mx-auto">
+                                    <div class="max-w-3xl mx-auto">
+                                        <!-- Division Label - Tourismus -->
+                                        <div class="mb-6 inline-block px-4 py-1 bg-[#D84B40] text-white rounded-md text-sm font-medium shadow-md mx-auto">
+                                            <span>Tourismus</span>
+                                        </div>
+                                        
+                                        <!-- Employee Image & Info -->
+                                        <div class="mb-8">
+                                            <div class="w-24 h-24 rounded-md overflow-hidden border-4 border-gray-100 shadow-sm bg-gray-50 flex items-center justify-center mx-auto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                                </svg>
+                                            </div>
+                                            <div class="text-center mt-3">
+                                                <h3 class="text-lg font-semibold">Katharina Meyer</h3>
+                                                <p class="text-gray-500 text-sm">Hotelmanagerin</p>
+                                                <p class="text-gray-400 text-xs">DAS HOHE SALVE Sportresort</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <h3 class="text-2xl font-semibold mb-6 text-center">Gastfreundschaft</h3>
+                                        
+                                        <!-- Testimonial Content with quotation mark -->
+                                        <div class="relative z-10">
+                                            <div class="absolute -top-4 -left-4">
+                                                <svg width="48" height="40" viewBox="0 0 48 40" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 28H0V20H12V28ZM12 0C5.4 0 0 5.4 0 12V16H12V12C12 7.2 16.2 3 12 0ZM36 28H24V20H36V28ZM36 0C29.4 0 24 5.4 24 12V16H36V12C36 7.2 40.2 3 36 0Z" fill="#D84B40" fill-opacity="0.3"/>
+                                                </svg>
+                                            </div>
+                                            <p class="text-gray-700 italic text-center z-10 mx-auto max-w-2xl">
+                                                Was PLETZER besonders macht, ist die Verbindung von Tradition und Innovation. Als Teil des Teams im HOHE SALVE Sportresort kann ich täglich meiner Leidenschaft für Gastfreundschaft nachgehen und gleichzeitig von der Sicherheit und den Entwicklungsmöglichkeiten eines Familienunternehmens profitieren.
+                                            </p>
+                                            <div class="mt-6 flex items-center justify-center">
+                                                <div class="h-0.5 w-12 bg-[#D84B40] opacity-50"></div>
+                                                <span class="ml-3 text-gray-500 text-sm">#Gastfreundschaft #TeamSpirit</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial 3 - Immobilien -->
+                            <div class="testimonial-slide">
+                                <div class="mx-auto">
+                                    <div class="max-w-3xl mx-auto">
+                                        <!-- Division Label - Immobilien -->
+                                        <div class="mb-6 inline-block px-4 py-1 bg-[#AAB400] text-white rounded-md text-sm font-medium shadow-md mx-auto">
+                                            <span>Immobilien</span>
+                                        </div>
+                                        
+                                        <!-- Employee Image & Info -->
+                                        <div class="mb-8">
+                                            <div class="w-24 h-24 rounded-md overflow-hidden border-4 border-gray-100 shadow-sm bg-gray-50 flex items-center justify-center mx-auto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                                </svg>
+                                            </div>
+                                            <div class="text-center mt-3">
+                                                <h3 class="text-lg font-semibold">Thomas Berger</h3>
+                                                <p class="text-gray-500 text-sm">Projektmanager</p>
+                                                <p class="text-gray-400 text-xs">PLETZER Immobilien</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <h3 class="text-2xl font-semibold mb-6 text-center">Nachhaltigkeit</h3>
+                                        
+                                        <!-- Testimonial Content with quotation mark -->
+                                        <div class="relative z-10">
+                                            <div class="absolute -top-4 -left-4">
+                                                <svg width="48" height="40" viewBox="0 0 48 40" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 28H0V20H12V28ZM12 0C5.4 0 0 5.4 0 12V16H12V12C12 7.2 16.2 3 12 0ZM36 28H24V20H36V28ZM36 0C29.4 0 24 5.4 24 12V16H36V12C36 7.2 40.2 3 36 0Z" fill="#AAB400" fill-opacity="0.3"/>
+                                                </svg>
+                                            </div>
+                                            <p class="text-gray-700 italic text-center z-10 mx-auto max-w-2xl">
+                                                Nachhaltigkeit ist bei uns nicht nur ein Schlagwort. In meinen fünf Jahren bei PLETZER Immobilien durfte ich bereits mehrere innovative Projekte betreuen, bei denen wir ökologische Bauweise und soziale Verantwortung in den Mittelpunkt stellen. Diese Werte zu leben und weiterzuentwickeln motiviert mich jeden Tag.
+                                            </p>
+                                            <div class="mt-6 flex items-center justify-center">
+                                                <div class="h-0.5 w-12 bg-[#AAB400] opacity-50"></div>
+                                                <span class="ml-3 text-gray-500 text-sm">#Nachhaltigkeit #Zukunftsbau</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial 4 - Lehrlinge/Ausbildung -->
+                            <div class="testimonial-slide">
+                                <div class="mx-auto">
+                                    <div class="max-w-3xl mx-auto">
+                                        <!-- Division Label - Ausbildung -->
+                                        <div class="mb-6 inline-block px-4 py-1 bg-[#00A2E1] text-white rounded-md text-sm font-medium shadow-md mx-auto">
+                                            <span>Ausbildung</span>
+                                        </div>
+                                        
+                                        <!-- Employee Image & Info -->
+                                        <div class="mb-8">
+                                            <div class="w-24 h-24 rounded-md overflow-hidden border-4 border-gray-100 shadow-sm bg-gray-50 flex items-center justify-center mx-auto">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                                </svg>
+                                            </div>
+                                            <div class="text-center mt-3">
+                                                <h3 class="text-lg font-semibold">Lisa Hofer</h3>
+                                                <p class="text-gray-500 text-sm">Lehrling im 2. Jahr</p>
+                                                <p class="text-gray-400 text-xs">Hotelfachfrau</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <h3 class="text-2xl font-semibold mb-6 text-center">Ausbildung</h3>
+                                        
+                                        <!-- Testimonial Content with quotation mark -->
+                                        <div class="relative z-10">
+                                            <div class="absolute -top-4 -left-4">
+                                                <svg width="48" height="40" viewBox="0 0 48 40" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M12 28H0V20H12V28ZM12 0C5.4 0 0 5.4 0 12V16H12V12C12 7.2 16.2 3 12 0ZM36 28H24V20H36V28ZM36 0C29.4 0 24 5.4 24 12V16H36V12C36 7.2 40.2 3 36 0Z" fill="#00A2E1" fill-opacity="0.3"/>
+                                                </svg>
+                                            </div>
+                                            <p class="text-gray-700 italic text-center z-10 mx-auto max-w-2xl">
+                                                Als Lehrling bei der PLETZER Gruppe bekomme ich die Chance, in verschiedene Bereiche hineinzuschnuppern. Was mich besonders beeindruckt, ist das persönliche Mentoring und die echte Wertschätzung, die wir Lehrlinge erfahren. Hier werde ich nicht nur fachlich ausgebildet, sondern kann mich auch persönlich weiterentwickeln.
+                                            </p>
+                                            <div class="mt-6 flex items-center justify-center">
+                                                <div class="h-0.5 w-12 bg-[#00A2E1] opacity-50"></div>
+                                                <span class="ml-3 text-gray-500 text-sm">#Ausbildung #Zukunftschance</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <div class="absolute top-1/2 -left-4 -right-4 flex justify-between items-center transform -translate-y-1/2 px-4 z-10">
+                        <button id="prevTestimonial" class="bg-white rounded-full p-4 shadow-md hover:bg-gray-50 transition-all transform hover:scale-110 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <button id="nextTestimonial" class="bg-white rounded-full p-4 shadow-md hover:bg-gray-50 transition-all transform hover:scale-110 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Slider indicators -->
+                    <div class="flex justify-center items-center mt-8 space-x-2">
+                        <div class="h-2 w-2 rounded-full bg-gray-300 cursor-pointer testimonial-indicator active"></div>
+                        <div class="h-2 w-2 rounded-full bg-gray-300 cursor-pointer testimonial-indicator"></div>
+                        <div class="h-2 w-2 rounded-full bg-gray-300 cursor-pointer testimonial-indicator"></div>
+                        <div class="h-2 w-2 rounded-full bg-gray-300 cursor-pointer testimonial-indicator"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Button -->
+        <div class="text-center mt-16 fade-up">
+            <a href="tk-karriere.html" class="inline-block px-8 py-4 bg-[#AAB400] text-white rounded-md shadow-md hover:bg-opacity-90 transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                Teil unserer Familie werden
+            </a>
+        </div>
+
+        <!-- Verwandte Inhalte Section -->
+        <section class="py-20 px-8 relative overflow-hidden bg-white">
+            <div class="container mx-auto relative">
+                <h2 class="section-title text-4xl font-medium mb-12 text-center">Verwandte Inhalte</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-fade-up">
+                    <!-- Die Gruppe -->
+                    <div class="flex flex-col group bg-white rounded-md overflow-hidden shadow-md transition-all hover:shadow-lg">
+                        <div class="relative overflow-hidden">
+                            <img 
+                                src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" 
+                                alt="Die Gruppe" 
+                                class="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
+                            >
+                            <div class="h-1 w-full bg-[#AAB400]"></div>
+                        </div>
+                        <div class="p-6">
+                            <a href="die-gruppe.html" class="group">
+                                <h3 class="text-2xl font-bold mb-3 group-hover:text-[#AAB400] transition-colors">Die Gruppe</h3>
+                                <p class="text-gray-600 mb-6">Erfahren Sie mehr über die Pletzer Gruppe und unsere Werte.</p>
+                                <div class="inline-flex items-center text-[#AAB400] hover:text-[#8a9000] transition-colors">
+                                    Mehr erfahren
+                                    <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Unsere Historie -->
+                    <div class="flex flex-col group bg-white rounded-md overflow-hidden shadow-md transition-all hover:shadow-lg">
+                        <div class="relative overflow-hidden">
+                            <img 
+                                src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" 
+                                alt="Unsere Historie" 
+                                class="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
+                            >
+                            <div class="h-1 w-full bg-[#D84B40]"></div>
+                        </div>
+                        <div class="p-6">
+                            <a href="unsere-historie.html" class="group">
+                                <h3 class="text-2xl font-bold mb-3 group-hover:text-[#D84B40] transition-colors">Unsere Historie</h3>
+                                <p class="text-gray-600 mb-6">Entdecken Sie die Geschichte der Pletzer Gruppe von 1964 bis heute.</p>
+                                <div class="inline-flex items-center text-[#D84B40] hover:text-[#b83e35] transition-colors">
+                                    Mehr erfahren
+                                    <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Manfred Pletzer im Porträt -->
+                    <div class="flex flex-col group bg-white rounded-md overflow-hidden shadow-md transition-all hover:shadow-lg">
+                        <div class="relative overflow-hidden">
+                            <img 
+                                src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" 
+                                alt="Manfred Pletzer im Porträt" 
+                                class="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
+                            >
+                            <div class="h-1 w-full bg-[#50A9CE]"></div>
+                        </div>
+                        <div class="p-6">
+                            <a href="#" class="group">
+                                <h3 class="text-2xl font-bold mb-3 group-hover:text-[#50A9CE] transition-colors">Manfred Pletzer im Porträt</h3>
+                                <p class="text-gray-600 mb-6">Ein Gespräch mit unserem Geschäftsführer über Vision und Zukunft.</p>
+                                <div class="inline-flex items-center text-[#50A9CE] hover:text-[#4187a4] transition-colors">
+                                    Mehr erfahren
+                                    <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-900 py-16">
+        <div class="container mx-auto px-8">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Die Gruppe -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Die Gruppe</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Über uns</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Geschichte</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Nachhaltigkeit</a></li>
+                    </ul>
+                </div>
+
+                <!-- Unsere Teilkonzerne -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Unsere Teilkonzerne</h3>
+                    <ul class="space-y-4">
+                        <li><a href="tk-immo.html" class="text-gray-600 hover:text-gray-900 transition-colors">Immobilien</a></li>
+                        <li><a href="tk-tourismus.html" class="text-gray-600 hover:text-gray-900 transition-colors">Tourismus</a></li>
+                        <li><a href="tk-industrie.html" class="text-gray-600 hover:text-gray-900 transition-colors">Industrie</a></li>
+                    </ul>
+                </div>
+
+                <!-- Karriere -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Karriere</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Bewerbe dich jetzt</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Unsere Lehrangebote</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Freie Stellen</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kontaktiere uns -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Kontaktiere uns!</h3>
+                    <div class="space-y-6">
+                        <!-- Social Media Icons -->
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <!-- Contact Info -->
+                        <div class="space-y-2">
+                            <p class="text-gray-600">E: <a href="mailto:info@pletzer-gruppe.at" class="hover:text-gray-900 transition-colors">info@pletzer-gruppe.at</a></p>
+                            <p class="text-gray-600">T: <a href="tel:+436645293561" class="hover:text-gray-900 transition-colors">+436645293561</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider Lines -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+                <div class="h-0.5 bg-[#AAB400]"></div>
+                <div class="h-0.5 bg-[#D84B40]"></div>
+                <div class="h-0.5 bg-[#50A9CE]"></div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
+                <!-- Logo -->
+                <div class="flex-shrink-0 w-32">
+                    <img 
+                        src="https://PGRWebsite.b-cdn.net/Pletzer-Logo-png.png.webp"
+                        alt="Pletzer Gruppe" 
+                        class="h-8 md:h-10 w-auto object-contain"
+                    >
+                </div>
+                
+                <!-- Links -->
+                <div class="flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Impressum</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">AGBs</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Datenschutz</a>
+                </div>
+
+                <!-- Company Address -->
+                <div class="text-right text-gray-600">
+                    <p class="font-bold">MP Management GmbH</p>
+                    <p>Brixentalerstraße 3, 6361 Hopfgarten (AT)</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Handler Script -->
+    <script>
+        const header = document.getElementById('main-header');
+        const hamburger = document.getElementById('hamburger-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let lastScroll = 0;
+        
+        // Add selectors for the language icons
+        const languageIcons = document.querySelectorAll('.language-icon');
+        const headerScrollIcons = document.querySelectorAll('.header-scroll-icon');
+
+        // Function to toggle language icons based on header state
+        function toggleLanguageIcons(isScrolled) {
+            languageIcons.forEach(icon => {
+                icon.classList.toggle('hidden', isScrolled);
+            });
+            headerScrollIcons.forEach(icon => {
+                icon.classList.toggle('hidden', !isScrolled);
+            });
+        }
+
+        // Initial state check
+        if (window.pageYOffset > 50) {
+            header.classList.add('header-scroll');
+            toggleLanguageIcons(true);
+        }
+
+        // Scroll handler
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const isScrolled = currentScroll > 50 || mobileMenu.classList.contains('active');
+            
+            if (isScrolled) {
+                header.classList.add('header-scroll');
+            } else {
+                header.classList.remove('header-scroll');
+            }
+            
+            toggleLanguageIcons(isScrolled);
+            lastScroll = currentScroll;
+        });
+
+        // Hover handler
+        header.addEventListener('mouseenter', () => {
+            header.classList.add('header-scroll');
+            toggleLanguageIcons(true);
+        });
+
+        header.addEventListener('mouseleave', () => {
+            if (window.pageYOffset <= 50 && !mobileMenu.classList.contains('active')) {
+                header.classList.remove('header-scroll');
+                toggleLanguageIcons(false);
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const fadeUpObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe section titles
+        document.querySelectorAll('.section-title').forEach(title => {
+            fadeUpObserver.observe(title);
+            title.classList.add('fade-up');
+        });
+
+        // Observe staggered elements
+        document.querySelectorAll('.stagger-fade-up > *').forEach((element, index) => {
+            element.style.transitionDelay = `${index * 100}ms`;
+            fadeUpObserver.observe(element);
+        });
+
+        // Observe fade-up elements
+        document.querySelectorAll('.fade-up').forEach(element => {
+            fadeUpObserver.observe(element);
+        });
+
+        // Function to animate numbers
+        function animateNumber(element, target) {
+            const duration = 2000; // 2 seconds
+            const steps = 60;
+            const stepDuration = duration / steps;
+            let current = 0;
+            
+            const increment = target / steps;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = Math.round(target);
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.round(current);
+                }
+            }, stepDuration);
+        }
+
+        // KPI Observer
+        const kpiObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate numbers
+                    entry.target.querySelectorAll('.kpi-number').forEach(number => {
+                        number.classList.add('visible');
+                        const target = parseInt(number.dataset.target);
+                        animateNumber(number, target);
+                    });
+
+                    // Animate labels
+                    entry.target.querySelectorAll('.kpi-label').forEach(label => {
+                        label.classList.add('visible');
+                    });
+
+                    // Animate dividers
+                    entry.target.querySelectorAll('.kpi-divider').forEach(divider => {
+                        divider.classList.add('visible');
+                    });
+                    entry.target.querySelectorAll('.vertical-divider-1, .vertical-divider-2, .vertical-divider-3').forEach(divider => {
+                        divider.classList.add('visible');
+                    });
+
+                    kpiObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe KPI section
+        const kpiSection = document.querySelector('section.bg-\\[\\#70787D\\]');
+        if (kpiSection) {
+            kpiObserver.observe(kpiSection);
+        }
+
+        // Testimonials Animation
+        const testimonialObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate the testimonial cards with staggered delay
+                    const testimonials = Array.from(entry.target.querySelectorAll('.testimonial-card'));
+                    testimonials.forEach(card => {
+                        const delay = parseInt(card.dataset.delay) || 0;
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                            
+                            // Add special spotlight effect on hover
+                            card.addEventListener('mouseenter', () => {
+                                const spotlight = document.createElement('div');
+                                spotlight.classList.add('testimonial-spotlight');
+                                spotlight.style.cssText = `
+                                    position: absolute;
+                                    inset: 0;
+                                    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+                                    opacity: 0;
+                                    z-index: 1;
+                                    pointer-events: none;
+                                    transition: opacity 0.4s ease;
+                                `;
+                                card.querySelector('.bg-white').style.position = 'relative';
+                                card.querySelector('.bg-white').appendChild(spotlight);
+                                
+                                setTimeout(() => {
+                                    spotlight.style.opacity = '0.3';
+                                }, 10);
+                            });
+                            
+                            card.addEventListener('mouseleave', () => {
+                                const spotlight = card.querySelector('.testimonial-spotlight');
+                                if (spotlight) {
+                                    spotlight.style.opacity = '0';
+                                    setTimeout(() => {
+                                        spotlight.remove();
+                                    }, 400);
+                                }
+                            });
+                            
+                            // Add mouse-follow effect for quote icon
+                            const quoteIcon = card.querySelector('.testimonial-quote-icon');
+                            if (quoteIcon) {
+                                card.addEventListener('mousemove', (e) => {
+                                    const rect = card.getBoundingClientRect();
+                                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                                    
+                                    quoteIcon.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+                                });
+                            }
+                        }, delay);
+                    });
+                    
+                    testimonialObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        // Observe testimonials section
+        const testimonialsContainer = document.querySelector('.testimonials-container');
+        if (testimonialsContainer) {
+            testimonialObserver.observe(testimonialsContainer);
+        }
+
+        // Hamburger Menu Animation
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            header.classList.add('header-scroll'); // Add white background when menu opens
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            
+            // Remove white background only if we're at the top and menu is closed
+            if (!mobileMenu.classList.contains('active') && window.pageYOffset <= 50) {
+                header.classList.remove('header-scroll');
+            }
+        });
+
+        // Timeline Animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Timeline observer
+            const timelineObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    document.getElementById('timeline').classList.add('visible');
+                    timelineObserver.unobserve(entries[0].target);
+                    
+                    // Animate timeline items with staggered delay
+                    const timelineItems = document.querySelectorAll('.timeline-container');
+                    timelineItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('visible');
+                            
+                            // Add special effects for milestone markers
+                            const marker = item.querySelector('.timeline-container::after');
+                            if (marker) {
+                                marker.style.transition = 'all 0.5s cubic-bezier(0.19, 1, 0.22, 1)';
+                            }
+                            
+                            // Add content reveal animation
+                            const content = item.querySelector('.timeline-content');
+                            if (content) {
+                                content.style.transition = 'all 0.6s cubic-bezier(0.19, 1, 0.22, 1)';
+                                setTimeout(() => {
+                                    content.style.borderLeft = '3px solid rgba(170, 180, 0, 0.4)';
+                                }, 300);
+                            }
+                        }, 300 + (index * 200)); // Shortened stagger for better rhythm
+                    });
+                }
+            }, { 
+                threshold: 0.15,
+                rootMargin: '0px 0px -10% 0px'
+            });
+
+            const timeline = document.getElementById('timeline');
+            if (timeline) {
+                timelineObserver.observe(timeline);
+                
+                // Add scroll-linked parallax effect
+                window.addEventListener('scroll', () => {
+                    const scrollPosition = window.scrollY;
+                    const timelineSection = document.querySelector('.timeline');
+                    const timelineRect = timelineSection.getBoundingClientRect();
+                    
+                    if (timelineRect.top < window.innerHeight && timelineRect.bottom > 0) {
+                        const timelineItems = document.querySelectorAll('.timeline-container');
+                        timelineItems.forEach((item, index) => {
+                            const speed = index % 2 === 0 ? 0.05 : -0.05;
+                            const yOffset = (scrollPosition - timelineRect.top) * speed;
+                            if (item.classList.contains('visible')) {
+                                item.style.transform = `translateY(${yOffset}px)`;
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // KPI Animation
+            const kpiSection = document.querySelector('.bg-\\[\\#70787D\\]');
+            const numbers = document.querySelectorAll('.kpi-number');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCountAnimation();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if (kpiSection) {
+                observer.observe(kpiSection);
+            }
+
+            function startCountAnimation() {
+                numbers.forEach(number => {
+                    const target = parseInt(number.dataset.target);
+                    let current = 0;
+                    const duration = 2000;
+                    const steps = 60;
+                    const increment = target / steps;
+                    const stepTime = duration / steps;
+
+                    // Store original number
+                    const finalNumber = number.textContent;
+                    // Set initial state
+                    number.textContent = '0';
+
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            number.textContent = finalNumber;
+                            clearInterval(timer);
+                        } else {
+                            number.textContent = Math.round(current);
+                        }
+                    }, stepTime);
+                });
+            }
+        });
+
+        // Get both button elements
+        const toggleCollapsed = document.getElementById('toggle-more-collapsed');
+        const toggleExpanded = document.getElementById('toggle-more-expanded');
+        
+        // Get container elements
+        const moreText = document.getElementById('more-text');
+        const textGradient = document.getElementById('text-gradient');
+        const buttonCollapsed = document.getElementById('button-collapsed');
+        const buttonExpanded = document.getElementById('button-expanded');
+        
+        // Function to expand content
+        function expandContent() {
+            // Show more text with animation
+            moreText.classList.remove('hidden');
+            setTimeout(() => {
+                moreText.classList.add('opacity-100');
+                moreText.classList.remove('-translate-y-4');
+                buttonExpanded.classList.add('opacity-100');
+            }, 10);
+            
+            // Hide gradient and collapsed button
+            textGradient.style.opacity = '0';
+            buttonCollapsed.style.opacity = '0';
+            buttonCollapsed.style.pointerEvents = 'none';
+        }
+        
+        // Function to collapse content
+        function collapseContent() {
+            // Hide more text with animation
+            moreText.classList.remove('opacity-100');
+            moreText.classList.add('-translate-y-4');
+            buttonExpanded.classList.remove('opacity-100');
+            
+            setTimeout(() => {
+                moreText.classList.add('hidden');
+            }, 500);
+            
+            // Show gradient and collapsed button
+            textGradient.style.opacity = '1';
+            buttonCollapsed.style.opacity = '1';
+            buttonCollapsed.style.pointerEvents = 'auto';
+        }
+        
+        // Event listeners for both buttons
+        toggleCollapsed.addEventListener('click', expandContent);
+        toggleExpanded.addEventListener('click', collapseContent);
+
+        // Values Slider Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.values-track');
+            const slides = document.querySelectorAll('.value-slide');
+            const indicators = document.querySelectorAll('.value-indicator');
+            const prevButton = document.getElementById('prevValue');
+            const nextButton = document.getElementById('nextValue');
+            let currentSlide = 0;
+
+            function updateSlider() {
+                const translateX = currentSlide * -100;
+                track.style.transform = `translateX(${translateX}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentSlide) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateSlider();
+            }
+
+            // Event Listeners
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+
+            // Indicator clicks
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlider();
+                });
+            });
+
+            // Initialize slider
+            updateSlider();
+            
+            // Testimonials Slider Functionality
+            const testimonialTrack = document.querySelector('.testimonials-track');
+            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+            const testimonialIndicators = document.querySelectorAll('.testimonial-indicator');
+            const prevTestimonialButton = document.getElementById('prevTestimonial');
+            const nextTestimonialButton = document.getElementById('nextTestimonial');
+            
+            // Only proceed if the elements exist
+            if (testimonialTrack && testimonialSlides.length && prevTestimonialButton && nextTestimonialButton) {
+                let currentTestimonial = 0;
+                console.log("Testimonial slider elements found. Initializing...");
+
+                function updateTestimonialSlider() {
+                    const translateX = currentTestimonial * -100;
+                    testimonialTrack.style.transform = `translateX(${translateX}%)`;
+                    console.log("Updating slider to position:", currentTestimonial);
+                    
+                    // Update indicators
+                    testimonialIndicators.forEach((indicator, index) => {
+                        if (index === currentTestimonial) {
+                            indicator.classList.add('active');
+                        } else {
+                            indicator.classList.remove('active');
+                        }
+                    });
+                }
+
+                function nextTestimonial() {
+                    currentTestimonial = (currentTestimonial + 1) % testimonialSlides.length;
+                    console.log("Next testimonial:", currentTestimonial);
+                    updateTestimonialSlider();
+                }
+
+                function prevTestimonial() {
+                    currentTestimonial = (currentTestimonial - 1 + testimonialSlides.length) % testimonialSlides.length;
+                    console.log("Previous testimonial:", currentTestimonial);
+                    updateTestimonialSlider();
+                }
+
+                // Auto slide every 8 seconds
+                let testimonialInterval = setInterval(nextTestimonial, 8000);
+
+                // Reset interval on manual navigation
+                function resetInterval() {
+                    clearInterval(testimonialInterval);
+                    testimonialInterval = setInterval(nextTestimonial, 8000);
+                }
+
+                // Direct click event listeners without arrow functions
+                nextTestimonialButton.onclick = function() {
+                    nextTestimonial();
+                    resetInterval();
+                };
+                
+                prevTestimonialButton.onclick = function() {
+                    prevTestimonial();
+                    resetInterval();
+                };
+
+                // Add touch swipe support for mobile
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                testimonialTrack.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, {passive: true});
+                
+                testimonialTrack.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    if (touchEndX < touchStartX - 50) {
+                        // Swipe left, go to next slide
+                        nextTestimonial();
+                        resetInterval();
+                    } else if (touchEndX > touchStartX + 50) {
+                        // Swipe right, go to previous slide
+                        prevTestimonial();
+                        resetInterval();
+                    }
+                }, {passive: true});
+
+                // Indicator clicks
+                testimonialIndicators.forEach(function(indicator, index) {
+                    indicator.onclick = function() {
+                        currentTestimonial = index;
+                        updateTestimonialSlider();
+                        resetInterval();
+                    };
+                });
+
+                // Initialize slider
+                console.log("Initializing testimonial slider");
+                updateTestimonialSlider();
+            } else {
+                console.warn("Some testimonial slider elements are missing");
+            }
+        });
+
+        // Updated Logo Carousel Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // ... existing code ...
+        });
+    </script>
+</body>
+</html> 
