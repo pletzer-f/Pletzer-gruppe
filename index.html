@@ -324,6 +324,60 @@
         .group-hover\:translate-y-0 {
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+
+        /* Hamburger Menu Updated Styles */
+        .header-scroll .hamburger-line:nth-child(1) {
+            background-color: #AAB400;
+        }
+        
+        .header-scroll .hamburger-line:nth-child(2) {
+            background-color: #D84B40;
+        }
+        
+        .header-scroll .hamburger-line:nth-child(3) {
+            background-color: #50A9CE;
+        }
+        
+        /* E-shaped logo transformation on hover */
+        .hamburger:hover .hamburger-line:nth-child(1) {
+            width: 80%;
+        }
+        
+        .hamburger:hover .hamburger-line:nth-child(2) {
+            width: 60%;
+        }
+        
+        .hamburger:hover .hamburger-line:nth-child(3) {
+            width: 100%;
+        }
+        
+        /* X animation for active state */
+        .hamburger.active .hamburger-line:nth-child(1) {
+            width: 100% !important;
+            transform: rotate(45deg);
+            top: calc(50% - 1px);
+            left: 0;
+            transition-delay: 0ms;
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(3) {
+            width: 100% !important;
+            transform: rotate(-45deg);
+            top: calc(50% - 1px);
+            left: 0;
+            transition-delay: 0ms;
+        }
+        
+        /* Reset hover effects when active */
+        .hamburger.active:hover .hamburger-line:nth-child(1),
+        .hamburger.active:hover .hamburger-line:nth-child(3) {
+            width: 100% !important;
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -400,12 +454,18 @@
 
             <!-- Right: Hamburger Menu -->
             <div class="flex-shrink-0 w-32 flex justify-end mr-4">
-                <div class="hamburger" id="hamburger-menu">
-                    <img 
-                        src="https://PGRWebsite.b-cdn.net/Pletzer%20Gruppe%20Website%20Editor.png"
-                        alt="Pletzer Gruppe Menu"
-                        class="h-10 w-auto"
-                    >
+                <div class="hamburger flex items-center justify-center relative cursor-pointer mt-1" id="hamburger-menu">
+                    <div class="menu-icon-container relative w-10 h-10 flex items-center justify-center">
+                        <!-- Menu Lines Container -->
+                        <div class="menu-lines relative w-8 h-6">
+                            <!-- Top Line (Green - Medium) -->
+                            <span class="absolute top-0 left-0 w-full h-0.5 bg-[#AAB400] transition-all duration-300 ease-in-out hamburger-line"></span>
+                            <!-- Middle Line (Red - Shortest) -->
+                            <span class="absolute top-1/2 -translate-y-1/2 left-0 w-full h-0.5 bg-[#D84B40] transition-all duration-300 ease-in-out hamburger-line"></span>
+                            <!-- Bottom Line (Blue - Longest) -->
+                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#50A9CE] transition-all duration-300 ease-in-out hamburger-line"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1082,6 +1142,7 @@
 
     <!-- Scroll Handler Script -->
     <script>
+        // Header and Hamburger Menu Functionality
         const header = document.getElementById('main-header');
         const hamburger = document.getElementById('hamburger-menu');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -1090,6 +1151,8 @@
         // Add selectors for the language icons
         const languageIcons = document.querySelectorAll('.language-icon');
         const headerScrollIcons = document.querySelectorAll('.header-scroll-icon');
+        const hamburgerLines = document.querySelectorAll('.hamburger-line');
+        const menuLabel = document.querySelector('.menu-label');
 
         // Function to toggle language icons based on header state
         function toggleLanguageIcons(isScrolled) {
@@ -1099,6 +1162,11 @@
             headerScrollIcons.forEach(icon => {
                 icon.classList.toggle('hidden', !isScrolled);
             });
+            
+            // Update the menu label color when scrolled
+            if (menuLabel) {
+                menuLabel.style.color = isScrolled ? 'black' : 'white';
+            }
         }
 
         // Initial state check
@@ -1132,6 +1200,19 @@
             if (window.pageYOffset <= 50 && !mobileMenu.classList.contains('active')) {
                 header.classList.remove('header-scroll');
                 toggleLanguageIcons(false);
+            }
+        });
+
+        // Hamburger Menu Animation
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            header.classList.add('header-scroll'); // Add white background when menu opens
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            
+            // Remove white background only if we're at the top and menu is closed
+            if (!mobileMenu.classList.contains('active') && window.pageYOffset <= 50) {
+                header.classList.remove('header-scroll');
             }
         });
 
@@ -1215,19 +1296,6 @@
         if (kpiSection) {
             kpiObserver.observe(kpiSection);
         }
-
-        // Hamburger Menu Animation
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            header.classList.add('header-scroll'); // Add white background when menu opens
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-            
-            // Remove white background only if we're at the top and menu is closed
-            if (!mobileMenu.classList.contains('active') && window.pageYOffset <= 50) {
-                header.classList.remove('header-scroll');
-            }
-        });
 
         // Add JavaScript for the interactive map
         // Standorte Map Tab Switching and Location Display

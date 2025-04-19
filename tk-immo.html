@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Immobilien - Pletzer Gruppe</title>
+    <link rel="icon" href="https://PGRWebsite.b-cdn.net/FAVICON%20NEW.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500&display=swap" rel="stylesheet">
     <?php include 'partials/header-styles.html'; ?>
@@ -425,6 +426,61 @@
         .group-hover\:translate-y-0 {
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+
+        /* Add hamburger menu line styles after the mobile menu styles section */
+        /* Hamburger Menu Updated Styles */
+        .header-scroll .hamburger-line:nth-child(1) {
+            background-color: #AAB400;
+        }
+        
+        .header-scroll .hamburger-line:nth-child(2) {
+            background-color: #D84B40;
+        }
+        
+        .header-scroll .hamburger-line:nth-child(3) {
+            background-color: #50A9CE;
+        }
+        
+        /* E-shaped logo transformation on hover */
+        .hamburger:hover .hamburger-line:nth-child(1) {
+            width: 80%;
+        }
+        
+        .hamburger:hover .hamburger-line:nth-child(2) {
+            width: 60%;
+        }
+        
+        .hamburger:hover .hamburger-line:nth-child(3) {
+            width: 100%;
+        }
+        
+        /* X animation for active state */
+        .hamburger.active .hamburger-line:nth-child(1) {
+            width: 100% !important;
+            transform: rotate(45deg);
+            top: calc(50% - 1px);
+            left: 0;
+            transition-delay: 0ms;
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(3) {
+            width: 100% !important;
+            transform: rotate(-45deg);
+            top: calc(50% - 1px);
+            left: 0;
+            transition-delay: 0ms;
+        }
+        
+        /* Reset hover effects when active */
+        .hamburger.active:hover .hamburger-line:nth-child(1),
+        .hamburger.active:hover .hamburger-line:nth-child(3) {
+            width: 100% !important;
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -501,12 +557,12 @@
 
             <!-- Right: Hamburger Menu -->
             <div class="flex-shrink-0 w-32 flex justify-end mr-4">
-                <div class="hamburger" id="hamburger-menu">
-                    <img 
-                        src="https://PGRWebsite.b-cdn.net/Pletzer%20Gruppe%20Website%20Editor.png"
-                        alt="Pletzer Gruppe Menu"
-                        class="h-10 w-auto"
-                    >
+                <div class="hamburger flex items-center justify-center relative cursor-pointer mt-1" id="hamburger-menu">
+                    <div class="menu-lines relative w-8 h-6">
+                        <span class="absolute top-0 left-0 w-full h-0.5 bg-[#AAB400] transition-all duration-300 ease-in-out hamburger-line"></span>
+                        <span class="absolute top-1/2 -translate-y-1/2 left-0 w-full h-0.5 bg-[#D84B40] transition-all duration-300 ease-in-out hamburger-line"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[#50A9CE] transition-all duration-300 ease-in-out hamburger-line"></span>
+                    </div>
                 </div>
             </div>
         </div>
