@@ -472,6 +472,81 @@
         .hamburger.active:hover .hamburger-line:nth-child(3) {
             width: 100% !important;
         }
+
+        /* Base styles for logo carousel */
+        .logo-carousel {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            animation: carousel 30s linear infinite;
+        }
+        
+        .logo-item {
+            flex: 0 0 auto;
+            padding: 0 30px;
+        }
+        
+        .logo-placeholder {
+            border: 1px dashed #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+        }
+        
+        @keyframes carousel {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Company Slider Styles */
+        .company-slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .company-sections-slider {
+            position: relative;
+            width: 100%;
+        }
+        
+        .company-slide {
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .company-slider-arrow {
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        
+        .company-slider-arrow:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .company-slider-dot {
+            transition: all 0.3s ease;
+        }
+        
+        .company-slider-dot.active {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -487,7 +562,7 @@
                         class="h-8 md:h-10 w-auto object-contain"
                     >
                 </a>
-            </div>
+                </div>
 
             <!-- Center: Navigation -->
             <nav class="flex-1 flex justify-center">
@@ -579,7 +654,7 @@
             <p>Hotellerie und Gastronomie</p>
             <div class="menu-bar red"></div>
             <a href="tk-tourismus.html" class="absolute inset-0 z-10"></a>
-        </div>
+    </div>
 
         <div class="menu-section">
             <h2>Industrie</h2>
@@ -598,7 +673,7 @@
             </a>
             <button class="contact-button">
                 Sende uns eine Nachricht ...
-            </button>
+                </button>
 
             <div class="social-icons">
                 <a href="#" aria-label="LinkedIn">
@@ -632,10 +707,10 @@
         <!-- Content Section -->
         <div class="container mx-auto px-8 py-12">
             <div class="max-w-4xl hero-content">
-                <h1 class="text-5xl font-medium text-[#666] mb-8">Industrie</h1>
+                <h1 class="text-5xl font-medium text-[#666] mb-8">Unsere Industrieunternehmen</h1>
                 <p class="text-xl text-[#666] font-light leading-relaxed max-w-2xl">
-                    Wir entwickeln innovative Technologien für die Industrie.<br>
-                    Getragen von Effizienz und nachhaltiger Entwicklung.
+                    Wir entwickeln intelligente Lösungen mit nachhaltiger Wirkung<br>
+                    – getragen von Innovation und Leistung
                 </p>
             </div>
         </div>
@@ -659,309 +734,469 @@
         </div>
     </div>
 
-    <!-- Wärmepumpen Section -->
-    <section class="py-20" id="waermepumpen-section">
-        <div class="container mx-auto">
-            <div class="w-full mb-16 scale-up">
-                <img 
-                    src="https://PGRWebsite.b-cdn.net/Industrie/Produktbild_iDM-Waermepumpen-1024x555.jpg.webp" 
-                    alt="iDM Energiesysteme GmbH - Innovative Wärmepumpen Technologie" 
-                    class="w-full h-[400px] object-cover"
-                >
-            </div>
-            <div class="px-8">
-                <div class="max-w-4xl fade-up">
-                    <h2 class="section-title text-5xl font-medium text-[#666] mb-8">iDM Energiesysteme GmbH</h2>
-                    <p class="text-[#666] text-lg font-light leading-relaxed mb-8">Die iDM Energiesysteme GmbH ist ein führender Hersteller von Wärmepumpen und Heizsystemen. Mit über 45 Jahren Erfahrung entwickelt das Unternehmen innovative Lösungen für nachhaltige Gebäudetechnik. Die patentierten NAVIGATOR-Steuerungen und myiDM-Fernbedienungen ermöglichen eine intelligente und effiziente Systemsteuerung.</p>
-                    <a href="https://www.idm-energie.at" target="_blank" class="text-[#666] font-medium inline-block relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#50A9CE] slide-in-right">
-                        Zur Website
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Logo Carousel for Industry Partners -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-8">
-            <h2 class="text-[#666] text-4xl font-medium mb-16 text-center">Unsere Produkte</h2>
-            <div class="logo-carousel">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <!-- iDM Product Logos -->
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.25.18.png" alt="iDM Produkt 1" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.25.42.png" alt="iDM Produkt 2" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.25.42.png" alt="iDM Produkt 3" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.25.34.png" alt="iDM Produkt 4" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.25.28.png" alt="iDM Produkt 5" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.25.18.png" alt="iDM Produkt 1" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.25.42.png" alt="iDM Produkt 2" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.25.42.png" alt="iDM Produkt 3" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.25.34.png" alt="iDM Produkt 4" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.25.28.png" alt="iDM Produkt 5" class="w-[200px] h-[120px] object-contain">
+    <!-- Company Slider Container -->
+    <div class="company-slider-container relative overflow-hidden">
+        <!-- Company Sections Slider -->
+        <div class="company-sections-slider">
+            <!-- Wärmepumpen Section -->
+            <section class="company-slide py-20 bg-gradient-to-b from-gray-50 to-white" id="waermepumpen-section">
+                <div class="container mx-auto">
+                    <!-- Header with decorative elements - Aligned left like APL section -->
+                    <div class="px-8 mb-16">
+                        <div class="relative max-w-4xl fade-up">
+                            <div class="absolute -top-10 left-0 w-40 h-40 bg-[#50A9CE]/10 rounded-full filter blur-xl"></div>
+                            <h2 class="section-title text-5xl font-medium text-[#666] relative inline-block">
+                                iDM Energiesysteme
+                                <span class="block text-xl font-light text-[#50A9CE] mt-2">Die Energiefamilie</span>
+                            </h2>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Energy Section -->
-    <section class="py-20">
-        <div class="container mx-auto">
-            <div class="w-full mb-16 scale-up">
-                <img 
-                    src="https://PGRWebsite.b-cdn.net/Industrie/csm_4.2_APL_Firmengela%CC%88nde_dd26945bc8.jpg" 
-                    alt="APL Apparatebau GmbH - Innovative Energielösungen" 
-                    class="w-full h-[400px] object-cover"
-                >
-            </div>
-            <div class="px-8">
-                <div class="max-w-4xl fade-up">
-                    <h2 class="section-title text-5xl font-medium text-[#666] mb-8">APL Apparatebau GmbH</h2>
-                    <p class="text-[#666] text-lg font-light leading-relaxed mb-8">Die APL Apparatebau GmbH ist spezialisiert auf die Entwicklung und Produktion von innovativen Wärmeübertragungssystemen. Als Technologieführer in der Branche setzt das Unternehmen auf energieeffiziente Lösungen und nachhaltige Produktionsprozesse. Die hochwertigen Produkte finden Anwendung in verschiedenen Industriebereichen.</p>
-                    <a href="https://apl-apparatebau.com/en/" target="_blank" class="text-[#666] font-medium inline-block relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#50A9CE] slide-in-right">
-                        Zur Website
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Logo Carousel for Energy Partners -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-8">
-            <h2 class="text-[#666] text-4xl font-medium mb-16 text-center">Unsere Unternehmen</h2>
-            <div class="logo-carousel">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <!-- Company Logos -->
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.26.40.png" alt="Unternehmen 1" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.26.47.png" alt="Unternehmen 2" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.26.54.png" alt="Unternehmen 3" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/logo.png" alt="Unternehmen 4" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.26.40.png" alt="Unternehmen 1" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.26.47.png" alt="Unternehmen 2" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/Screenshot%202025-04-18%20at%2019.26.54.png" alt="Unternehmen 3" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/logo.png" alt="Unternehmen 4" class="w-[200px] h-[120px] object-contain">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pletzer Installationen Section -->
-    <section class="py-20">
-        <div class="container mx-auto">
-            <div class="w-full mb-16 scale-up">
-                <img 
-                    src="https://PGRWebsite.b-cdn.net/Industrie/_mg_0673_2.jpg.webp" 
-                    alt="Pletzer Installationen - Professionelle Installationsdienstleistungen" 
-                    class="w-full h-[400px] object-cover"
-                >
-            </div>
-            <div class="px-8">
-                <div class="max-w-4xl fade-up">
-                    <h2 class="section-title text-5xl font-medium text-[#666] mb-8">Pletzer Installationen</h2>
-                    <p class="text-[#666] text-lg font-light leading-relaxed mb-8">Pletzer Installationen ist Ihr erfahrener Partner für professionelle Installationsdienstleistungen in der Industrie. Mit unserem hochqualifizierten Team und modernster Technik bieten wir maßgeschneiderte Lösungen für komplexe Installationsprojekte. Von der Planung bis zur Umsetzung garantieren wir höchste Qualität und Zuverlässigkeit.</p>
-                    <a href="https://www.pletzer.at" target="_blank" class="text-[#666] font-medium inline-block relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#50A9CE] slide-in-right">
-                        Zur Website
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Logo Carousel for Installation Partners -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-8">
-            <h2 class="text-[#666] text-4xl font-medium mb-16 text-center">Unsere Installationsbetriebe</h2>
-            <div class="logo-carousel">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <!-- Original logos -->
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/logo.png.webp" alt="Installation Partner 1" class="w-[180px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/logo.png.webp" alt="Installation Partner 2" class="w-[180px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/netzwerk-handwerk-hd.png" alt="Installation Partner 3" class="w-[180px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/82845af6-dba3-4835-8ec0-9650f47da982.png" alt="Installation Partner 4" class="w-[180px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/logo.png-2.webp" alt="Installation Partner 5" class="w-[180px] h-[120px] object-contain">
-                        </div>
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/logo.png.webp" alt="Installation Partner 1" class="w-[180px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/logo.png.webp" alt="Installation Partner 2" class="w-[180px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/netzwerk-handwerk-hd.png" alt="Installation Partner 3" class="w-[180px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/82845af6-dba3-4835-8ec0-9650f47da982.png" alt="Installation Partner 4" class="w-[180px] h-[120px] object-contain">
-                        </div>
-                        <div class="logo-item">
-                            <img src="https://PGRWebsite.b-cdn.net/Industrie/logo.png-2.webp" alt="Installation Partner 5" class="w-[180px] h-[120px] object-contain">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Erber Edelbrände Section -->
-    <section class="py-20">
-        <div class="container mx-auto">
-            <div class="w-full mb-16 scale-up">
-                <img 
-                    src="https://PGRWebsite.b-cdn.net/Industrie/brixen-im-thale-schnapsbrennerei-erber-shop_3.jpg" 
-                    alt="Erber Edelbrände - Premium Spirituosen" 
-                    class="w-full h-[400px] object-cover"
-                >
-            </div>
-            <div class="px-8">
-                <div class="max-w-4xl fade-up">
-                    <h2 class="section-title text-5xl font-medium text-[#666] mb-8">Erber Edelbrände</h2>
-                    <p class="text-[#666] text-lg font-light leading-relaxed mb-8">Erber Edelbrände ist ein traditionsreicher Hersteller hochwertiger Spirituosen. Mit jahrzehntelanger Erfahrung in der Destillation und einem tiefen Verständnis für die Kunst des Brennens, produziert das Unternehmen exklusive Edelbrände von höchster Qualität. Die Kombination aus traditionellen Methoden und modernster Technologie garantiert einzigartige Geschmackserlebnisse.</p>
-                    <a href="https://www.erber-edelbrand.com" target="_blank" class="text-[#666] font-medium inline-block relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#50A9CE] slide-in-right">
-                        Zur Website
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Logo Carousel for Spirits Partners -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-8">
-            <h2 class="text-[#666] text-4xl font-medium mb-16 text-center">Unsere Spirituosenpartner</h2>
-            <div class="logo-carousel">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <!-- Original 6 logos -->
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 1</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 2</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 3</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 4</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 5</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 6</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 1</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 2</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 3</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 4</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 5</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 6</span>
-                                <small>300x200 px</small>
+                    
+                    <!-- Single main image stretching across the page -->
+                    <div class="px-8 mb-16">
+                        <div class="max-w-7xl mx-auto">
+                            <div class="relative overflow-hidden rounded-xl transform transition-all duration-700 hover:translate-y-[-8px]">
+                                <img 
+                                    src="https://PGRWebsite.b-cdn.net/Industrie/Produktbild_iDM-Waermepumpen-1024x555.jpg.webp" 
+                                    alt="iDM Energiesysteme GmbH - Innovative Wärmepumpen Technologie" 
+                                    class="w-full h-auto object-cover"
+                                >
+                                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/40 to-transparent opacity-80"></div>
+                                
+                                <!-- Badge -->
+                                <div class="absolute top-6 right-6 bg-white/90 backdrop-blur-sm py-2 px-4 rounded-full border border-[#50A9CE]/20">
+                                    <span class="text-[#50A9CE] font-medium">Seit 1977</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Main content grid -->
+                    <div class="px-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Österreichischer Marktführer</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Die iDM Energiesysteme GmbH ist seit 1977 der führende österreichische Hersteller von Wärmepumpen mit einem Leistungsbereich von 2 bis 1500 kW. Als Innovationsführer entwickelt das Unternehmen nachhaltige Energielösungen für die Zukunft.</p>
+                            </div>
+                            
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Innovative Technologie</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Mit der patentierten NAVIGATOR-Steuerung und myiDM-Energiemanagement bietet iDM intelligente und hocheffiziente Systemlösungen für private, gewerbliche und industrielle Anwendungen.</p>
+                            </div>
+                            
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Nachhaltigkeit & Effizienz</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Durch die Nutzung erneuerbarer Energiequellen tragen die Wärmepumpen von iDM zur Reduktion von CO₂-Emissionen bei und ermöglichen eine deutliche Senkung der Energiekosten.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center mt-10 mb-16">
+                            <a href="https://www.idm-energie.at" target="_blank" class="inline-flex items-center px-8 py-3 bg-[#50A9CE] text-white font-medium rounded-lg transition-all duration-300 hover:bg-[#3d8cac] group">
+                                <span>Zur Website</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Modern Stats Banner - Wider and more modern -->
+                    <div class="w-full mx-auto py-12 bg-[#f8fafb] rounded-xl overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#f0f4f8]/80 via-transparent to-[#f0f4f8]/80 w-full h-full"></div>
+                        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10 px-8">
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="1977">1977</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Gründungsjahr</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="5">5</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">COP-Werte bis zu</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="1500">1500 kW</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Maximale Leistung</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="75">75%</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">CO<sub>2</sub>-Einsparung</p>
+                            </div>
+                        </div>
+                        <!-- Decorative Elements -->
+                        <div class="absolute top-0 left-0 w-32 h-32 rounded-full bg-[#50A9CE]/5 -translate-x-1/2 -translate-y-1/2"></div>
+                        <div class="absolute bottom-0 right-0 w-24 h-24 rounded-full bg-[#50A9CE]/5 translate-x-1/2 translate-y-1/2"></div>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- Energy Section -->
+            <section class="company-slide py-20 bg-gradient-to-b from-gray-50 to-white" id="apl-section">
+                <div class="container mx-auto">
+                    <!-- Header with decorative elements - Aligned left like iDM section -->
+                    <div class="px-8 mb-16">
+                        <div class="relative max-w-4xl fade-up">
+                            <div class="absolute -top-10 left-0 w-40 h-40 bg-[#50A9CE]/10 rounded-full filter blur-xl"></div>
+                            <h2 class="section-title text-5xl font-medium text-[#666] relative inline-block">
+                                APL Apparatebau
+                                <span class="block text-xl font-light text-[#50A9CE] mt-2">Präzision, Qualität & Innovation</span>
+                            </h2>
+                        </div>
+                        </div>
+                    
+                    <!-- Single main image stretching across the page -->
+                    <div class="px-8 mb-16">
+                        <div class="max-w-7xl mx-auto">
+                            <div class="relative overflow-hidden rounded-xl transform transition-all duration-700 hover:translate-y-[-8px]">
+                                <div class="bg-gray-100 w-full h-[400px] flex items-center justify-center">
+                                    <img src="https://PGRWebsite.b-cdn.net/Industrie/csm_4.2_APL_Firmengela%CC%88nde_dd26945bc8.jpg" alt="APL Apparatebau - Innovative Energielösungen" class="w-full h-full object-cover">
+                                </div>
+                                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/40 to-transparent opacity-80"></div>
+                                
+                                <!-- Badge -->
+                                <div class="absolute top-6 right-6 bg-white/90 backdrop-blur-sm py-2 px-4 rounded-full border border-[#50A9CE]/20">
+                                    <span class="text-[#50A9CE] font-medium">Seit 1988</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Main content grid -->
+                    <div class="px-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Innovative Technologie</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">APL Apparatebau entwickelt hocheffiziente Wärmeübertragungssysteme mit modernster Technologie. Die innovativen Lösungen bieten maximale Energieeffizienz bei gleichzeitig geringem Platzbedarf.</p>
+                            </div>
+                            
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Maßgeschneiderte Lösungen</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Als spezialisierter Hersteller bietet APL maßgeschneiderte Lösungen für individuelle Anforderungen. Die Produkte werden nach höchsten Qualitätsstandards gefertigt und an die spezifischen Bedürfnisse angepasst.</p>
+                            </div>
+                            
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Nachhaltigkeit & Effizienz</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Durch energieeffiziente Systeme trägt APL zur Reduktion von CO₂-Emissionen bei. Die nachhaltigen Produktionsprozesse und langlebigen Produkte schonen Ressourcen und senken Betriebskosten.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center mt-10 mb-16">
+                            <a href="https://apl-apparatebau.com/en/" target="_blank" class="inline-flex items-center px-8 py-3 bg-[#50A9CE] text-white font-medium rounded-lg transition-all duration-300 hover:bg-[#3d8cac] group">
+                                <span>Zur Website</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Modern Stats Banner - Wider and more modern -->
+                    <div class="w-full mx-auto py-12 bg-[#f8fafb] rounded-xl overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#f0f4f8]/80 via-transparent to-[#f0f4f8]/80 w-full h-full"></div>
+                        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10 px-8">
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="1988">1988</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Gründungsjahr</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="100">100+</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Projekte</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="95">95%</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Effizienz</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="30">30%</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Energieeinsparung</p>
+                            </div>
+                        </div>
+                        <!-- Decorative Elements -->
+                        <div class="absolute top-0 left-0 w-32 h-32 rounded-full bg-[#50A9CE]/5 -translate-x-1/2 -translate-y-1/2"></div>
+                        <div class="absolute bottom-0 right-0 w-24 h-24 rounded-full bg-[#50A9CE]/5 translate-x-1/2 translate-y-1/2"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pletzer Installationen Section -->
+            <section class="company-slide py-20 bg-gradient-to-b from-gray-50 to-white" id="pletzer-section">
+                <div class="container mx-auto">
+                    <!-- Header with decorative elements - Aligned left like iDM section -->
+                    <div class="px-8 mb-16">
+                        <div class="relative max-w-4xl fade-up">
+                            <div class="absolute -top-10 left-0 w-40 h-40 bg-[#50A9CE]/10 rounded-full filter blur-xl"></div>
+                            <h2 class="section-title text-5xl font-medium text-[#666] relative inline-block">
+                                Pletzer Installationen
+                                <span class="block text-xl font-light text-[#50A9CE] mt-2">Professionelle Installationsdienstleistungen</span>
+                            </h2>
+                        </div>
+                    </div>
+                    
+                    <!-- Single main image stretching across the page -->
+                    <div class="px-8 mb-16">
+                        <div class="max-w-7xl mx-auto">
+                            <div class="relative overflow-hidden rounded-xl transform transition-all duration-700 hover:translate-y-[-8px]">
+                                <div class="bg-gray-100 w-full h-[400px] flex items-center justify-center">
+                                    <img src="https://PGRWebsite.b-cdn.net/Industrie/_mg_0673_2.jpg.webp" alt="Pletzer Installationen - Professionelle Installationsdienstleistungen" class="w-full h-full object-cover">
+                                </div>
+                                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/40 to-transparent opacity-80"></div>
+                                
+                                <!-- Badge -->
+                                <div class="absolute top-6 right-6 bg-white/90 backdrop-blur-sm py-2 px-4 rounded-full border border-[#50A9CE]/20">
+                                    <span class="text-[#50A9CE] font-medium">Seit 1975</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Main content grid -->
+                    <div class="px-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                            </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Professionelle Planung</h3>
+                        </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Pletzer Installationen bietet professionelle Planung und Ausführung komplexer Installationsprojekte. Mit jahrzehntelanger Erfahrung garantieren wir eine reibungslose Umsetzung vom Konzept bis zur Fertigstellung.</p>
+                            </div>
+                            
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                        </svg>
+                            </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Modernste Technik</h3>
+                            </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Wir setzen auf modernste Technologien und innovative Lösungen für Ihre Installationsprojekte. Unsere Experten arbeiten mit hochwertigen Materialien und aktuellen Verfahren, um optimale Ergebnisse zu erzielen.</p>
+                            </div>
+                            
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Zuverlässiger Service</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Pletzer Installationen steht für zuverlässigen Service und höchste Qualitätsstandards. Unser qualifiziertes Team bietet umfassende Betreuung und schnelle Reaktionszeiten für maximale Kundenzufriedenheit.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center mt-10 mb-16">
+                            <a href="https://www.pletzer.at" target="_blank" class="inline-flex items-center px-8 py-3 bg-[#50A9CE] text-white font-medium rounded-lg transition-all duration-300 hover:bg-[#3d8cac] group">
+                                <span>Zur Website</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Modern Stats Banner - Wider and more modern -->
+                    <div class="w-full mx-auto py-12 bg-[#f8fafb] rounded-xl overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#f0f4f8]/80 via-transparent to-[#f0f4f8]/80 w-full h-full"></div>
+                        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10 px-8">
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="1975">1975</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Gründungsjahr</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="500">500+</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Projekte</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="15">15</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Mitarbeiter</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="35">35</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Jahre Erfahrung</p>
+                            </div>
+                        </div>
+                        <!-- Decorative Elements -->
+                        <div class="absolute top-0 left-0 w-32 h-32 rounded-full bg-[#50A9CE]/5 -translate-x-1/2 -translate-y-1/2"></div>
+                        <div class="absolute bottom-0 right-0 w-24 h-24 rounded-full bg-[#50A9CE]/5 translate-x-1/2 translate-y-1/2"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Erber Edelbrände Section -->
+            <section class="company-slide py-20 bg-gradient-to-b from-gray-50 to-white" id="erber-section">
+                <div class="container mx-auto">
+                    <!-- Header with decorative elements - Aligned left like iDM section -->
+                    <div class="px-8 mb-16">
+                        <div class="relative max-w-4xl fade-up">
+                            <div class="absolute -top-10 left-0 w-40 h-40 bg-[#50A9CE]/10 rounded-full filter blur-xl"></div>
+                            <h2 class="section-title text-5xl font-medium text-[#666] relative inline-block">
+                                Erber Edelbrände
+                                <span class="block text-xl font-light text-[#50A9CE] mt-2">Premium Spirituosen</span>
+                            </h2>
+                        </div>
+                    </div>
+                    
+                    <!-- Single main image stretching across the page -->
+                    <div class="px-8 mb-16">
+                        <div class="max-w-7xl mx-auto">
+                            <div class="relative overflow-hidden rounded-xl transform transition-all duration-700 hover:translate-y-[-8px]">
+                                <div class="bg-gray-100 w-full h-[400px] flex items-center justify-center">
+                                    <img src="https://PGRWebsite.b-cdn.net/Industrie/csm_headerimage2_1606f8c8b9.jpg" alt="Erber Edelbrände - Premium Spirituosen" class="w-full h-full object-cover">
+                                </div>
+                                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/40 to-transparent opacity-80"></div>
+                                
+                                <!-- Badge -->
+                                <div class="absolute top-6 right-6 bg-white/90 backdrop-blur-sm py-2 px-4 rounded-full border border-[#50A9CE]/20">
+                                    <span class="text-[#50A9CE] font-medium">Tradition seit 1950</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Main content grid -->
+                    <div class="px-8">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Traditionelle Destillation</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Erber Edelbrände setzt auf traditionelle Destillationsmethoden in Kombination mit modernen Techniken. Die sorgfältige Handarbeit und das überlieferte Wissen garantieren Spirituosen von höchster Qualität.</p>
+                            </div>
+                            
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Erstklassige Rohstoffe</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Für unsere Edelbrände verwenden wir ausschließlich erstklassige, handverlesene Früchte aus der Region. Die Qualität der Rohstoffe und die schonende Verarbeitung sind Grundlage für den unverwechselbaren Geschmack.</p>
+                            </div>
+                            
+                            <div class="transform transition-all duration-500 hover:translate-x-2">
+                                <div class="flex items-center mb-6">
+                                    <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-medium text-[#666]">Vielfältige Produktpalette</h3>
+                                </div>
+                                <p class="text-gray-600 leading-relaxed pl-14">Erber Edelbrände bietet eine breite Palette an Spirituosen, von klassischen Obstbränden bis hin zu exklusiven Spezialitäten. Jede Kreation ist ein einzigartiges Geschmackserlebnis mit Charakter und Finesse.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center mt-10 mb-16">
+                            <a href="https://www.erber-edelbrand.com" target="_blank" class="inline-flex items-center px-8 py-3 bg-[#50A9CE] text-white font-medium rounded-lg transition-all duration-300 hover:bg-[#3d8cac] group">
+                                <span>Zur Website</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Modern Stats Banner - Wider and more modern -->
+                    <div class="w-full mx-auto py-12 bg-[#f8fafb] rounded-xl overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#f0f4f8]/80 via-transparent to-[#f0f4f8]/80 w-full h-full"></div>
+                        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10 px-8">
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="1950">1950</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Traditionsunternehmen</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="30">30+</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Sorten</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="20">20</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Auszeichnungen</p>
+                            </div>
+                            <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
+                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="100">100%</div>
+                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Regionale Früchte</p>
+                            </div>
+                        </div>
+                        <!-- Decorative Elements -->
+                        <div class="absolute top-0 left-0 w-32 h-32 rounded-full bg-[#50A9CE]/5 -translate-x-1/2 -translate-y-1/2"></div>
+                        <div class="absolute bottom-0 right-0 w-24 h-24 rounded-full bg-[#50A9CE]/5 translate-x-1/2 translate-y-1/2"></div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
+
+        <!-- Navigation Arrows -->
+        <button class="company-slider-arrow company-slider-prev absolute top-1/2 left-11 transform -translate-y-1/2 z-20 bg-[#50A9CE]/10 rounded-full p-3 h-96 flex items-center justify-center shadow-lg hover:bg-[#50A9CE]/20 transition-all duration-300 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button class="company-slider-arrow company-slider-next absolute top-1/2 right-11 transform -translate-y-1/2 z-20 bg-[#50A9CE]/10 rounded-full p-3 h-96 flex items-center justify-center shadow-lg hover:bg-[#50A9CE]/20 transition-all duration-300 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+        <!-- Slider Dots -->
+        <div class="company-slider-dots flex justify-center space-x-2 my-8">
+            <button class="company-slider-dot w-3 h-3 rounded-full bg-[#50A9CE]/30 hover:bg-[#50A9CE] transition-colors duration-300 focus:outline-none active" data-index="0"></button>
+            <button class="company-slider-dot w-3 h-3 rounded-full bg-[#50A9CE]/30 hover:bg-[#50A9CE] transition-colors duration-300 focus:outline-none" data-index="1"></button>
+            <button class="company-slider-dot w-3 h-3 rounded-full bg-[#50A9CE]/30 hover:bg-[#50A9CE] transition-colors duration-300 focus:outline-none" data-index="2"></button>
+            <button class="company-slider-dot w-3 h-3 rounded-full bg-[#50A9CE]/30 hover:bg-[#50A9CE] transition-colors duration-300 focus:outline-none" data-index="3"></button>
+        </div>
+    </div>
 
     <!-- Careers Banner Section -->
     <section class="relative h-[600px] w-full overflow-hidden">
@@ -1094,12 +1329,12 @@
                                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                                 </svg>
                             </a>
-                        </div>
+                </div>
                         <!-- Contact Info -->
                         <div class="space-y-2">
                             <p class="text-gray-600">E: <a href="mailto:info@pletzer-gruppe.at" class="hover:text-gray-900 transition-colors">info@pletzer-gruppe.at</a></p>
                             <p class="text-gray-600">T: <a href="tel:+436645293561" class="hover:text-gray-900 transition-colors">+436645293561</a></p>
-                        </div>
+            </div>
                     </div>
                 </div>
             </div>
@@ -1174,7 +1409,7 @@
         }
 
         // Initial state check
-        if (window.pageYOffset > 50) {
+            if (window.pageYOffset > 50) {
             header.classList.add('header-scroll');
             toggleLanguageIcons(true);
         }
@@ -1309,6 +1544,166 @@
                     element.style.transform = 'translateY(0)';
                 });
             }, 500);
+        });
+    </script>
+
+    <script>
+        // Add this script at the end of the file before the closing </body> tag
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation for the iDM indicator line
+            const idmIndicator = document.getElementById('idm-indicator');
+            if (idmIndicator) {
+                setTimeout(() => {
+                    idmIndicator.style.transform = 'scaleX(1)';
+                }, 500);
+            }
+            
+            // Animation for counter items when they come into view
+            const counterItems = document.querySelectorAll('.counter-item');
+            const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const targetValue = parseFloat(target.getAttribute('data-target'));
+                        let currentValue = 0;
+                        const duration = 1500; // milliseconds
+                        const increment = targetValue / (duration / 16); // 60fps
+                        
+                        const updateCounter = () => {
+                            if (currentValue < targetValue) {
+                                currentValue += increment;
+                                if (currentValue > targetValue) currentValue = targetValue;
+                                
+                                // Format the number appropriately
+                                if (target.textContent.includes('kW')) {
+                                    target.textContent = Math.round(currentValue) + ' kW';
+                                } else if (target.textContent.includes('%')) {
+                                    target.textContent = Math.round(currentValue) + '%';
+                                } else if (Number.isInteger(targetValue)) {
+                                    target.textContent = Math.round(currentValue);
+                                } else {
+                                    target.textContent = currentValue.toFixed(1);
+                                }
+                                
+                                requestAnimationFrame(updateCounter);
+                            }
+                        };
+                        
+                        updateCounter();
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            counterItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+
+    <!-- Footer Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.5/dist/gsap.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements with fade-up class
+            const fadeUpElements = document.querySelectorAll('.fade-up');
+            fadeUpElements.forEach(element => {
+                gsap.fromTo(element, 
+                    { y: 50, opacity: 0 }, 
+                    { 
+                        y: 0, 
+                        opacity: 1, 
+                        duration: 0.8, 
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 80%'
+                        }
+                    }
+                );
+            });
+
+            // Logo carousel animation
+            const carouselTracks = document.querySelectorAll('.carousel-track');
+            carouselTracks.forEach(track => {
+                gsap.to(track, {
+                    x: '-50%',
+                    ease: 'none',
+                    duration: 30,
+                    repeat: -1
+                });
+            });
+
+            // Counter animation
+            const counterItems = document.querySelectorAll('.counter-item');
+            counterItems.forEach(item => {
+                const target = parseInt(item.getAttribute('data-target'));
+                let count = 0;
+                const updateCounter = () => {
+                    if (count < target) {
+                        count += Math.ceil(target / 100);
+                        if (count > target) count = target;
+                        item.textContent = count;
+                        setTimeout(updateCounter, 10);
+                    }
+                };
+                updateCounter();
+            });
+
+            // Company Slider Functionality
+            const companySlider = {
+                currentIndex: 0,
+                slides: document.querySelectorAll('.company-slide'),
+                dots: document.querySelectorAll('.company-slider-dot'),
+                prevBtn: document.querySelector('.company-slider-prev'),
+                nextBtn: document.querySelector('.company-slider-next'),
+                
+                init: function() {
+                    // Set initial state
+                    this.updateSlides();
+                    
+                    // Set event listeners
+                    this.prevBtn.addEventListener('click', () => this.navigate(-1));
+                    this.nextBtn.addEventListener('click', () => this.navigate(1));
+                    
+                    // Add click event for dots
+                    this.dots.forEach((dot, index) => {
+                        dot.addEventListener('click', () => {
+                            this.goToSlide(index);
+                        });
+                    });
+                },
+                
+                navigate: function(direction) {
+                    this.currentIndex = (this.currentIndex + direction + this.slides.length) % this.slides.length;
+                    this.updateSlides();
+                },
+                
+                goToSlide: function(index) {
+                    this.currentIndex = index;
+                    this.updateSlides();
+                },
+                
+                updateSlides: function() {
+                    // Hide all slides
+                    this.slides.forEach((slide, index) => {
+                        slide.style.display = 'none';
+                    });
+                    
+                    // Show current slide
+                    this.slides[this.currentIndex].style.display = 'block';
+                    
+                    // Update dots
+                    this.dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === this.currentIndex);
+                        dot.classList.toggle('bg-[#50A9CE]', index === this.currentIndex);
+                        dot.classList.toggle('bg-[#50A9CE]/30', index !== this.currentIndex);
+                    });
+                }
+            };
+            
+            // Initialize company slider
+            companySlider.init();
         });
     </script>
 </body>
