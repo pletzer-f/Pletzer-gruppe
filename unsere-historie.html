@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unsere Historie - Pletzer Gruppe</title>
-    <link rel="icon" href="https://PGRWebsite.b-cdn.net/FAVICON%20NEW.png" type="image/png">
+    <link rel="icon" type="image/png" href="https://PGRWebsite.b-cdn.net/FAVICON%20NEW.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -520,6 +520,417 @@
             width: 100% !important;
         }
     </style>
+    <style>
+        /* Timeline redesign styles */
+        .milestone-section {
+            padding: 5rem 0;
+            background-color: #f8f8f8;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .milestone-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 600px; /* Fixed height to prevent layout shifts */
+        }
+        
+        .milestone-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .milestone-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background-color: #e0e0e0;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .milestone-progress {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background-color: #AAB400;
+            transform: translateX(-50%) scaleY(0);
+            transform-origin: top;
+            transition: transform 0.8s ease-out;
+            z-index: 2;
+        }
+        
+        .milestone {
+            position: relative;
+            width: 100%;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+            transition: opacity 0.5s ease;
+        }
+        
+        .milestone-left {
+            padding-right: 50%;
+            text-align: right;
+        }
+        
+        .milestone-right {
+            padding-left: 50%;
+            text-align: left;
+        }
+        
+        .milestone-left .milestone-content {
+            margin-right: 40px;
+            text-align: right;
+            max-width: 90%;
+            margin-left: auto;
+        }
+        
+        .milestone-right .milestone-content {
+            margin-left: 40px;
+            text-align: left;
+            max-width: 90%;
+            margin-right: auto;
+        }
+        
+        .milestone.visible {
+            opacity: 1;
+        }
+        
+        .milestone:last-child {
+            margin-bottom: 0;
+        }
+        
+        .milestone-year {
+            font-size: 5rem;
+            font-weight: 700;
+            color: #AAB400;
+            margin-bottom: 1rem;
+            line-height: 1;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative; /* Allow positioning */
+        }
+        
+        .milestone-left .milestone-year {
+            text-align: right;
+            margin-right: 5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .milestone-right .milestone-year {
+            text-align: left;
+            margin-left: 5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            order: 2; /* Place year after content */
+            margin-top: 1rem;
+        }
+        
+        .milestone.visible .milestone-year {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
+        
+        .milestone-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            overflow: hidden;
+        }
+        
+        .milestone.visible .milestone-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+        
+        .milestone-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .milestone-content h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .milestone-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #AAB400;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            transition-delay: 0.6s;
+        }
+        
+        .milestone.visible .milestone-content h3::after {
+            transform: scaleX(1);
+        }
+        
+        .milestone-content p, 
+        .milestone-content ul {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .milestone-image {
+            width: 100%;
+            max-width: 85%; /* Ensure images don't cross center line */
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out 0.3s;
+        }
+        
+        .milestone-left .milestone-image {
+            margin-left: auto; /* Push images away from center for left milestones */
+            margin-right: 0;
+        }
+        
+        .milestone-right .milestone-image {
+            margin-left: 0;
+            margin-right: auto; /* Push images away from center for right milestones */
+        }
+        
+        .milestone.visible .milestone-image {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .milestone-dot {
+            position: absolute;
+            top: 25px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 3px solid #AAB400;
+            border-radius: 50%;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 0 rgba(170, 180, 0, 0);
+        }
+        
+        .milestone-left .milestone-dot {
+            right: -10px;
+        }
+        
+        .milestone-right .milestone-dot {
+            left: -10px;
+        }
+        
+        .milestone.visible .milestone-dot {
+            background-color: #AAB400;
+            transform: scale(1.2);
+            box-shadow: 0 0 0 5px rgba(170, 180, 0, 0.3);
+        }
+        
+        .milestone-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: #AAB400;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .milestone:hover .milestone-dot {
+            background-color: #edf1d3;
+            box-shadow: 0 0 0 5px rgba(170, 180, 0, 0.2);
+        }
+        
+        .milestone-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        
+        .milestone-indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .milestone-indicator-dot.active {
+            background-color: #AAB400;
+            transform: scale(1.3);
+        }
+        
+        @media (max-width: 768px) {
+            .milestone-line,
+            .milestone-progress {
+                left: 1.5rem;
+            }
+            
+            .milestone-dot {
+                left: 1.5rem;
+            }
+            
+            .milestone-left,
+            .milestone-right {
+                text-align: left;
+            }
+            
+            .milestone-left .milestone-content,
+            .milestone-right .milestone-content {
+                margin-left: 3rem;
+                margin-right: 0;
+            }
+            
+            .milestone-left .milestone-year,
+            .milestone-right .milestone-year {
+                text-align: left;
+                margin-left: 3rem;
+                margin-right: 0;
+                position: relative;
+                bottom: auto;
+                left: auto;
+                margin-bottom: 1rem;
+            }
+            
+            .milestone-left .milestone-image,
+            .milestone-right .milestone-image {
+                margin-left: 0;
+                margin-right: auto;
+            }
+            
+            .milestone-year {
+                font-size: 3rem;
+            }
+            
+            .milestone-container {
+                min-height: 700px;
+            }
+        }
+        
+        /* Navigation controls */
+        .milestone-navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .milestone-nav-btn {
+            background-color: transparent;
+            border: 2px solid #AAB400;
+            color: #AAB400;
+            padding: 0.75rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .milestone-nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #AAB400;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        
+        .milestone-nav-btn:hover {
+            color: white;
+        }
+        
+        .milestone-nav-btn:hover::before {
+            transform: translateX(0);
+        }
+        
+        .milestone-nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .milestone-nav-btn:disabled:hover {
+            color: #AAB400;
+        }
+        
+        .milestone-nav-btn:disabled:hover::before {
+            transform: translateX(-100%);
+        }
+        
+        .milestone-counter {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+            z-index: 20; /* Ensure it's above everything */
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .milestone-counter-current {
+            color: #AAB400;
+            font-weight: 700;
+        }
+        
+        .milestone-progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background-color: #AAB400;
+            transition: width 0.5s ease;
+        }
+    </style>
 </head>
 <body class="bg-white">
     <!-- Header -->
@@ -758,116 +1169,144 @@
         </section>
 
         <!-- Timeline Section -->
-        <section class="py-20 px-8 bg-gray-50">
+        <section class="milestone-section py-20 px-8 bg-gray-50">
             <div class="container mx-auto">
                 <h2 class="section-title text-3xl md:text-4xl font-bold mb-16 text-center">Meilensteine unserer Entwicklung</h2>
                 
-                <div class="timeline" id="timeline">
+                <div class="milestone-container relative">
+                    <div class="milestone-line"></div>
+                    <div class="milestone-progress" id="milestone-progress"></div>
+                    <div class="milestone-counter">
+                        <span class="milestone-counter-current" id="milestone-counter-current">1</span>/<span id="milestone-counter-total">12</span>
+                    </div>
+                    
                     <!-- 1964 -->
-                    <div class="timeline-container left">
-                        <div class="timeline-year">1964</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Gründung der Firma Pletzer Installationen</h3>
-                            <p class="text-gray-600">Gründung der Firma Pletzer Installationen in Hopfgarten</p>
+                    <div class="milestone milestone-left" data-year="1964">
+                        <div class="milestone-year">1964</div>
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Gründung der Firma Pletzer Installationen" class="milestone-image">
+                            <h3>Gründung der Firma Pletzer Installationen</h3>
+                            <p>Gründung der Firma Pletzer Installationen in Hopfgarten. Dies markiert den Beginn einer erfolgreichen Unternehmensgeschichte, die sich über Jahrzehnte erstrecken sollte. Mit nur 19 Jahren war Anton Pletzer damals einer der jüngsten Unternehmer Tirols.</p>
                         </div>
+                        <div class="milestone-dot"></div>
                     </div>
-
+                    
                     <!-- 1966 -->
-                    <div class="timeline-container right">
-                        <div class="timeline-year">1966</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Gründung der Firma Stahlbau Hopfgarten</h3>
-                            <p class="text-gray-600">Gründung der Firma Stahlbau Hopfgarten – heute: APL Apparatebau</p>
+                    <div class="milestone milestone-right" data-year="1966">
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Industrie/csm_4.2_APL_Firmengelände_dd26945bc8.jpg" alt="Gründung der Firma Stahlbau Hopfgarten" class="milestone-image">
+                            <h3>Gründung der Firma Stahlbau Hopfgarten</h3>
+                            <p>Mit der Gründung der Firma Stahlbau Hopfgarten – heute: APL Apparatebau – wird der Industriebereich der Pletzer Gruppe weiter ausgebaut und gestärkt. Das Unternehmen spezialisiert sich auf innovative Lösungen im Bereich Wärmetauscher und Apparatebau.</p>
                         </div>
+                        <div class="milestone-year">1966</div>
+                        <div class="milestone-dot"></div>
                     </div>
-
+                    
                     <!-- 1996 -->
-                    <div class="timeline-container left">
-                        <div class="timeline-year">1996</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Errichtung des Einkaufszentrums SÜDPARK</h3>
-                            <p class="text-gray-600">Errichtung des Einkaufszentrums SÜDPARK in Klagenfurt</p>
+                    <div class="milestone milestone-left" data-year="1996">
+                        <div class="milestone-year">1996</div>
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Errichtung des Einkaufszentrums SÜDPARK" class="milestone-image">
+                            <h3>Errichtung des Einkaufszentrums SÜDPARK</h3>
+                            <p>Mit der Errichtung des Einkaufszentrums SÜDPARK in Klagenfurt beginnt die strategische Expansion der Pletzer Gruppe in den Immobilienbereich und markiert einen wichtigen Meilenstein in der Unternehmensgeschichte. Der SÜDPARK etabliert sich schnell als beliebtes Einkaufszentrum der Region.</p>
                         </div>
+                        <div class="milestone-dot"></div>
                     </div>
-
+                    
                     <!-- 1997 -->
-                    <div class="timeline-container right">
-                        <div class="timeline-year">1997</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Übernahme der Wärmepumpen und Solartechnik iDM</h3>
-                            <p class="text-gray-600">Übernahme der Wärmepumpen und Solartechnik iDM Matrei in Osttirol</p>
+                    <div class="milestone milestone-right" data-year="1997">
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Übernahme der Wärmepumpen und Solartechnik iDM" class="milestone-image">
+                            <h3>Übernahme der Wärmepumpen und Solartechnik iDM</h3>
+                            <p>Die Pletzer Gruppe erweitert ihr Portfolio im Bereich erneuerbare Energien durch die Übernahme der Wärmepumpen und Solartechnik iDM Matrei in Osttirol, was die Ausrichtung auf Nachhaltigkeit unterstreicht. Damit wird ein weiterer wichtiger Grundstein für die industrielle Entwicklung gelegt.</p>
                         </div>
+                        <div class="milestone-year">1997</div>
+                        <div class="milestone-dot"></div>
                     </div>
-
+                    
                     <!-- 2000 -->
-                    <div class="timeline-container left">
-                        <div class="timeline-year">2000</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Übernahme der Bergbahnen Hohe Salve</h3>
-                            <p class="text-gray-600">Übernahme der Geschäftsführung der Bergbahnen Hohe Salve</p>
+                    <div class="milestone milestone-left" data-year="2000">
+                        <div class="milestone-year">2000</div>
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Übernahme der Bergbahnen Hohe Salve" class="milestone-image">
+                            <h3>Übernahme der Bergbahnen Hohe Salve</h3>
+                            <p>Mit der Übernahme der Geschäftsführung der Bergbahnen Hohe Salve beginnt ein neues Kapitel im Tourismusbereich, der sich zu einer wichtigen Säule des Unternehmens entwickeln wird. Die Bergbahnen werden in den folgenden Jahren modernisiert und ausgebaut.</p>
                         </div>
+                        <div class="milestone-dot"></div>
                     </div>
-
+                    
                     <!-- 2003 -->
-                    <div class="timeline-container right">
-                        <div class="timeline-year">2003</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Übernahme der Traditionsbrennerei Erber</h3>
-                            <p class="text-gray-600">Übernahme der Traditionsbrennerei Erber in Brixen im Thale</p>
+                    <div class="milestone milestone-right" data-year="2003">
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Übernahme der Traditionsbrennerei Erber" class="milestone-image">
+                            <h3>Übernahme der Traditionsbrennerei Erber</h3>
+                            <p>Die Pletzer Gruppe übernimmt die Traditionsbrennerei Erber in Brixen im Thale und erweitert damit ihre Geschäftsfelder um hochwertigen Spirituosenherstellung mit langer Tradition. Die Brennerei steht für Tiroler Tradition und höchste Qualität.</p>
                         </div>
+                        <div class="milestone-year">2003</div>
+                        <div class="milestone-dot"></div>
                     </div>
-
+                    
                     <!-- 2008 -->
-                    <div class="timeline-container left">
-                        <div class="timeline-year">2008</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Umbau DAS HOPFGARTEN Familotel</h3>
-                            <p class="text-gray-600">Umbau und Erweiterung DAS HOPFGARTEN Familotel Tirol</p>
+                    <div class="milestone milestone-left" data-year="2008">
+                        <div class="milestone-year">2008</div>
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Umbau DAS HOPFGARTEN Familotel" class="milestone-image">
+                            <h3>Umbau DAS HOPFGARTEN Familotel</h3>
+                            <p>Der Umbau und die Erweiterung von DAS HOPFGARTEN Familotel Tirol stellt einen weiteren wichtigen Schritt im strategischen Ausbau des Tourismusbereichs der Gruppe dar. Das familienfreundliche Hotel entwickelt sich zu einem beliebten Urlaubsziel für Familien mit Kindern.</p>
                         </div>
+                        <div class="milestone-dot"></div>
                     </div>
-
+                    
                     <!-- 2009 -->
-                    <div class="timeline-container right">
-                        <div class="timeline-year">2009</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Fertigstellung DAS SEEPARK Resort</h3>
-                            <p class="text-gray-600">Fertigstellung DAS SEEPARK Wörthersee Resort in Klagenfurt am Wörthersee</p>
+                    <div class="milestone milestone-right" data-year="2009">
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Fertigstellung DAS SEEPARK Resort" class="milestone-image">
+                            <h3>Fertigstellung DAS SEEPARK Resort</h3>
+                            <p>Mit der Fertigstellung von DAS SEEPARK Wörthersee Resort in Klagenfurt am Wörthersee expandiert die Pletzer Gruppe weiter im Premium-Tourismusbereich und erschließt neue Märkte. Das luxuriöse Resort direkt am Wörthersee bietet Gästen ein unvergessliches Urlaubserlebnis.</p>
                         </div>
+                        <div class="milestone-year">2009</div>
+                        <div class="milestone-dot"></div>
                     </div>
-
-                    <!-- 2014 -->
-                    <div class="timeline-container left">
-                        <div class="timeline-year">2014</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Zentralisierung der Verwaltung</h3>
-                            <p class="text-gray-600">Zentralisierung der Verwaltung und Auftritt als PLETZER Gruppe</p>
+                    
+                    <!-- 2014-1 -->
+                    <div class="milestone milestone-left" data-year="2014">
+                        <div class="milestone-year">2014</div>
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Zentralisierung der Verwaltung" class="milestone-image">
+                            <h3>Zentralisierung der Verwaltung</h3>
+                            <p>Ein entscheidender Schritt in der Unternehmensgeschichte: Die Zentralisierung der Verwaltung und der einheitliche Auftritt als PLETZER Gruppe stärken die Markenidentität und optimieren interne Prozesse. Diese strategische Entscheidung ermöglicht effizientere Abläufe und eine klare Positionierung am Markt.</p>
                         </div>
+                        <div class="milestone-dot"></div>
                     </div>
-
-                    <!-- 2014 -->
-                    <div class="timeline-container right">
-                        <div class="timeline-year">2014</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Übernahme Skiparadies Sudelfeld</h3>
-                            <p class="text-gray-600">Übernahme Skiparadies Sudelfeld in Oberbayern</p>
+                    
+                    <!-- 2014-2 -->
+                    <div class="milestone milestone-right" data-year="2014">
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Übernahme Skiparadies Sudelfeld" class="milestone-image">
+                            <h3>Übernahme Skiparadies Sudelfeld</h3>
+                            <p>Die Übernahme des Skiparadies Sudelfeld in Oberbayern markiert den Eintritt in den deutschen Markt und die strategische Erweiterung des Wintertourismus-Portfolios der Gruppe. Damit beginnt eine umfassende Modernisierung des größten zusammenhängenden Skigebiets in Deutschland.</p>
                         </div>
+                        <div class="milestone-year">2014</div>
+                        <div class="milestone-dot"></div>
                     </div>
-
+                    
                     <!-- 2016 -->
-                    <div class="timeline-container left">
-                        <div class="timeline-year">2016</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Eröffnung DAS HOHE SALVE Sportresort</h3>
-                            <p class="text-gray-600">Eröffnung DAS HOHE SALVE Sportresort in Hopfgarten</p>
+                    <div class="milestone milestone-left" data-year="2016">
+                        <div class="milestone-year">2016</div>
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Eröffnung DAS HOHE SALVE Sportresort" class="milestone-image">
+                            <h3>Eröffnung DAS HOHE SALVE Sportresort</h3>
+                            <p>Mit der Eröffnung von DAS HOHE SALVE Sportresort in Hopfgarten erweitert die Pletzer Gruppe ihr Angebot im Bereich Sport- und Aktivtourismus und schafft ein neues Flaggschiff-Resort. Das moderne Resort verbindet sportliche Aktivitäten mit erstklassigem Komfort und Erholung.</p>
                         </div>
+                        <div class="milestone-dot"></div>
                     </div>
-
-                    <!-- 2017-2022 - Combined for brevity -->
-                    <div class="timeline-container right">
-                        <div class="timeline-year">2017-22</div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-semibold mb-2">Weitere Expansionen</h3>
-                            <ul class="list-disc ml-6 text-gray-600 space-y-2">
+                    
+                    <!-- 2017-2022 -->
+                    <div class="milestone milestone-right" data-year="2017">
+                        <div class="milestone-content">
+                            <img src="https://PGRWebsite.b-cdn.net/Zentrale%20Visualisierung.jpg" alt="Weitere Expansionen" class="milestone-image">
+                            <h3>Weitere Expansionen</h3>
+                            <ul class="list-disc ml-6 space-y-2 text-left">
                                 <li>2017: Eröffnung des 1. Betriebskindergartens HÜPFGARTEN in Hopfgarten</li>
                                 <li>2017: Neueröffnung DAS WALCHSEE Aktivresort am Walchsee</li>
                                 <li>2018: Übernahme der Bergbahnen Pillersee</li>
@@ -877,8 +1316,18 @@
                                 <li>2022: Übernahme Bergbahnen St. Johann in Tirol</li>
                             </ul>
                         </div>
+                        <div class="milestone-year">2017-22</div>
+                        <div class="milestone-dot"></div>
                     </div>
                 </div>
+                
+                <div class="milestone-navigation">
+                    <button class="milestone-nav-btn" id="prev-milestone" disabled>Zurück</button>
+                    <button class="milestone-nav-btn" id="next-milestone">Weiter</button>
+                </div>
+                
+                <div class="milestone-indicator" id="milestone-indicator"></div>
+                <div class="milestone-progress-bar" id="milestone-progress-bar"></div>
             </div>
         </section>
 
@@ -1261,29 +1710,8 @@
             }
         });
 
-        // Timeline Animations
+        // Timeline Animations - Replaced with new milestone animations
         document.addEventListener('DOMContentLoaded', function() {
-            // Timeline observer
-            const timelineObserver = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    document.getElementById('timeline').classList.add('visible');
-                    timelineObserver.unobserve(entries[0].target);
-                    
-                    // Animate timeline items with staggered delay
-                    const timelineItems = document.querySelectorAll('.timeline-container');
-                    timelineItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.classList.add('visible');
-                        }, 200 + (index * 300)); // Staggered delay
-                    });
-                }
-            }, { threshold: 0.2 });
-
-            const timeline = document.getElementById('timeline');
-            if (timeline) {
-                timelineObserver.observe(timeline);
-            }
-            
             // KPI Animation
             const kpiSection = document.querySelector('.bg-\\[\\#70787D\\]');
             const numbers = document.querySelectorAll('.kpi-number');
@@ -1326,6 +1754,176 @@
                     }, stepTime);
                 });
             }
+            
+            // New Milestone Animations
+            const milestones = document.querySelectorAll('.milestone');
+            const prevBtn = document.getElementById('prev-milestone');
+            const nextBtn = document.getElementById('next-milestone');
+            const milestoneProgress = document.getElementById('milestone-progress');
+            const milestoneProgressBar = document.getElementById('milestone-progress-bar');
+            const milestoneCounterCurrent = document.getElementById('milestone-counter-current');
+            const milestoneCounterTotal = document.getElementById('milestone-counter-total');
+            const milestoneIndicator = document.getElementById('milestone-indicator');
+            let currentMilestoneIndex = 0;
+            
+            // Set total milestone count
+            milestoneCounterTotal.textContent = milestones.length;
+            
+            // Create indicator dots
+            milestones.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('milestone-indicator-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => showMilestone(index));
+                milestoneIndicator.appendChild(dot);
+            });
+            
+            // Function to update progress bar and indicators
+            function updateProgress(index) {
+                const progress = ((index + 1) / milestones.length) * 100;
+                // Update the vertical progress line
+                milestoneProgress.style.transform = `translateX(-50%) scaleY(${progress / 100})`;
+                // Update the horizontal progress bar
+                milestoneProgressBar.style.width = `${progress}%`;
+                milestoneCounterCurrent.textContent = index + 1;
+                
+                // Update indicator dots
+                document.querySelectorAll('.milestone-indicator-dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+            
+            // Initially hide all milestones except the first one
+            milestones.forEach((milestone, index) => {
+                milestone.style.position = 'absolute';
+                if (index === 0) {
+                    milestone.classList.add('visible');
+                    // Set initial position for active dot after a delay to ensure other elements are rendered
+                    setTimeout(() => {
+                        updateProgress(0);
+                    }, 500);
+                } else {
+                    milestone.style.opacity = '0';
+                    milestone.style.pointerEvents = 'none';
+                }
+                
+                // Ensure images don't cross the center line
+                const image = milestone.querySelector('.milestone-image');
+                if (image) {
+                    // Set maximum width for all images to ensure they don't cross the center line
+                    image.style.maxWidth = '85%';
+                    
+                    if (milestone.classList.contains('milestone-left')) {
+                        image.style.marginLeft = 'auto';
+                        image.style.marginRight = '0';
+                    } else {
+                        image.style.marginLeft = '0';
+                        image.style.marginRight = 'auto';
+                    }
+                }
+            });
+            
+            // Update navigation button states
+            function updateNavButtons() {
+                prevBtn.disabled = currentMilestoneIndex === 0;
+                nextBtn.disabled = currentMilestoneIndex === milestones.length - 1;
+            }
+            
+            // Show a specific milestone
+            function showMilestone(index) {
+                // Prevent animation conflicts
+                if (index === currentMilestoneIndex) return;
+                
+                // Hide current milestone
+                milestones[currentMilestoneIndex].classList.remove('visible');
+                milestones[currentMilestoneIndex].style.pointerEvents = 'none';
+                
+                // Show new milestone
+                setTimeout(() => {
+                    // Hide old milestone completely
+                    milestones[currentMilestoneIndex].style.opacity = '0';
+                    
+                    // Show new milestone
+                    milestones[index].style.opacity = '1';
+                    milestones[index].style.pointerEvents = 'auto';
+                    milestones[index].classList.add('visible');
+                    
+                    // Update progress
+                    updateProgress(index);
+                    
+                    // Update current index
+                    currentMilestoneIndex = index;
+                    updateNavButtons();
+                }, 300);
+            }
+            
+            // Event listeners for navigation buttons
+            prevBtn.addEventListener('click', () => {
+                if (currentMilestoneIndex > 0) {
+                    showMilestone(currentMilestoneIndex - 1);
+                }
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                if (currentMilestoneIndex < milestones.length - 1) {
+                    showMilestone(currentMilestoneIndex + 1);
+                }
+            });
+            
+            // Initialize buttons state
+            updateNavButtons();
+            
+            // Milestone section observer to trigger animation when in view
+            const milestoneSection = document.querySelector('.milestone-section');
+            const milestoneSectionObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    milestones[0].classList.add('visible');
+                    updateProgress(0);
+                    milestoneSectionObserver.unobserve(entries[0].target);
+                }
+            }, { threshold: 0.1 });
+            
+            if (milestoneSection) {
+                milestoneSectionObserver.observe(milestoneSection);
+            }
+            
+            // Add swipe support for mobile
+            let touchstartX = 0;
+            let touchendX = 0;
+            
+            milestoneSection.addEventListener('touchstart', e => {
+                touchstartX = e.changedTouches[0].screenX;
+            });
+            
+            milestoneSection.addEventListener('touchend', e => {
+                touchendX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                if (touchendX < touchstartX - 50) {
+                    // Swipe left
+                    if (currentMilestoneIndex < milestones.length - 1) {
+                        showMilestone(currentMilestoneIndex + 1);
+                    }
+                }
+                
+                if (touchendX > touchstartX + 50) {
+                    // Swipe right
+                    if (currentMilestoneIndex > 0) {
+                        showMilestone(currentMilestoneIndex - 1);
+                    }
+                }
+            }
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' && currentMilestoneIndex > 0) {
+                    showMilestone(currentMilestoneIndex - 1);
+                } else if (e.key === 'ArrowRight' && currentMilestoneIndex < milestones.length - 1) {
+                    showMilestone(currentMilestoneIndex + 1);
+                }
+            });
         });
 
         // Get both button elements
