@@ -105,6 +105,7 @@
             position: relative;
             padding: 2rem 0;
             overflow: hidden;
+            width: 100%;
         }
 
         .carousel-container {
@@ -112,43 +113,33 @@
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .carousel-track {
             display: flex;
             gap: 2rem;
             animation: scroll 30s linear infinite;
+            width: max-content;
         }
 
         .logo-item {
-            flex: 0 0 calc(25% - 1.5rem);
+            flex: 0 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-right: 1rem;
         }
 
-        .logo-placeholder {
-            width: 300px;
-            height: 200px;
-            background: #f5f5f5;
-            border: 2px dashed #ccc;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #666;
+        .logo-item img {
+            max-width: 180px;
+            height: 120px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
         }
 
-        .logo-placeholder span {
-            font-size: 1.25rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .logo-placeholder small {
-            font-size: 0.875rem;
-            color: #999;
+        .logo-item:hover img {
+            transform: scale(1.05);
         }
 
         @keyframes scroll {
@@ -156,7 +147,7 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-100%);
+                transform: translateX(calc(-180px * 5 - 2rem * 5));
             }
         }
 
@@ -825,79 +816,37 @@
             <div class="logo-carousel">
                 <div class="carousel-container">
                     <div class="carousel-track">
-                        <!-- Original 6 logos -->
+                        <!-- Original logos -->
                         <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 1</span>
-                                <small>300x200 px</small>
-                            </div>
+                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/logo.png.webp" alt="Installation Partner 1" class="w-[180px] h-[120px] object-contain">
                         </div>
                         <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 2</span>
-                                <small>300x200 px</small>
-                            </div>
+                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/logo.png.webp" alt="Installation Partner 2" class="w-[180px] h-[120px] object-contain">
                         </div>
                         <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 3</span>
-                                <small>300x200 px</small>
-                            </div>
+                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/netzwerk-handwerk-hd.png" alt="Installation Partner 3" class="w-[180px] h-[120px] object-contain">
                         </div>
                         <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 4</span>
-                                <small>300x200 px</small>
-                            </div>
+                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/82845af6-dba3-4835-8ec0-9650f47da982.png" alt="Installation Partner 4" class="w-[180px] h-[120px] object-contain">
                         </div>
                         <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 5</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 6</span>
-                                <small>300x200 px</small>
-                            </div>
+                            <img src="https://PGRWebsite.b-cdn.net/Industrie/logo.png-2.webp" alt="Installation Partner 5" class="w-[180px] h-[120px] object-contain">
                         </div>
                         <!-- Duplicate set for seamless loop -->
                         <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 1</span>
-                                <small>300x200 px</small>
-                            </div>
+                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/logo.png.webp" alt="Installation Partner 1" class="w-[180px] h-[120px] object-contain">
                         </div>
                         <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 2</span>
-                                <small>300x200 px</small>
-                            </div>
+                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/logo.png.webp" alt="Installation Partner 2" class="w-[180px] h-[120px] object-contain">
                         </div>
                         <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 3</span>
-                                <small>300x200 px</small>
-                            </div>
+                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/netzwerk-handwerk-hd.png" alt="Installation Partner 3" class="w-[180px] h-[120px] object-contain">
                         </div>
                         <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 4</span>
-                                <small>300x200 px</small>
-                            </div>
+                            <img src="https://PGRWebsite.b-cdn.net/Die%20Gruppe/82845af6-dba3-4835-8ec0-9650f47da982.png" alt="Installation Partner 4" class="w-[180px] h-[120px] object-contain">
                         </div>
                         <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 5</span>
-                                <small>300x200 px</small>
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="logo-placeholder w-[180px] h-[120px]">
-                                <span>Logo 6</span>
-                                <small>300x200 px</small>
-                            </div>
+                            <img src="https://PGRWebsite.b-cdn.net/Industrie/logo.png-2.webp" alt="Installation Partner 5" class="w-[180px] h-[120px] object-contain">
                         </div>
                     </div>
                 </div>
@@ -1282,13 +1231,14 @@
                 
                 // Reset animation when it completes
                 track.addEventListener('animationend', () => {
-                    track.style.animation = 'none';
-                    track.offsetHeight; // Trigger reflow
-                    track.style.animation = null;
+                    // Instead of resetting, let it continue infinitely
+                    // The CSS animation is set to infinite
                 });
                 
                 // Force consistent animation speed
                 track.style.animationDuration = '30s';
+                track.style.animationIterationCount = 'infinite';
+                track.style.animationTimingFunction = 'linear';
             });
         });
     </script>
