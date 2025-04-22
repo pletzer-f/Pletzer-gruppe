@@ -528,6 +528,46 @@
         .company-slide {
             width: 100%;
             transition: all 0.3s ease;
+            /* Reduce vertical padding for more compact layout */
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        
+        /* Company section image container */
+        .company-slide .max-w-7xl .relative {
+            max-height: 320px;
+        }
+        
+        /* Stats banner for company sections */
+        .company-slide .stats-banner {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        
+        /* Make content sections more compact */
+        .company-slide .container {
+            max-width: 1400px;
+        }
+        
+        /* Reduce spacing between elements */
+        .company-slide .mb-16 {
+            margin-bottom: 2rem;
+        }
+        
+        /* Optimize content grids */
+        .company-slide .grid-cols-1.lg\:grid-cols-3 {
+            gap: 1.5rem;
+        }
+        
+        /* Ensure consistent height for images */
+        .company-slide .relative.overflow-hidden img {
+            height: 320px;
+            object-fit: cover;
+        }
+        
+        /* Adjust stats grid for more compact layout */
+        .company-slide .max-w-7xl.mx-auto.grid {
+            gap: 1rem;
         }
         
         .company-slider-arrow {
@@ -739,27 +779,27 @@
         <!-- Company Sections Slider -->
         <div class="company-sections-slider">
             <!-- Wärmepumpen Section -->
-            <section class="company-slide py-20 bg-gradient-to-b from-gray-50 to-white" id="waermepumpen-section">
+            <section class="company-slide bg-gradient-to-b from-gray-50 to-white" id="waermepumpen-section">
                 <div class="container mx-auto">
                     <!-- Header with decorative elements - Aligned left like APL section -->
-                    <div class="px-8 mb-16">
+                    <div class="px-8 mb-8">
                         <div class="relative max-w-4xl fade-up">
                             <div class="absolute -top-10 left-0 w-40 h-40 bg-[#50A9CE]/10 rounded-full filter blur-xl"></div>
-                            <h2 class="section-title text-5xl font-medium text-[#666] relative inline-block">
+                            <h2 class="section-title text-4xl font-medium text-[#666] relative inline-block">
                                 iDM Energiesysteme
-                                <span class="block text-xl font-light text-[#50A9CE] mt-2">Die Energiefamilie</span>
+                                <span class="block text-lg font-light text-[#50A9CE] mt-1">Die Energiefamilie</span>
                             </h2>
                         </div>
                     </div>
                     
                     <!-- Single main image stretching across the page -->
-                    <div class="px-8 mb-16">
+                    <div class="px-8 mb-8">
                         <div class="max-w-7xl mx-auto">
                             <div class="relative overflow-hidden rounded-xl transform transition-all duration-700 hover:translate-y-[-8px]">
                                 <img 
                                     src="https://PGRWebsite.b-cdn.net/Industrie/Produktbild_iDM-Waermepumpen-1024x555.jpg.webp" 
                                     alt="iDM Energiesysteme GmbH - Innovative Wärmepumpen Technologie" 
-                                    class="w-full h-auto object-cover"
+                                    class="w-full object-cover"
                                 >
                                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/40 to-transparent opacity-80"></div>
                                 
@@ -773,46 +813,46 @@
                     
                     <!-- Main content grid -->
                     <div class="px-8">
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                             <div class="transform transition-all duration-500 hover:translate-x-2">
-                                <div class="flex items-center mb-6">
+                                <div class="flex items-center mb-3">
                                     <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                                         </svg>
                                     </div>
-                                    <h3 class="text-2xl font-medium text-[#666]">Österreichischer Marktführer</h3>
+                                    <h3 class="text-xl font-medium text-[#666]">Österreichischer Marktführer</h3>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed pl-14">Die iDM Energiesysteme GmbH ist seit 1977 der führende österreichische Hersteller von Wärmepumpen mit einem Leistungsbereich von 2 bis 1500 kW. Als Innovationsführer entwickelt das Unternehmen nachhaltige Energielösungen für die Zukunft.</p>
+                                <p class="text-gray-600 text-sm leading-relaxed pl-14">Die iDM Energiesysteme GmbH ist seit 1977 der führende österreichische Hersteller von Wärmepumpen mit einem Leistungsbereich von 2 bis 1500 kW. Als Innovationsführer entwickelt das Unternehmen nachhaltige Energielösungen für die Zukunft.</p>
                             </div>
                             
                             <div class="transform transition-all duration-500 hover:translate-x-2">
-                                <div class="flex items-center mb-6">
+                                <div class="flex items-center mb-3">
                                     <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                         </svg>
                                     </div>
-                                    <h3 class="text-2xl font-medium text-[#666]">Innovative Technologie</h3>
+                                    <h3 class="text-xl font-medium text-[#666]">Innovative Technologie</h3>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed pl-14">Mit der patentierten NAVIGATOR-Steuerung und myiDM-Energiemanagement bietet iDM intelligente und hocheffiziente Systemlösungen für private, gewerbliche und industrielle Anwendungen.</p>
+                                <p class="text-gray-600 text-sm leading-relaxed pl-14">Mit der patentierten NAVIGATOR-Steuerung und myiDM-Energiemanagement bietet iDM intelligente und hocheffiziente Systemlösungen für private, gewerbliche und industrielle Anwendungen.</p>
                             </div>
                             
                             <div class="transform transition-all duration-500 hover:translate-x-2">
-                                <div class="flex items-center mb-6">
+                                <div class="flex items-center mb-3">
                                     <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                                         </svg>
                                     </div>
-                                    <h3 class="text-2xl font-medium text-[#666]">Nachhaltigkeit & Effizienz</h3>
+                                    <h3 class="text-xl font-medium text-[#666]">Nachhaltigkeit & Effizienz</h3>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed pl-14">Durch die Nutzung erneuerbarer Energiequellen tragen die Wärmepumpen von iDM zur Reduktion von CO₂-Emissionen bei und ermöglichen eine deutliche Senkung der Energiekosten.</p>
+                                <p class="text-gray-600 text-sm leading-relaxed pl-14">Durch die Nutzung erneuerbarer Energiequellen tragen die Wärmepumpen von iDM zur Reduktion von CO₂-Emissionen bei und ermöglichen eine deutliche Senkung der Energiekosten.</p>
                             </div>
                         </div>
                         
-                        <div class="flex justify-center mt-10 mb-16">
-                            <a href="https://www.idm-energie.at" target="_blank" class="inline-flex items-center px-8 py-3 bg-[#50A9CE] text-white font-medium rounded-lg transition-all duration-300 hover:bg-[#3d8cac] group">
+                        <div class="flex justify-center mt-6 mb-8">
+                            <a href="https://www.idm-energie.at" target="_blank" class="inline-flex items-center px-6 py-2 bg-[#50A9CE] text-white font-medium rounded-lg transition-all duration-300 hover:bg-[#3d8cac] group">
                                 <span>Zur Website</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -822,52 +862,49 @@
                     </div>
                     
                     <!-- Modern Stats Banner - Wider and more modern -->
-                    <div class="w-full mx-auto py-12 bg-[#f8fafb] rounded-xl overflow-hidden relative">
+                    <div class="w-full mx-auto py-6 bg-[#f8fafb] rounded-xl overflow-hidden relative stats-banner">
                         <div class="absolute inset-0 bg-gradient-to-r from-[#f0f4f8]/80 via-transparent to-[#f0f4f8]/80 w-full h-full"></div>
-                        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10 px-8">
+                        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 relative z-10 px-8">
                             <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
-                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="1977">1977</div>
-                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Gründungsjahr</p>
+                                <div class="text-4xl font-light text-[#50A9CE] mb-2 counter-item" data-target="1977">1977</div>
+                                <p class="text-gray-500 text-sm font-light group-hover:text-[#50A9CE] transition-colors">Gründungsjahr</p>
                             </div>
                             <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
-                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="5">5</div>
-                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">COP-Werte bis zu</p>
+                                <div class="text-4xl font-light text-[#50A9CE] mb-2 counter-item" data-target="5">5</div>
+                                <p class="text-gray-500 text-sm font-light group-hover:text-[#50A9CE] transition-colors">COP-Werte bis zu</p>
                             </div>
                             <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
-                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="1500">1500 kW</div>
-                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Maximale Leistung</p>
+                                <div class="text-4xl font-light text-[#50A9CE] mb-2 counter-item" data-target="1500">1500 kW</div>
+                                <p class="text-gray-500 text-sm font-light group-hover:text-[#50A9CE] transition-colors">Maximale Leistung</p>
                             </div>
                             <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
-                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="75">75%</div>
-                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">CO<sub>2</sub>-Einsparung</p>
+                                <div class="text-4xl font-light text-[#50A9CE] mb-2 counter-item" data-target="75">75%</div>
+                                <p class="text-gray-500 text-sm font-light group-hover:text-[#50A9CE] transition-colors">CO<sub>2</sub>-Einsparung</p>
                             </div>
                         </div>
-                        <!-- Decorative Elements -->
-                        <div class="absolute top-0 left-0 w-32 h-32 rounded-full bg-[#50A9CE]/5 -translate-x-1/2 -translate-y-1/2"></div>
-                        <div class="absolute bottom-0 right-0 w-24 h-24 rounded-full bg-[#50A9CE]/5 translate-x-1/2 translate-y-1/2"></div>
-                    </div>
-                </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
             <!-- Energy Section -->
             <section class="company-slide py-20 bg-gradient-to-b from-gray-50 to-white" id="apl-section">
                 <div class="container mx-auto">
                     <!-- Header with decorative elements - Aligned left like iDM section -->
-                    <div class="px-8 mb-16">
+                    <div class="px-8 mb-8">
                         <div class="relative max-w-4xl fade-up">
                             <div class="absolute -top-10 left-0 w-40 h-40 bg-[#50A9CE]/10 rounded-full filter blur-xl"></div>
-                            <h2 class="section-title text-5xl font-medium text-[#666] relative inline-block">
+                            <h2 class="section-title text-4xl font-medium text-[#666] relative inline-block">
                                 APL Apparatebau
-                                <span class="block text-xl font-light text-[#50A9CE] mt-2">Präzision, Qualität & Innovation</span>
+                                <span class="block text-lg font-light text-[#50A9CE] mt-1">Präzision, Qualität & Innovation</span>
                             </h2>
                         </div>
                         </div>
                     
                     <!-- Single main image stretching across the page -->
-                    <div class="px-8 mb-16">
+                    <div class="px-8 mb-8">
                         <div class="max-w-7xl mx-auto">
                             <div class="relative overflow-hidden rounded-xl transform transition-all duration-700 hover:translate-y-[-8px]">
-                                <div class="bg-gray-100 w-full h-[400px] flex items-center justify-center">
+                                <div class="bg-gray-100 w-full h-[320px] flex items-center justify-center">
                                     <img src="https://PGRWebsite.b-cdn.net/Industrie/csm_4.2_APL_Firmengela%CC%88nde_dd26945bc8.jpg" alt="APL Apparatebau - Innovative Energielösungen" class="w-full h-full object-cover">
                                 </div>
                                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/40 to-transparent opacity-80"></div>
@@ -882,46 +919,46 @@
                     
                     <!-- Main content grid -->
                     <div class="px-8">
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                             <div class="transform transition-all duration-500 hover:translate-x-2">
-                                <div class="flex items-center mb-6">
+                                <div class="flex items-center mb-3">
                                     <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                                         </svg>
                                     </div>
-                                    <h3 class="text-2xl font-medium text-[#666]">Innovative Technologie</h3>
+                                    <h3 class="text-xl font-medium text-[#666]">Innovative Technologie</h3>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed pl-14">APL Apparatebau entwickelt hocheffiziente Wärmeübertragungssysteme mit modernster Technologie. Die innovativen Lösungen bieten maximale Energieeffizienz bei gleichzeitig geringem Platzbedarf.</p>
+                                <p class="text-gray-600 text-sm leading-relaxed pl-14">APL Apparatebau entwickelt hocheffiziente Wärmeübertragungssysteme mit modernster Technologie. Die innovativen Lösungen bieten maximale Energieeffizienz bei gleichzeitig geringem Platzbedarf.</p>
                             </div>
                             
                             <div class="transform transition-all duration-500 hover:translate-x-2">
-                                <div class="flex items-center mb-6">
+                                <div class="flex items-center mb-3">
                                     <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                         </svg>
                                     </div>
-                                    <h3 class="text-2xl font-medium text-[#666]">Maßgeschneiderte Lösungen</h3>
+                                    <h3 class="text-xl font-medium text-[#666]">Maßgeschneiderte Lösungen</h3>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed pl-14">Als spezialisierter Hersteller bietet APL maßgeschneiderte Lösungen für individuelle Anforderungen. Die Produkte werden nach höchsten Qualitätsstandards gefertigt und an die spezifischen Bedürfnisse angepasst.</p>
+                                <p class="text-gray-600 text-sm leading-relaxed pl-14">Als spezialisierter Hersteller bietet APL maßgeschneiderte Lösungen für individuelle Anforderungen. Die Produkte werden nach höchsten Qualitätsstandards gefertigt und an die spezifischen Bedürfnisse angepasst.</p>
                             </div>
                             
                             <div class="transform transition-all duration-500 hover:translate-x-2">
-                                <div class="flex items-center mb-6">
+                                <div class="flex items-center mb-3">
                                     <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                                         </svg>
                                     </div>
-                                    <h3 class="text-2xl font-medium text-[#666]">Nachhaltigkeit & Effizienz</h3>
+                                    <h3 class="text-xl font-medium text-[#666]">Nachhaltigkeit & Effizienz</h3>
                                 </div>
-                                <p class="text-gray-600 leading-relaxed pl-14">Durch energieeffiziente Systeme trägt APL zur Reduktion von CO₂-Emissionen bei. Die nachhaltigen Produktionsprozesse und langlebigen Produkte schonen Ressourcen und senken Betriebskosten.</p>
+                                <p class="text-gray-600 text-sm leading-relaxed pl-14">Durch energieeffiziente Systeme trägt APL zur Reduktion von CO₂-Emissionen bei. Die nachhaltigen Produktionsprozesse und langlebigen Produkte schonen Ressourcen und senken Betriebskosten.</p>
                             </div>
                         </div>
                         
-                        <div class="flex justify-center mt-10 mb-16">
-                            <a href="https://apl-apparatebau.com/en/" target="_blank" class="inline-flex items-center px-8 py-3 bg-[#50A9CE] text-white font-medium rounded-lg transition-all duration-300 hover:bg-[#3d8cac] group">
+                        <div class="flex justify-center mt-6 mb-8">
+                            <a href="https://apl-apparatebau.com/en/" target="_blank" class="inline-flex items-center px-6 py-2 bg-[#50A9CE] text-white font-medium rounded-lg transition-all duration-300 hover:bg-[#3d8cac] group">
                                 <span>Zur Website</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -931,35 +968,32 @@
                     </div>
                     
                     <!-- Modern Stats Banner - Wider and more modern -->
-                    <div class="w-full mx-auto py-12 bg-[#f8fafb] rounded-xl overflow-hidden relative">
+                    <div class="w-full mx-auto py-6 bg-[#f8fafb] rounded-xl overflow-hidden relative stats-banner">
                         <div class="absolute inset-0 bg-gradient-to-r from-[#f0f4f8]/80 via-transparent to-[#f0f4f8]/80 w-full h-full"></div>
-                        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10 px-8">
+                        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 relative z-10 px-8">
                             <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
-                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="1988">1988</div>
-                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Gründungsjahr</p>
+                                <div class="text-4xl font-light text-[#50A9CE] mb-2 counter-item" data-target="1988">1988</div>
+                                <p class="text-gray-500 text-sm font-light group-hover:text-[#50A9CE] transition-colors">Gründungsjahr</p>
                             </div>
                             <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
-                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="100">100+</div>
-                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Projekte</p>
+                                <div class="text-4xl font-light text-[#50A9CE] mb-2 counter-item" data-target="500">500+</div>
+                                <p class="text-gray-500 text-sm font-light group-hover:text-[#50A9CE] transition-colors">Projekte umgesetzt</p>
                             </div>
                             <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
-                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="95">95%</div>
-                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Effizienz</p>
+                                <div class="text-4xl font-light text-[#50A9CE] mb-2 counter-item" data-target="65">65+</div>
+                                <p class="text-gray-500 text-sm font-light group-hover:text-[#50A9CE] transition-colors">Mitarbeiter</p>
                             </div>
                             <div class="text-center transform transition-all duration-500 hover:translate-y-[-5px] group">
-                                <div class="text-5xl font-light text-[#50A9CE] mb-4 counter-item" data-target="30">30%</div>
-                                <p class="text-gray-500 font-light group-hover:text-[#50A9CE] transition-colors">Energieeinsparung</p>
+                                <div class="text-4xl font-light text-[#50A9CE] mb-2 counter-item" data-target="40">40%</div>
+                                <p class="text-gray-500 text-sm font-light group-hover:text-[#50A9CE] transition-colors">Energieeinsparung</p>
                             </div>
                         </div>
-                        <!-- Decorative Elements -->
-                        <div class="absolute top-0 left-0 w-32 h-32 rounded-full bg-[#50A9CE]/5 -translate-x-1/2 -translate-y-1/2"></div>
-                        <div class="absolute bottom-0 right-0 w-24 h-24 rounded-full bg-[#50A9CE]/5 translate-x-1/2 translate-y-1/2"></div>
-                    </div>
-                </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
             <!-- Pletzer Installationen Section -->
-            <section class="company-slide py-20 bg-gradient-to-b from-gray-50 to-white" id="pletzer-section">
+            <section class="company-slide bg-gradient-to-b from-gray-50 to-white" id="pletzer-section">
                 <div class="container mx-auto">
                     <!-- Header with decorative elements - Aligned left like iDM section -->
                     <div class="px-8 mb-16">
@@ -969,8 +1003,8 @@
                                 Pletzer Installationen
                                 <span class="block text-xl font-light text-[#50A9CE] mt-2">Professionelle Installationsdienstleistungen</span>
                             </h2>
-                        </div>
-                    </div>
+                </div>
+                </div>
                     
                     <!-- Single main image stretching across the page -->
                     <div class="px-8 mb-16">
@@ -1063,12 +1097,12 @@
                         <!-- Decorative Elements -->
                         <div class="absolute top-0 left-0 w-32 h-32 rounded-full bg-[#50A9CE]/5 -translate-x-1/2 -translate-y-1/2"></div>
                         <div class="absolute bottom-0 right-0 w-24 h-24 rounded-full bg-[#50A9CE]/5 translate-x-1/2 translate-y-1/2"></div>
-                    </div>
-                </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
             <!-- Erber Edelbrände Section -->
-            <section class="company-slide py-20 bg-gradient-to-b from-gray-50 to-white" id="erber-section">
+            <section class="company-slide bg-gradient-to-b from-gray-50 to-white" id="erber-section">
                 <div class="container mx-auto">
                     <!-- Header with decorative elements - Aligned left like iDM section -->
                     <div class="px-8 mb-16">
@@ -1106,7 +1140,7 @@
                                     <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                        </svg>
+                            </svg>
                                     </div>
                                     <h3 class="text-2xl font-medium text-[#666]">Traditionelle Destillation</h3>
                                 </div>
@@ -1118,12 +1152,12 @@
                                     <div class="w-10 h-10 rounded-full bg-[#50A9CE]/20 flex items-center justify-center mr-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                        </svg>
-                                    </div>
+                            </svg>
+                    </div>
                                     <h3 class="text-2xl font-medium text-[#666]">Erstklassige Rohstoffe</h3>
-                                </div>
+                </div>
                                 <p class="text-gray-600 leading-relaxed pl-14">Für unsere Edelbrände verwenden wir ausschließlich erstklassige, handverlesene Früchte aus der Region. Die Qualität der Rohstoffe und die schonende Verarbeitung sind Grundlage für den unverwechselbaren Geschmack.</p>
-                            </div>
+                    </div>
                             
                             <div class="transform transition-all duration-500 hover:translate-x-2">
                                 <div class="flex items-center mb-6">
@@ -1131,9 +1165,9 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                                         </svg>
-                                    </div>
+                    </div>
                                     <h3 class="text-2xl font-medium text-[#666]">Vielfältige Produktpalette</h3>
-                                </div>
+                    </div>
                                 <p class="text-gray-600 leading-relaxed pl-14">Erber Edelbrände bietet eine breite Palette an Spirituosen, von klassischen Obstbränden bis hin zu exklusiven Spezialitäten. Jede Kreation ist ein einzigartiges Geschmackserlebnis mit Charakter und Finesse.</p>
                             </div>
                         </div>
@@ -1182,7 +1216,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
-        </button>
+                    </button>
         <button class="company-slider-arrow company-slider-next absolute top-1/2 right-11 transform -translate-y-1/2 z-20 bg-[#50A9CE]/10 rounded-full p-3 h-96 flex items-center justify-center shadow-lg hover:bg-[#50A9CE]/20 transition-all duration-300 focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#50A9CE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
